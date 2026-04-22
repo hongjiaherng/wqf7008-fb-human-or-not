@@ -8,6 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+.DS_Store
 
 data/facebook-recruiting-iv-human-or-bot
 
