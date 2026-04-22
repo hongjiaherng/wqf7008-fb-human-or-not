@@ -40,4 +40,12 @@ Or use any IDE/text editor.
 
 ## References
 
-- [Kaggle competition page](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot)
+```bibtex
+@misc{facebook-recruiting-iv-human-or-bot,
+    author = {Jim Dullaghan and John Costella and John_W and Meghan O'Connell and Rafael and Ruchi and RuchiVarshney and Sergey and Sofus Macskassy and Wendy Kan},
+    title = {Facebook Recruiting IV: Human or Robot?},
+    year = {2015},
+    howpublished = {\url{https://kaggle.com/competitions/facebook-recruiting-iv-human-or-bot}},
+    note = {Kaggle}
+}
+```
