@@ -1,0 +1,14 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+data/facebook-recruiting-iv-human-or-bot
+
+docs/WQF7008_Group_Assignment_Robot_Bidders.pdf

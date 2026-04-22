@@ -1,0 +1,15 @@
+[project]
+name = "wqf7008-fb-human-or-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "hongjiaherng", email = "jiaherng2001@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+wqf7008-fb-human-or-bot = "wqf7008_fb_human_or_bot:main"
+
+[build-system]
+requires = ["uv_build>=0.11.1,<0.12.0"]
+build-backend = "uv_build"
