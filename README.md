@@ -1,6 +1,6 @@
 # WQF7008 Practical Deep Learning - Project
 
-Facebook Recruiting IV: Human or Robot?
+Kaggle's "Facebook Recruiting IV: Human or Robot?"
 
 ## Prerequisites
 
@@ -40,12 +40,26 @@ Or use any IDE/text editor.
 
 ## References
 
+### Competition
+
+- Kaggle: [Facebook Recruiting IV: Human or Robot?](https://kaggle.com/competitions/facebook-recruiting-iv-human-or-bot) (2015)
+
 ```bibtex
 @misc{facebook-recruiting-iv-human-or-bot,
     author = {Jim Dullaghan and John Costella and John_W and Meghan O'Connell and Rafael and Ruchi and RuchiVarshney and Sergey and Sofus Macskassy and Wendy Kan},
-    title = {Facebook Recruiting IV: Human or Robot?},
-    year = {2015},
+    title  = {Facebook Recruiting IV: Human or Robot?},
+    year   = {2015},
     howpublished = {\url{https://kaggle.com/competitions/facebook-recruiting-iv-human-or-bot}},
-    note = {Kaggle}
+    note   = {Kaggle}
 }
 ```
+
+### Top solutions
+
+Scores reported as ROC-AUC (private / public leaderboard).
+
+| Rank | Score (private / public) | Writeup |
+| ---- | ------------------------ | ------- |
+| 1st  | 0.94254 / 0.91946        | [Forum comment by the winner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81331) |
+| 2nd  | 0.94167 / 0.93277        | [small-yellow-duck: "Share your secret sauce"](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce), [blog post](http://small-yellow-duck.github.io/auction.html) |
+| 3rd  | 0.94113 / 0.93321        | [Forum comment by mechatroner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81396) |
