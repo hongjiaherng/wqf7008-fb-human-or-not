@@ -4,12 +4,36 @@ __pycache__/
 build/
 dist/
 wheels/
-*.egg-info
+*.egg-info/
 
 # Virtual environments
 .venv
 .DS_Store
 
+# Data (kaggle competition files — not redistributable)
 data/facebook-recruiting-iv-human-or-bot
 
+# Assignment brief
 docs/WQF7008_Group_Assignment_Robot_Bidders.pdf
+
+# Training artefacts (checkpoints, plots, caches)
+runs/
+
+# Kaggle submissions
+submission.csv
+submission*.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tool caches
+.ruff_cache/
+.ty_cache/
+.pytest_cache/
+.mypy_cache/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db

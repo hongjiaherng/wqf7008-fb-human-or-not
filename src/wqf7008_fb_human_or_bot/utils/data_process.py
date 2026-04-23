@@ -25,20 +25,17 @@ def engineer_features(df):
         .rename("simultaneous_bids")
     )
 
-    agg = (
-        df.groupby("bidder_id")
-        .agg(
-            total_bids=("bid_id", "count"),
-            mean_time_diff=("time_diff", "mean"),
-            min_time_diff=("time_diff", "min"),
-            bids_per_auction=("auction", lambda s: len(s) / s.nunique()),
-            unique_ips=("ip", "nunique"),
-            unique_devices=("device", "nunique"),
-            unique_urls=("url", "nunique"),
-            unique_countries=("country", "nunique"),
-            unique_auctions=("auction", "nunique"),
-            unique_merchandise=("merchandise", "nunique"),
-        )
+    agg = df.groupby("bidder_id").agg(
+        total_bids=("bid_id", "count"),
+        mean_time_diff=("time_diff", "mean"),
+        min_time_diff=("time_diff", "min"),
+        bids_per_auction=("auction", lambda s: len(s) / s.nunique()),
+        unique_ips=("ip", "nunique"),
+        unique_devices=("device", "nunique"),
+        unique_urls=("url", "nunique"),
+        unique_countries=("country", "nunique"),
+        unique_auctions=("auction", "nunique"),
+        unique_merchandise=("merchandise", "nunique"),
     )
 
     agg["ip_to_bid_ratio"] = agg["unique_ips"] / agg["total_bids"]
