@@ -11,5 +11,5 @@ wheels/
 .DS_Store
 
 data/facebook-recruiting-iv-human-or-bot
-
+runs/*
 docs/WQF7008_Group_Assignment_Robot_Bidders.pdf
