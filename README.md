@@ -33,6 +33,7 @@ source .venv/bin/activate  # On macOS/Linux
 jupyter lab # jupyter notebook
 
 # Or this
+uv run ipython kernel install --user --name=robot-bidders --display-name "FB Human or Not"
 uv run jupyter lab  # uv run jupyter notebook
 ```
 
