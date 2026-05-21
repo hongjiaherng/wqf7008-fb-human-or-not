@@ -5,11 +5,13 @@ build/
 dist/
 wheels/
 *.egg-info
+*/.ipynb_checkpoints/*
 
 # Virtual environments
 .venv
 .DS_Store
 
 data/facebook-recruiting-iv-human-or-bot
-
+runs/*
+weights/*
 docs/WQF7008_Group_Assignment_Robot_Bidders.pdf
