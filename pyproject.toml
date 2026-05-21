@@ -21,6 +21,7 @@ dependencies = [
     "torchvision; sys_platform == 'win32' or sys_platform == 'linux'",
     "torchaudio; sys_platform == 'win32' or sys_platform == 'linux'",
     "scikit-learn>=1.8.0",
+    "pytorch-tabnet>=4.1.0",
 ]
 
 [project.scripts]
