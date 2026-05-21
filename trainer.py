@@ -84,6 +84,7 @@ def train(
     device: torch.device | None = None,
     verbose: bool = True,
     model_name: str = "model",
+    run_dir = None,
     fold_tag: str = "fold_1",
 ) -> dict:
     """
@@ -120,9 +121,7 @@ def train(
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=5, factor=0.5)
 
-    weights_dir = Path("../weights")
-    weights_dir.mkdir(parents=True, exist_ok=True)
-    checkpoint_path = weights_dir / f"{model_name}-{fold_tag}.pt"
+    checkpoint_path = run_dir / f"{model_name}-{fold_tag}.pt"
 
     history = {"train_loss": [], "val_loss": [], "val_auc": [], "val_f1": []}
     best_val_loss = float("inf")
@@ -168,42 +167,96 @@ def train(
     return history
 
 
+
 # ── Plot Model Loss ────────────────────────────────────────────────────────
 
 import matplotlib.pyplot as plt
  
  
-def plot_loss_curves(model_name: str, all_histories: list[tuple[str, dict]]) -> None:
+def plot_loss_curves(model_histories: dict[str, list[tuple[str, dict]]], run_dir=None) -> None:
     """
-    Plot train and validation loss curves for all folds and the final run.
- 
+    Plot train and validation loss curves for all models in a single figure.
+
     Args:
-        model_name:    Model identifier, used in the title and saved filename.
-        all_histories: List of (tag, history) tuples collected during CV,
-                       e.g. [("fold_1", hist), ..., ("final", hist)].
+        model_histories: Dict mapping model_name -> list of (tag, history) tuples,
+                         e.g. {"resnet": [("fold_1", hist), ..., ("final", hist)], ...}
+        run_dir:         Directory to save the output PNG.
     """
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-    fig.suptitle(f"{model_name.upper()} — Loss vs Epochs", fontsize=14)
- 
-    for tag, hist in all_histories:
-        epochs_range = range(1, len(hist["train_loss"]) + 1)
-        is_final = tag == "final"
-        kwargs = dict(
-            linestyle = "--" if is_final else "-",
-            linewidth = 2.0  if is_final else 1.0,
-            alpha     = 1.0  if is_final else 0.7,
-            label     = tag,
-        )
-        axes[0].plot(epochs_range, hist["train_loss"], **kwargs)
-        axes[1].plot(epochs_range, hist["val_loss"],   **kwargs)
- 
-    for ax, title in zip(axes, ["Train Loss", "Validation Loss"]):
-        ax.set_title(title)
-        ax.set_xlabel("Epoch")
-        ax.set_ylabel("Loss")
-        ax.legend(fontsize=8)
-        ax.grid(True, alpha=0.3)
- 
+    n_models = len(model_histories)
+    fig, axes = plt.subplots(n_models, 2, figsize=(14, 5 * n_models))
+    fig.suptitle("Loss vs Epochs — All Models", fontsize=16, y=1.01)
+
+    # Ensure axes is always 2D even for a single model
+    if n_models == 1:
+        axes = axes[np.newaxis, :]
+
+    for row, (model_name, all_histories) in enumerate(model_histories.items()):
+        for tag, hist in all_histories:
+            epochs_range = range(1, len(hist["train_loss"]) + 1)
+            is_final = tag == "final"
+            kwargs = dict(
+                linestyle = "--" if is_final else "-",
+                linewidth = 2.0  if is_final else 1.0,
+                alpha     = 1.0  if is_final else 0.7,
+                label     = tag,
+            )
+            axes[row, 0].plot(epochs_range, hist["train_loss"], **kwargs)
+            axes[row, 1].plot(epochs_range, hist["val_loss"],   **kwargs)
+
+        for ax, title in zip(axes[row], ["Train Loss", "Validation Loss"]):
+            ax.set_title(f"{model_name.upper()} — {title}")
+            ax.set_xlabel("Epoch")
+            ax.set_ylabel("Loss")
+            ax.legend(fontsize=8)
+            ax.grid(True, alpha=0.3)
+
     plt.tight_layout()
-    plt.savefig(f"../weights/{model_name}_loss_curves.png", dpi=150, bbox_inches="tight")
+    plt.savefig(Path(run_dir) / "loss_curves.png", dpi=150, bbox_inches="tight")
     plt.show()
+
+
+
+# ── Log Model Performance ────────────────────────────────────────────────────────
+
+def log_performance(
+    model_name: str,
+    n_params: int,
+    fold_metrics: list[dict],
+    test_metrics: dict,
+    run_dir: Path,
+) -> None:
+    """Append plain-text performance log for one model into a shared run log."""
+
+    lines = []
+    lines.append(f"{'='*60}")
+    lines.append(f"  Model: {model_name.upper()}")
+    lines.append(f"{'='*60}")
+    lines.append(f"  Trainable parameters: {n_params:,}")
+
+    # ── CV Summary ────────────────────────────────────────────────────────────
+    k = len(fold_metrics)
+    lines.append(f"\n  [{model_name.upper()}] CV Summary (mean ± std across {k} folds):")
+    for metric in ["auc", "f1", "precision", "recall"]:
+        vals = [m[metric] for m in fold_metrics]
+        lines.append(f"    {metric:10s}: {np.mean(vals):.4f} ± {np.std(vals):.4f}")
+
+    # ── Per-fold breakdown ────────────────────────────────────────────────────
+    lines.append(f"\n  [{model_name.upper()}] Per-fold Breakdown:")
+    header = f"    {'Fold':<10}" + "".join(f"  {m.upper():>10}" for m in ["auc", "f1", "precision", "recall"])
+    lines.append(header)
+    lines.append("    " + "-" * (len(header) - 4))
+    for i, m in enumerate(fold_metrics, 1):
+        row = f"    {f'fold_{i}':<10}" + "".join(f"  {m[metric]:>10.4f}" for metric in ["auc", "f1", "precision", "recall"])
+        lines.append(row)
+
+    # ── Test Set Metrics ──────────────────────────────────────────────────────
+    lines.append(f"\n  [{model_name.upper()}] Final evaluation on test set:")
+    for metric, val in test_metrics.items():
+        if metric != "loss":
+            lines.append(f"    {metric:10s}: {val:.4f}")
+
+    lines.append("")  # trailing newline between models
+
+    log_path = run_dir / "performance.txt"
+    with open(log_path, "a") as f:  # "a" = append, so each model adds to the same file
+        f.write("\n".join(lines) + "\n")
