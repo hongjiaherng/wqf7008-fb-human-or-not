@@ -1,284 +1,334 @@
-# WQF7008 Practical Deep Learning - Project
+# WQF7008 Practical Deep Learning Project
 
-Kaggle's "Facebook Recruiting IV: Human or Robot?"
+Facebook Recruiting IV: Human or Robot?
 
-## Prerequisites
+This repository trains and evaluates bidder-classification models for the Kaggle
+competition dataset. It includes feature engineering, repeated cross-validation,
+final model fitting, checkpoint saving, and Kaggle-style prediction generation.
 
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager
+## Quick Start
 
-## Setup
+### 1. Install `uv`
 
-Install the dev dependencies:
+This project uses [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
+to create the Python environment and install dependencies.
 
-```bash
+### 2. Create the Environment
+
+The project requires Python 3.12 or newer. Use one of the following commands
+from the repository root.
+
+CPU environment:
+
+```powershell
 uv sync --dev --extra cpu
-# If you have a CUDA-enabled GPU, you can install the GPU version:
-# uv sync --dev --extra cu130
 ```
 
-Add extra packages if needed:
+CUDA 13 environment:
 
-```bash
-uv add <package-name>
+```powershell
+uv sync --dev --extra cu130
 ```
 
-## Development
+### 3. Activate the Environment
 
-Use jupyter lab/notebook for development:
+Windows PowerShell:
 
-```bash
-# Do this
-.venv/Scripts/activate  # On Windows
-source .venv/bin/activate  # On macOS/Linux
-jupyter lab # jupyter notebook
-
-# Or this
-uv run jupyter lab  # uv run jupyter notebook
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Or use any IDE/text editor.
-
-## Training and Evaluation
-
-The `bidbot` CLI has three top-level subcommands:
+macOS or Linux:
 
 ```bash
-bidbot
-├── features build                  # cache the per-bidder tabular feature matrix
-├── train {gbm|hybrid|gnn|tffm}     # single train/val split, TensorBoard on, can save ckpt
-└── cv    {gbm|hybrid|gnn|tffm}     # repeated stratified K-fold (100 folds), no TB, no save
+source .venv/bin/activate
 ```
 
-`train` is for **tuning hyperparameters** (watch learning curves) and for the
-**final submission fit** (pass `--val-fraction 0` to train on all data).
-`cv` is for **reporting a generalization number** — K folds × N repeats, no TB.
-
-> **Activate the venv once and call `bidbot` directly** (avoids `uv run --extra …`
-> friction in every command):
->
-> ```powershell
-> # Windows PowerShell
-> .\.venv\Scripts\Activate.ps1
-> ```
->
-> ```bash
-> # macOS / Linux
-> source .venv/bin/activate
-> ```
->
-> All examples below assume the venv is active. If you haven't run `uv sync`
-> with the right extra yet, do it once: `uv sync --extra cpu` (CPU) or
-> `uv sync --extra cu130` (CUDA 13).
-
-### Data
-
-Put the Kaggle competition files under `data/facebook-recruiting-iv-human-or-bot/`:
+After activation, the CLI command is:
 
 ```bash
+bidbot --help
+```
+
+## Data Setup
+
+Download the Kaggle competition files and place them here:
+
+```text
 data/facebook-recruiting-iv-human-or-bot/
   bids.csv
   train.csv
   test.csv
 ```
 
-### Features
+The data files are not committed to Git because they come from Kaggle.
 
-```bash
-bidbot features build            # uses parquet cache if present
-bidbot features build --force    # rebuild
+## Command Overview
+
+The project exposes one CLI command, `bidbot`, with four top-level subcommands:
+
+```text
+bidbot features build
+bidbot train   {gbm|hybrid|gnn|tffm|resnet}
+bidbot cv      {gbm|hybrid|gnn|tffm|resnet}
+bidbot predict {gbm|hybrid|gnn|tffm|resnet}
 ```
 
-### Flag namespaces (auto-derived from the pydantic configs)
+Use `--help` to inspect options:
 
-- `--model.<field>` — training + architecture: `--model.lr`, `--model.epochs`, `--model.hidden`,
-  `--model.device`, `--model.seed`, `--model.ssl-pretrain` (hybrid only), etc.
-- `--cv.<field>` — CV protocol (cv subcommand only): `--cv.n-splits`, `--cv.n-repeats`, `--cv.quick`
-- `--data.<field>` — paths: `--data.data-dir`, `--data.runs-dir`, `--data.cache-dir`
-- Flat flags on the subcommand: `--out`, `--val-fraction`, `--quick`, `--save-model`
-
-Run `bidbot train hybrid --help` etc. for the full list.
-
-### Tuning workflow (what `train` is for)
-
-1. **Iterate on hyperparameters** while watching learning curves:
-
-   ```bash
-   bidbot train hybrid --model.lr 1e-3 --model.hidden 128
-   bidbot train hybrid --model.lr 5e-4 --model.dropout 0.2
-   tensorboard --logdir runs/train
-   ```
-
-   The default `--val-fraction 0.2` gives you `auc/train` vs `auc/val` plots
-   so overfit / underfit are visible. **Always keep val > 0 during tuning.**
-2. **Smoke-test** a config in ~30 s with `--quick` (1 epoch).
-
-### Evaluation (what `cv` is for)
-
-```bash
-bidbot cv hybrid --model.lr 1e-3 --model.hidden 128
+```powershell
+bidbot --help
+bidbot cv tffm --help
+bidbot train tffm --help
 ```
 
-Runs 5×20 = 100 folds by default, writes per-fold AUC + mean/std/q25/q10 summary.
-Add `--cv.quick` for a 2×1 smoke.
+Common flag namespaces:
 
-### SSL pretraining (hybrid only)
+| Namespace | Purpose | Examples |
+| --- | --- | --- |
+| `--model.<field>` | Model and training parameters | `--model.lr`, `--model.epochs`, `--model.device` |
+| `--cv.<field>` | Cross-validation protocol | `--cv.n-splits`, `--cv.n-repeats`, `--cv.quick` |
+| `--data.<field>` | Data/cache paths | `--data.data-dir`, `--data.cache-dir` |
+| Flat flags | Run-level options | `--out`, `--val-fraction`, `--quick`, `--save-model` |
 
-The hybrid model can be initialised from a masked-bid self-supervised encoder.
-Turn it on with `--model.ssl-pretrain`:
+## Build Features
 
-```bash
-bidbot cv    hybrid --model.ssl-pretrain --cv.quick
+Run this once after placing the dataset:
+
+```powershell
+bidbot features build
+```
+
+This creates cached tabular feature files under:
+
+```text
+runs/cache/
+```
+
+To force a rebuild:
+
+```powershell
+bidbot features build --force
+```
+
+## Model Architectures
+
+The available model names are:
+
+| CLI name | Model |
+| --- | --- |
+| `gbm` | Gradient Boosting Machine baseline |
+| `tffm` | FT-Transformer tabular model |
+| `hybrid` | Tabular plus bid-sequence BiLSTM hybrid |
+| `gnn` | Heterogeneous graph neural network |
+| `resnet` | Tabular ResNet baseline |
+
+## Smoke Test
+
+Before running long experiments, use quick CV to confirm the environment,
+dataset, and GPU/CPU setup work:
+
+```powershell
+bidbot cv tffm --cv.quick
+```
+
+Quick CV uses a small 2-fold smoke-test protocol and, for neural models,
+reduces training to one epoch. It is only a runtime check, not a final metric.
+
+## Cross-Validation Evaluation
+
+The default evaluation protocol is:
+
+```text
+Repeated stratified 5-fold cross-validation, repeated 20 times
+```
+
+This produces 100 validation evaluations per model. It should be described as
+`5 folds x 20 repeats`, not as plain `100-fold CV`.
+
+Run all model evaluations:
+
+```powershell
+bidbot cv gbm    --out runs/cv/gbm_full
+bidbot cv tffm   --out runs/cv/tffm_full
+bidbot cv hybrid --out runs/cv/hybrid_full
+bidbot cv gnn    --out runs/cv/gnn_full
+bidbot cv resnet --out runs/cv/resnet_full
+```
+
+Each CV run writes:
+
+| File | Meaning |
+| --- | --- |
+| `metrics.json` | Mean/std/q25/q10 AUC plus OOF threshold metrics |
+| `folds.csv` | Per-fold AUC values |
+| `oof_predictions.csv` | One row per validation appearance |
+| `oof_by_bidder.csv` | Bidder-level OOF probabilities averaged across repeats |
+| `roc.png` | ROC plot |
+
+The threshold metrics are computed from bidder-averaged OOF probabilities using
+a threshold of `0.5`. They include Precision, Recall, F1, and the confusion
+matrix.
+
+## Current Experiment Results
+
+Summary of the full 5-fold x 20-repeat runs:
+
+| Model | Mean CV AUC | Precision | Recall | F1 |
+| --- | ---: | ---: | ---: | ---: |
+| `tffm` | `0.915548` | `0.370968` | `0.669903` | `0.477509` |
+| `gbm` | `0.886548` | `0.443548` | `0.533981` | `0.484581` |
+| `gnn` | `0.814611` | `0.198953` | `0.737864` | `0.313402` |
+| `hybrid` | `0.812057` | `0.251938` | `0.631068` | `0.360111` |
+| `resnet` | `0.727332` | `0.089552` | `0.990291` | `0.164251` |
+
+For this Kaggle-style task, ROC-AUC is the main selection metric. The selected
+final model is therefore `tffm`.
+
+## Final Model Fit
+
+After selecting the model using CV/OOF results, retrain the chosen model on all
+labelled training data and save a checkpoint.
+
+For the selected TFFM model:
+
+```powershell
+bidbot train tffm --val-fraction 0 --save-model --out runs/train/tffm_full_fit
+```
+
+Important reporting note:
+
+- `--val-fraction 0` trains using all labelled data.
+- The AUC written for this run is a training/self-validation AUC.
+- Do not report the full-fit AUC as generalization performance.
+- Report CV/OOF metrics from the `bidbot cv ...` runs instead.
+
+## Generate Predictions
+
+Use the saved checkpoint to create `submission.csv`:
+
+```powershell
+bidbot predict tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
+```
+
+The output CSV has the Kaggle submission format:
+
+```text
+bidder_id,prediction
+...
+```
+
+## Typical End-to-End Workflow
+
+```powershell
+# 1. Install dependencies. Choose one:
+uv sync --dev --extra cpu
+uv sync --dev --extra cu130
+
+# 2. Activate the environment.
+.\.venv\Scripts\Activate.ps1
+
+# 3. Build feature cache.
+bidbot features build
+
+# 4. Smoke test.
+bidbot cv tffm --cv.quick
+
+# 5. Evaluate candidate models.
+bidbot cv gbm    --out runs/cv/gbm_full
+bidbot cv tffm   --out runs/cv/tffm_full
+bidbot cv hybrid --out runs/cv/hybrid_full
+bidbot cv gnn    --out runs/cv/gnn_full
+bidbot cv resnet --out runs/cv/resnet_full
+
+# 6. Fit the selected model on all labelled data.
+bidbot train tffm --val-fraction 0 --save-model --out runs/train/tffm_full_fit
+
+# 7. Generate predictions.
+bidbot predict tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
+```
+
+## Output Directory Layout
+
+```text
+runs/
+  cache/
+    tabular_train.parquet
+    tabular_test.parquet
+
+  cv/
+    <run_name>/
+      metrics.json
+      folds.csv
+      oof_predictions.csv
+      oof_by_bidder.csv
+      roc.png
+
+  train/
+    <run_name>/
+      metrics.json
+      roc.png
+      tb/
+      ckpt.pt          # only when --save-model is used
+      submission.csv   # only after bidbot predict if no --out is supplied
+
+  submit/
+    tffm_final/
+      submission.csv
+      ckpt.pt
+      metrics.json
+      roc.png
+```
+
+## Hybrid SSL Pretraining
+
+The `hybrid` model can optionally use masked-bid self-supervised pretraining:
+
+```powershell
+bidbot cv hybrid --model.ssl-pretrain
 bidbot train hybrid --model.ssl-pretrain
 ```
 
-Resolution order for the checkpoint (see `_maybe_pretrain` in `cli.py`):
+Checkpoint resolution order:
 
-1. `--model.pretrain-ckpt <path>` — use an existing checkpoint, must exist.
-2. Default `runs/ssl/pretrain_ckpt.pt` if present — reuse.
-3. Otherwise run pretraining (all train + test bidder sequences, no labels) and
-   write to the default path.
+1. Use `--model.pretrain-ckpt <path>` if supplied.
+2. Reuse `runs/ssl/pretrain_ckpt.pt` if it exists.
+3. Otherwise run pretraining and write `runs/ssl/pretrain_ckpt.pt`.
 
-Within one `cv hybrid --model.ssl-pretrain` run, pretraining happens **once**;
-every fold's fine-tune loads the same checkpoint. When changing architecture
-(`--model.hidden`, `--model.max-len`, …) delete the cached ckpt so pretraining
-reruns against the new shape — there's no architecture hash in the filename.
+When changing architecture values such as `--model.hidden` or
+`--model.max-len`, delete the old SSL checkpoint so it is regenerated with the
+matching shape.
 
-Only the sequence encoder (embeddings + `input_norm` + LSTM) is transferred;
-`head` and `tab_mlp` always reinit from scratch (`tabular_dim` differs between
-pretrain=0 and fine-tune>0).
+## Notebooks
 
-### Final submission fit
+`notebooks/02_train_compare.ipynb` uses the same training and evaluation code as
+the CLI, but allows inline plots and notebook-based experimentation.
 
-Once the config is locked, fit on 100% of the training data and save a checkpoint:
+## Code Quality
 
-```bash
-bidbot train hybrid --val-fraction 0 --save-model \
-    --model.lr 1e-3 --model.hidden 128 --model.seed 7
-```
-
-`--val-fraction 0` disables the split — no val metrics, no early stopping,
-trains for the full `--model.epochs`. Pair with `--save-model` to write
-`ckpt.pt`. Runs with `--val-fraction 0` land in a folder suffixed `_full` (e.g.
-`runs/train/20260424T034231_gbm_full/`) so they're visually distinct from
-tuning runs.
-
-### Generate a Kaggle submission
-
-```bash
-bidbot predict {gbm|hybrid|gnn|tffm} --ckpt <path-to-ckpt.pt> [--out <csv>]
-```
-
-With no `--out`, `submission.csv` lands next to the checkpoint. Example:
-
-```bash
-bidbot predict gbm --ckpt runs/train/20260424T034231_gbm_full/ckpt.pt
-# → writes runs/train/20260424T034231_gbm_full/submission.csv
-```
-
-Each `predict_<model>` loader rebuilds the per-model scaffolding (sequence
-store for hybrid, hetero graph for gnn, col_stats for tffm) from the current
-`bids.csv` / `train.csv` / `test.csv` and runs one forward pass.
-
-### End-to-end: from zero to submission.csv
-
-Activate the venv once, then paste the blocks below. `--model.device` defaults
-to `auto` → picks `cuda` when available, so no GPU flag needed.
+Run these before submitting code changes:
 
 ```powershell
-# venv activate
-.\.venv\Scripts\Activate.ps1
-# macOS / Linux: source .venv/bin/activate
-```
-
-```bash
-# 1. build the tabular feature cache (once)
-bidbot features build
-
-# 2. compare models via repeated stratified K-fold CV (5 × 20 = 100 folds).
-#    Add `--cv.quick` for a 2×1 × 1-epoch smoke run.
-bidbot cv gbm
-bidbot cv hybrid
-bidbot cv hybrid --model.ssl-pretrain
-bidbot cv gnn
-bidbot cv tffm
-
-# 3. pick a winner (check runs/cv/<ts>_<model>/metrics.json → mean / q25),
-#    full-fit on 100% of train, save ckpt.pt. Pick ONE of these:
-bidbot train gbm    --val-fraction 0 --save-model
-bidbot train hybrid --val-fraction 0 --save-model
-bidbot train hybrid --model.ssl-pretrain --val-fraction 0 --save-model
-bidbot train gnn    --val-fraction 0 --save-model
-bidbot train tffm   --val-fraction 0 --save-model
-
-# 4. generate submission.csv (lands next to the ckpt by default)
-bidbot predict gbm    --ckpt runs/train/<ts>_gbm_full/ckpt.pt
-# (match predict <model> to the model you trained in step 3)
-```
-
-Optional — tune hyperparameters between steps 2 and 3 while watching learning
-curves in TensorBoard:
-
-```bash
-bidbot train hybrid --val-fraction 0.2 --model.lr 1e-3 --model.hidden 128
-bidbot train hybrid --val-fraction 0.2 --model.lr 5e-4 --model.dropout 0.2
-tensorboard --logdir runs/train
-```
-
-### Runs directory layout
-
-```bash
-runs/
-├── cache/                               # feature parquet cache
-├── ssl/                                 # SSL pretrain checkpoint (hybrid only)
-│
-├── train/
-│   ├── {timestamp}_{tag}/                # tuning run (val_fraction > 0)
-│   │   ├── metrics.json                  # single val AUC
-│   │   ├── roc.png
-│   │   ├── tb/events.out.tfevents…       # TensorBoard scalars
-│   │   └── ckpt.pt                       # only with --save-model
-│   │
-│   └── {timestamp}_{tag}_full/           # full-fit run (val_fraction == 0)
-│       ├── metrics.json                  # self-val train AUC
-│       ├── tb/events.out.tfevents…
-│       ├── ckpt.pt                       # only with --save-model
-│       └── submission.csv                # only after `bidbot predict`
-│
-└── cv/
-    └── {timestamp}_{tag}/
-        ├── metrics.json                  # per-fold AUC + mean/std/q25/q10
-        ├── folds.csv
-        └── roc.png                       # (no tb/, no ckpt)
-```
-
-`{tag}` is normally just the model name (`gbm`, `hybrid`, `gnn`, `tffm`).
-Hybrid runs with `--model.ssl-pretrain` tag as `hybrid_ssl`. Runs with
-`--val-fraction 0` get an additional `_full` suffix.
-
-TB scalar tags:
-
-- DL models (hybrid / gnn / tffm): `loss/{train,val}`, `auc/{train,val}`
-- GBM: `deviance/train`, `auc/{train,val}` (one point per boosting iter)
-
-### Notebook
-
-`notebooks/02_train_compare.ipynb` drives the same `run_cv` / `run_train` code
-as the CLI but lets you render plots inline and script the final refit /
-submission step.
-
-### Code quality
-
-```bash
 ruff format src/
 ruff check src/
 ty check src/
 ```
 
+## Troubleshooting
+
+| Problem | Fix |
+| --- | --- |
+| `bidbot` is not recognized | Activate `.venv`, or use `.\.venv\Scripts\bidbot.exe` on Windows |
+| Dataset file not found | Check that `bids.csv`, `train.csv`, and `test.csv` are under `data/facebook-recruiting-iv-human-or-bot/` |
+| CUDA is not detected | Run `uv sync --dev --extra cu130`, then check `torch.cuda.is_available()` |
+| Matplotlib/backend error | Set `$env:MPLBACKEND = "Agg"` before running |
+| Full CV takes a long time | Use `--cv.quick` first; full 5-fold x 20-repeat CV is intentionally more expensive |
+
 ## References
 
 ### Competition
 
-- Kaggle: [Facebook Recruiting IV: Human or Robot?](https://kaggle.com/competitions/facebook-recruiting-iv-human-or-bot) (2015)
+- Kaggle: [Facebook Recruiting IV: Human or Robot?](https://kaggle.com/competitions/facebook-recruiting-iv-human-or-bot)
 
 ```bibtex
 @misc{facebook-recruiting-iv-human-or-bot,
@@ -290,12 +340,12 @@ ty check src/
 }
 ```
 
-### Top solutions
+### Top Solution References
 
-Scores reported as ROC-AUC (private / public leaderboard).
+Scores are ROC-AUC values from the Kaggle leaderboard.
 
-| Rank | Score (private / public) | Writeup |
-| ---- | ------------------------ | ------- |
-| 1st  | 0.94254 / 0.91946        | [Forum comment by the winner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81331) |
-| 2nd  | 0.94167 / 0.93277        | [small-yellow-duck: "Share your secret sauce"](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce), [blog post](http://small-yellow-duck.github.io/auction.html) |
-| 3rd  | 0.94113 / 0.93321        | [Forum comment by mechatroner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81396) |
+| Rank | Score, private / public | Write-up |
+| --- | --- | --- |
+| 1st | `0.94254 / 0.91946` | [Forum comment by the winner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81331) |
+| 2nd | `0.94167 / 0.93277` | [small-yellow-duck: Share your secret sauce](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce) |
+| 3rd | `0.94113 / 0.93321` | [Forum comment by mechatroner](https://www.kaggle.com/competitions/facebook-recruiting-iv-human-or-bot/writeups/small-yellow-duck-share-your-secret-sauce#81396) |

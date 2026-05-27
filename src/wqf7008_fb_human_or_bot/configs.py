@@ -90,3 +90,19 @@ class TFFMConfig(BaseModel):
     early_stop_patience: int = 10
     channels: int = 128
     num_layers: int = 3
+
+
+class ResNetConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    seed: int = 42
+    device: str = "auto"
+    epochs: int = 50
+    batch_size: int = 32
+    lr: float = 1e-3
+    weight_decay: float = 1e-4
+    early_stop_patience: int = 10
+    hidden: int = 128
+    block_hidden: int = 256
+    n_layers: int = 4
+    dropout: float = 0.2

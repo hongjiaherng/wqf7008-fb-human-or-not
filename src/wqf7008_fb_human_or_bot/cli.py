@@ -32,6 +32,7 @@ from wqf7008_fb_human_or_bot.configs import (
     GBMConfig,
     GNNConfig,
     HybridConfig,
+    ResNetConfig,
     TFFMConfig,
 )
 
@@ -186,6 +187,12 @@ def _tffm_factory(feature_names: list[str]):
     from wqf7008_fb_human_or_bot.models.tffm import FTTransformerBidderClassifier
 
     return lambda: FTTransformerBidderClassifier(feature_names=feature_names)
+
+
+def _resnet_factory(input_dim: int):
+    from wqf7008_fb_human_or_bot.models.resnet import ResNetBidderClassifier
+
+    return lambda: ResNetBidderClassifier(input_dim=input_dim)
 
 
 def _save_torch_ckpt(clf, cfg, out_path: Path) -> None:
@@ -438,6 +445,31 @@ class TrainTFFM(BaseModel):
         )
 
 
+class TrainResNet(BaseModel):
+    """Train one tabular ResNet baseline (no CV). TB scalars + optional checkpoint."""
+
+    model: ResNetConfig = Field(default_factory=ResNetConfig)
+    data: DataConfig = Field(default_factory=DataConfig)
+    out: Path | None = Field(default=None, description=_OUT_DESC)
+    val_fraction: float = Field(default=0.2, description=_VAL_DESC)
+    quick: bool = Field(default=False, description="1-epoch smoke run")
+    save_model: bool = Field(default=False, description="save ckpt.pt after fit")
+
+    def cli_cmd(self) -> None:
+        self.model.device = _resolve_device(self.model.device)
+        _do_train(
+            tag="resnet",
+            model_name="resnet",
+            model_cfg=self.model,
+            data_cfg=self.data,
+            out=self.out,
+            val_fraction=self.val_fraction,
+            quick=self.quick,
+            save_model=self.save_model,
+            build=lambda d: (_resnet_factory(len(_feature_cols(d.Xtr))), None),
+        )
+
+
 class Train(BaseModel):
     """Train a single model on a train/val split."""
 
@@ -445,6 +477,7 @@ class Train(BaseModel):
     hybrid: CliSubCommand[TrainHybrid]
     gnn: CliSubCommand[TrainGNN]
     tffm: CliSubCommand[TrainTFFM]
+    resnet: CliSubCommand[TrainResNet]
 
     def cli_cmd(self) -> None:
         CliApp.run_subcommand(self)
@@ -551,6 +584,27 @@ class CVTFFM(BaseModel):
         )
 
 
+class CVResNet(BaseModel):
+    """Evaluate tabular ResNet via repeated stratified K-fold CV."""
+
+    cv: CVConfig = Field(default_factory=CVConfig)
+    model: ResNetConfig = Field(default_factory=ResNetConfig)
+    data: DataConfig = Field(default_factory=DataConfig)
+    out: Path | None = Field(default=None, description=_OUT_DESC)
+
+    def cli_cmd(self) -> None:
+        self.model.device = _resolve_device(self.model.device)
+        _do_cv(
+            tag="resnet",
+            model_name="resnet",
+            cv_cfg=self.cv,
+            model_cfg=self.model,
+            data_cfg=self.data,
+            out=self.out,
+            build=lambda d: (_resnet_factory(len(_feature_cols(d.Xtr))), None),
+        )
+
+
 class CV(BaseModel):
     """Evaluate a model via repeated stratified K-fold CV."""
 
@@ -558,6 +612,7 @@ class CV(BaseModel):
     hybrid: CliSubCommand[CVHybrid]
     gnn: CliSubCommand[CVGNN]
     tffm: CliSubCommand[CVTFFM]
+    resnet: CliSubCommand[CVResNet]
 
     def cli_cmd(self) -> None:
         CliApp.run_subcommand(self)
@@ -636,6 +691,19 @@ class PredictTFFM(BaseModel):
         _do_predict(predict_tffm, self.ckpt, self.data, self.out)
 
 
+class PredictResNet(BaseModel):
+    """Load a ResNet checkpoint and write a Kaggle submission CSV."""
+
+    ckpt: Path = Field(description=_CKPT_DESC)
+    data: DataConfig = Field(default_factory=DataConfig)
+    out: Path | None = Field(default=None, description=_SUB_DESC)
+
+    def cli_cmd(self) -> None:
+        from wqf7008_fb_human_or_bot.predict import predict_resnet
+
+        _do_predict(predict_resnet, self.ckpt, self.data, self.out)
+
+
 class Predict(BaseModel):
     """Load a checkpoint and write a Kaggle submission.csv."""
 
@@ -643,6 +711,7 @@ class Predict(BaseModel):
     hybrid: CliSubCommand[PredictHybrid]
     gnn: CliSubCommand[PredictGNN]
     tffm: CliSubCommand[PredictTFFM]
+    resnet: CliSubCommand[PredictResNet]
 
     def cli_cmd(self) -> None:
         CliApp.run_subcommand(self)

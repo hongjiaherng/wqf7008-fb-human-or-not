@@ -6,6 +6,65 @@ import polars as pl
 
 from wqf7008_fb_human_or_bot.train import CVResult
 
+OOF_THRESHOLD = 0.5
+
+
+def _threshold_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
+    y_true = np.asarray(y_true, dtype=np.int64)
+    y_pred = np.asarray(y_pred, dtype=np.int64)
+    tp = int(((y_true == 1) & (y_pred == 1)).sum())
+    tn = int(((y_true == 0) & (y_pred == 0)).sum())
+    fp = int(((y_true == 0) & (y_pred == 1)).sum())
+    fn = int(((y_true == 1) & (y_pred == 0)).sum())
+
+    precision = tp / (tp + fp) if tp + fp > 0 else 0.0
+    recall = tp / (tp + fn) if tp + fn > 0 else 0.0
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall > 0 else 0.0
+    return {
+        "precision": float(precision),
+        "recall": float(recall),
+        "f1": float(f1),
+        "confusion_matrix": {"tn": tn, "fp": fp, "fn": fn, "tp": tp},
+    }
+
+
+def _write_oof_outputs(
+    oof_predictions: pl.DataFrame,
+    out_dir: Path,
+    *,
+    threshold: float = OOF_THRESHOLD,
+) -> dict:
+    """Write repeated and bidder-averaged OOF predictions, then return metrics.
+
+    Repeated CV validates each bidder more than once, so threshold metrics are
+    computed after averaging each bidder's repeated out-of-fold probabilities.
+    """
+    oof_predictions.write_csv(out_dir / "oof_predictions.csv")
+    by_bidder = (
+        oof_predictions.group_by("bidder_id")
+        .agg(
+            pl.col("y_true").first(),
+            pl.col("y_prob").mean().alias("y_prob_mean"),
+            pl.len().alias("n_predictions"),
+        )
+        .with_columns((pl.col("y_prob_mean") >= threshold).cast(pl.Int64).alias("y_pred"))
+        .sort("bidder_id")
+    )
+    by_bidder.write_csv(out_dir / "oof_by_bidder.csv")
+
+    y_true = by_bidder["y_true"].to_numpy()
+    y_pred = by_bidder["y_pred"].to_numpy()
+    metrics = _threshold_metrics(y_true, y_pred)
+    return {
+        "oof_threshold": float(threshold),
+        "oof_n_predictions": int(oof_predictions.height),
+        "oof_n_bidders": int(by_bidder.height),
+        "oof_precision": metrics["precision"],
+        "oof_recall": metrics["recall"],
+        "oof_f1": metrics["f1"],
+        "oof_confusion_matrix": metrics["confusion_matrix"],
+    }
+
 
 def save_cv_summary(result: CVResult, out_dir: str | Path) -> Path:
     """Write `metrics.json` (and `folds.csv` if multi-fold)."""
@@ -30,6 +89,8 @@ def save_cv_summary(result: CVResult, out_dir: str | Path) -> Path:
         pl.DataFrame(
             {"fold": list(range(len(result.per_fold_auc))), "auc": result.per_fold_auc}
         ).write_csv(out / "folds.csv")
+        if result.oof_predictions is not None:
+            payload.update(_write_oof_outputs(result.oof_predictions, out))
     (out / "metrics.json").write_text(json.dumps(payload, indent=2))
     return out / "metrics.json"
 

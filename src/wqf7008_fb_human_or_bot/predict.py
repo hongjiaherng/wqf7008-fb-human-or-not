@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from wqf7008_fb_human_or_bot.configs import GNNConfig, HybridConfig, TFFMConfig
+from wqf7008_fb_human_or_bot.configs import GNNConfig, HybridConfig, ResNetConfig, TFFMConfig
 from wqf7008_fb_human_or_bot.train import FoldData, resolve_device
 
 
@@ -116,6 +116,28 @@ def predict_tffm(ckpt: Path, data) -> np.ndarray:
         num_layers=cfg.num_layers,
         col_stats=tr_ds.col_stats,
         col_names_dict=tr_ds.tensor_frame.col_names_dict,
+    ).to(clf.device)
+    clf.model.load_state_dict(payload["model_state"])
+    return clf.predict_proba(_test_fold(data, feat))
+
+
+def predict_resnet(ckpt: Path, data) -> np.ndarray:
+    import torch
+
+    from wqf7008_fb_human_or_bot.models.resnet import ResNetBidderClassifier, TabularResNet
+
+    payload = torch.load(ckpt, weights_only=False, map_location="cpu")
+    cfg = ResNetConfig.model_validate(payload["cfg"])
+    feat = _feat_cols(data.Xtr)
+
+    clf = ResNetBidderClassifier(input_dim=len(feat))
+    clf.device = resolve_device(cfg.device)
+    clf.model = TabularResNet(
+        input_dim=len(feat),
+        hidden=cfg.hidden,
+        block_hidden=cfg.block_hidden,
+        n_layers=cfg.n_layers,
+        dropout=cfg.dropout,
     ).to(clf.device)
     clf.model.load_state_dict(payload["model_state"])
     return clf.predict_proba(_test_fold(data, feat))

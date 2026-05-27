@@ -49,6 +49,7 @@ class CVResult:
     per_fold_auc: list[float]
     roc_points: list[tuple[np.ndarray, np.ndarray]]
     labels: list[str] = field(default_factory=list)
+    oof_predictions: pl.DataFrame | None = None
 
     def __post_init__(self) -> None:
         if not self.labels:
@@ -186,7 +187,7 @@ def _fit_one_fold(
     fold: FoldData,
     model_cfg,
     writer: SummaryWriter | None = None,
-) -> tuple[BidderClassifier, float, tuple[np.ndarray, np.ndarray]]:
+) -> tuple[BidderClassifier, float, tuple[np.ndarray, np.ndarray], np.ndarray]:
     """The shared core: create classifier, fit, predict, compute (auc, roc)."""
     try:
         model = factory()
@@ -196,7 +197,7 @@ def _fit_one_fold(
         if writer is not None:
             writer.close()
     auc, rp = _roc_points(fold.yval, probs)
-    return model, auc, rp
+    return model, auc, rp, probs
 
 
 def run_cv(
@@ -223,6 +224,7 @@ def run_cv(
 
     per_fold_auc: list[float] = []
     roc_points: list[tuple[np.ndarray, np.ndarray]] = []
+    oof_parts: list[pl.DataFrame] = []
 
     for fold_i, (tr_i, val_i) in enumerate(splitter.split(X_np, y_np)):
         fold = FoldData(
@@ -234,12 +236,27 @@ def run_cv(
             ids_val=ids[val_i],
         )
         _attach_graph_idx(fold, bidder_to_graph_idx)
-        _, auc, rp = _fit_one_fold(factory, fold, model_cfg, writer=None)
+        _, auc, rp, probs = _fit_one_fold(factory, fold, model_cfg, writer=None)
         per_fold_auc.append(auc)
         roc_points.append(rp)
+        oof_parts.append(
+            pl.DataFrame(
+                {
+                    "fold": np.full(len(fold.ids_val), fold_i, dtype=np.int64),
+                    "bidder_id": [str(b) for b in fold.ids_val],
+                    "y_true": np.asarray(fold.yval, dtype=np.int64),
+                    "y_prob": np.asarray(probs, dtype=np.float64),
+                }
+            )
+        )
         print(f"  [{model_name}] fold {fold_i + 1}/{total}: AUC={auc:.4f}")
 
-    return CVResult(model_name=model_name, per_fold_auc=per_fold_auc, roc_points=roc_points)
+    return CVResult(
+        model_name=model_name,
+        per_fold_auc=per_fold_auc,
+        roc_points=roc_points,
+        oof_predictions=pl.concat(oof_parts) if oof_parts else None,
+    )
 
 
 def run_train(
@@ -297,7 +314,7 @@ def run_train(
 
     _attach_graph_idx(fold, bidder_to_graph_idx)
     writer = SummaryWriter(tb_dir) if tb_dir else None
-    model, auc, rp = _fit_one_fold(factory, fold, model_cfg, writer=writer)
+    model, auc, rp, _ = _fit_one_fold(factory, fold, model_cfg, writer=writer)
     print(f"  [{model_name}] {label} AUC={auc:.4f}")
     return model, CVResult(
         model_name=model_name, per_fold_auc=[auc], roc_points=[rp], labels=[label]
