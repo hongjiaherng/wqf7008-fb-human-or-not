@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "hongjiaherng", email = "jiaherng2001@gmail.com" }]
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.10.8",
     "numpy>=2.4.4",
@@ -23,6 +23,8 @@ dependencies = [
 [project.optional-dependencies]
 cpu = ["torch>=2.11", "torchvision>=0.26"]
 cu130 = ["torch>=2.11", "torchvision>=0.26"]
+# cu124 wheels top out at torch 2.6.0 / torchvision 0.21.0
+cu124 = ["torch>=2.6,<2.7", "torchvision>=0.21,<0.22"]
 
 [project.scripts]
 bidbot = "wqf7008_fb_human_or_bot.cli:main"
@@ -41,16 +43,18 @@ dev = [
 ]
 
 [tool.uv]
-conflicts = [[{ extra = "cpu" }, { extra = "cu130" }]]
+conflicts = [[{ extra = "cpu" }, { extra = "cu130" }, { extra = "cu124" }]]
 
 [tool.uv.sources]
 torch = [
     { index = "pytorch-cpu", extra = "cpu" },
     { index = "pytorch-cu130", extra = "cu130" },
+    { index = "pytorch-cu124", extra = "cu124" },
 ]
 torchvision = [
     { index = "pytorch-cpu", extra = "cpu" },
     { index = "pytorch-cu130", extra = "cu130" },
+    { index = "pytorch-cu124", extra = "cu124" },
 ]
 
 [[tool.uv.index]]
@@ -63,9 +67,14 @@ name = "pytorch-cu130"
 url = "https://download.pytorch.org/whl/cu130"
 explicit = true
 
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
 [tool.ruff]
 line-length = 100
-target-version = "py312"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

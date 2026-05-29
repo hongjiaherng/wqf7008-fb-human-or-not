@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Self
+from typing import Generic, Self, TypeVar
 
 import numpy as np
 from pydantic import BaseModel
@@ -20,7 +20,10 @@ class Split:
     ids: np.ndarray
 
 
-class BidderClassifier[ConfigT: BaseModel](ABC):
+ConfigT = TypeVar("ConfigT", bound=BaseModel)
+
+
+class BidderClassifier(ABC, Generic[ConfigT]):
     """Shared contract: build in `__init__`, `fit` trains, `predict_proba` scores.
 
     `from_data`/`save`/`load` keep per-model wiring in the model's own file.

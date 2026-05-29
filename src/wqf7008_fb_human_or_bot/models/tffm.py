@@ -128,10 +128,8 @@ class FTTransformerBidderClassifier(BidderClassifier[TFFMConfig]):
             val_metrics = self._evaluate()
 
             if writer is not None:
-                for k, v in train_metrics.items():
-                    writer.add_scalar(f"{k}/train", v, epoch)
-                for k, v in val_metrics.items():
-                    writer.add_scalar(f"{k}/val", v, epoch)
+                for k in train_metrics:
+                    writer.add_scalars(k, {"train": train_metrics[k], "val": val_metrics[k]}, epoch)
 
             val_auc = val_metrics.get("auc", 0.0)
             marker = ""

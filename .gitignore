@@ -12,6 +12,7 @@ wheels/
 
 # Data (kaggle competition files — not redistributable)
 data/facebook-recruiting-iv-human-or-bot
+data/**/*.zip
 
 # Assignment brief
 docs/WQF7008_Group_Assignment_Robot_Bidders.pdf

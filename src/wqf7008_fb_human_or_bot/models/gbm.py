@@ -40,12 +40,25 @@ class GBMBidderClassifier(BidderClassifier[GBMConfig]):
         # (free, computed during fit); AUC needs a forward pass per iter.
         for i, score in enumerate(self.clf.train_score_):
             writer.add_scalar("deviance/train", float(score), i)
-        if len(np.unique(ytr)) > 1:
-            for i, p in enumerate(self.clf.staged_predict_proba(train.X)):
-                writer.add_scalar("auc/train", float(roc_auc_score(ytr, p[:, 1])), i)
-        if val.y is not None and len(np.unique(val.y)) > 1:
-            for i, p in enumerate(self.clf.staged_predict_proba(val.X)):
-                writer.add_scalar("auc/val", float(roc_auc_score(val.y, p[:, 1])), i)
+        tr_ok = len(np.unique(ytr)) > 1
+        va_ok = val.y is not None and len(np.unique(val.y)) > 1
+        tr_auc = (
+            [float(roc_auc_score(ytr, p[:, 1])) for p in self.clf.staged_predict_proba(train.X)]
+            if tr_ok else None
+        )
+        va_auc = (
+            [float(roc_auc_score(val.y, p[:, 1])) for p in self.clf.staged_predict_proba(val.X)]
+            if va_ok else None
+        )
+        # one "auc" chart with train + val overlaid
+        for i in range(len(self.clf.train_score_)):
+            d = {}
+            if tr_auc is not None:
+                d["train"] = tr_auc[i]
+            if va_auc is not None:
+                d["val"] = va_auc[i]
+            if d:
+                writer.add_scalars("auc", d, i)
 
     def predict_proba(self, split: Split) -> np.ndarray:
         return self.clf.predict_proba(split.X)[:, 1]

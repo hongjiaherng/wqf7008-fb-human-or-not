@@ -56,6 +56,28 @@ def _fit_one_fold(
     return model, auc, rp, probs
 
 
+class _TrainOnlyWriter:
+    """Writer proxy that drops the `val` series. Used for self-val runs
+    (--val-fraction 0), where `val` aliases `train`, so val curves would just be a
+    misleading copy of the training fit. Everything else delegates to the real writer.
+    """
+
+    def __init__(self, writer: SummaryWriter):
+        self._w = writer
+
+    def add_scalar(self, tag, *args, **kwargs):
+        if not str(tag).endswith("/val"):
+            self._w.add_scalar(tag, *args, **kwargs)
+
+    def add_scalars(self, main_tag, tag_scalar_dict, *args, **kwargs):
+        kept = {k: v for k, v in tag_scalar_dict.items() if k != "val"}
+        if kept:
+            self._w.add_scalars(main_tag, kept, *args, **kwargs)
+
+    def __getattr__(self, name):
+        return getattr(self._w, name)
+
+
 def run_train(
     make_model: MakeModel,
     X: pl.DataFrame | np.ndarray,
@@ -94,6 +116,8 @@ def run_train(
         label = "train"
 
     writer = SummaryWriter(tb_dir) if tb_dir else None
+    if writer is not None and val_fraction == 0:
+        writer = _TrainOnlyWriter(writer)  # val aliases train here; don't log val curves
     model, auc, rp, _ = _fit_one_fold(make_model, train, val, writer=writer)
     print(f"  [{model_name}] {label} AUC={auc:.4f}")
     return model, CVResult(
