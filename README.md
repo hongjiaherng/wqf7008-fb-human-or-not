@@ -176,14 +176,38 @@ Summary of the full 5-fold x 20-repeat runs:
 
 | Model | Mean CV AUC | Precision | Recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| `tffm` | `0.915548` | `0.370968` | `0.669903` | `0.477509` |
-| `gbm` | `0.886548` | `0.443548` | `0.533981` | `0.484581` |
-| `gnn` | `0.814611` | `0.198953` | `0.737864` | `0.313402` |
-| `hybrid` | `0.812057` | `0.251938` | `0.631068` | `0.360111` |
-| `resnet` | `0.727332` | `0.089552` | `0.990291` | `0.164251` |
+| `tffm` | `0.917933` | `0.256560` | `0.854369` | `0.394619` |
+| `gbm` | `0.892172` | `0.462810` | `0.543689` | `0.500000` |
+| `hybrid` | `0.863629` | `0.170132` | `0.873786` | `0.284810` |
+| `gnn` | `0.819506` | `0.182448` | `0.766990` | `0.294776` |
+| `resnet` | `0.733182` | `0.068122` | `1.000000` | `0.127554` |
 
 For this Kaggle-style task, ROC-AUC is the main selection metric. The selected
 final model is therefore `tffm`.
+
+## Train and Monitor Learning Curves
+
+`bidbot train <model>` fits on an 80/20 stratified split by default
+(`--val-fraction 0.2`) and logs training curves to TensorBoard under `<out>/tb`. This
+is the easiest way to watch the train and validation curves while tuning
+hyperparameters, and to spot over- or under-fitting.
+
+```powershell
+# Train with the default 80 train / 20 val split (writes scalars under <out>/tb).
+bidbot train tffm --out runs/train/tffm_dev
+
+# In a second terminal, launch TensorBoard and open the printed URL (default :6006).
+tensorboard --logdir runs/train
+```
+
+Pointing `--logdir` at `runs/train` lets you compare several runs at once. The neural
+models (`tffm`, `hybrid`, `gnn`, `resnet`) log `loss` and `auc` per epoch with the
+train and validation series overlaid; `gbm` logs `deviance/train` and `auc` per
+boosting iteration.
+
+Only `--val-fraction > 0` produces validation curves. With `--val-fraction 0` (the
+final-fit mode below) the validation split mirrors the training data, so only the train
+series is logged.
 
 ## Final Model Fit
 
@@ -246,38 +270,6 @@ bidbot train tffm --val-fraction 0 --save-model --out runs/train/tffm_full_fit
 
 # 7. Generate predictions.
 bidbot eval tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
-```
-
-## Output Directory Layout
-
-```text
-runs/
-  cache/
-    tabular_train.parquet
-    tabular_test.parquet
-
-  cv/
-    <run_name>/
-      metrics.json
-      folds.csv
-      oof_predictions.csv
-      oof_by_bidder.csv
-      roc.png
-
-  train/
-    <run_name>/
-      metrics.json
-      roc.png
-      tb/
-      ckpt.pt          # only when --save-model is used
-      submission.csv   # only after bidbot eval if no --out is supplied
-
-  submit/
-    tffm_final/
-      submission.csv
-      ckpt.pt
-      metrics.json
-      roc.png
 ```
 
 ## Code Quality
