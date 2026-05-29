@@ -1,0 +1,41 @@
+/usr/local/lib/python3.11/dist-packages/torch_frame/data/mapper.py:105: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:203.)
+  index = torch.from_numpy(index).to(device)
+
+== train tffm ==
+  out:   ./runs/final/tffm
+  model  seed=42 device=cuda epochs=20 batch_size=256 lr=0.0001 weight_decay=1e-05 early_stop_patience=10 channels=256 num_layers=3
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+  run    val_fraction=0.0 quick=False save_model=True
+
+    [tffm] epoch 01/20: train_loss=1.1657 val_auc=0.8613 best=0.8613 patience=0/10 *
+    [tffm] epoch 02/20: train_loss=0.9057 val_auc=0.8732 best=0.8732 patience=0/10 *
+    [tffm] epoch 03/20: train_loss=0.8250 val_auc=0.8877 best=0.8877 patience=0/10 *
+    [tffm] epoch 04/20: train_loss=0.7778 val_auc=0.9006 best=0.9006 patience=0/10 *
+    [tffm] epoch 05/20: train_loss=0.7608 val_auc=0.9040 best=0.9040 patience=0/10 *
+    [tffm] epoch 06/20: train_loss=0.7363 val_auc=0.9133 best=0.9133 patience=0/10 *
+    [tffm] epoch 07/20: train_loss=0.7629 val_auc=0.9125 best=0.9133 patience=1/10
+    [tffm] epoch 08/20: train_loss=0.7201 val_auc=0.9184 best=0.9184 patience=0/10 *
+    [tffm] epoch 09/20: train_loss=0.7164 val_auc=0.9221 best=0.9221 patience=0/10 *
+    [tffm] epoch 10/20: train_loss=0.7122 val_auc=0.9256 best=0.9256 patience=0/10 *
+    [tffm] epoch 11/20: train_loss=0.7117 val_auc=0.9213 best=0.9256 patience=1/10
+    [tffm] epoch 12/20: train_loss=0.6833 val_auc=0.9301 best=0.9301 patience=0/10 *
+    [tffm] epoch 13/20: train_loss=0.6601 val_auc=0.9310 best=0.9310 patience=0/10 *
+    [tffm] epoch 14/20: train_loss=0.6760 val_auc=0.9303 best=0.9310 patience=1/10
+    [tffm] epoch 15/20: train_loss=0.6579 val_auc=0.9349 best=0.9349 patience=0/10 *
+    [tffm] epoch 16/20: train_loss=0.6648 val_auc=0.9351 best=0.9351 patience=0/10 *
+    [tffm] epoch 17/20: train_loss=0.6718 val_auc=0.9382 best=0.9382 patience=0/10 *
+    [tffm] epoch 18/20: train_loss=0.6445 val_auc=0.9396 best=0.9396 patience=0/10 *
+    [tffm] epoch 19/20: train_loss=0.6914 val_auc=0.9404 best=0.9404 patience=0/10 *
+    [tffm] epoch 20/20: train_loss=0.6343 val_auc=0.9414 best=0.9414 patience=0/10 *
+  [tffm] train AUC=0.9414
+tffm: train_auc=0.9414
+  saved checkpoint to ./runs/final/tffm/ckpt.pt
+/usr/local/lib/python3.11/dist-packages/torch_frame/data/mapper.py:105: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:203.)
+  index = torch.from_numpy(index).to(device)
+
+== eval ==
+  out:   ./runs/final/tffm/submission.csv
+  ckpt   ./runs/final/tffm/ckpt.pt
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+
+  wrote ./runs/final/tffm/submission.csv  (4700 rows)

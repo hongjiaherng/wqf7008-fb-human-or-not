@@ -1,0 +1,33 @@
+
+== cv gbm ==
+  out:   ./runs/sweep/gbm_ss0.7_leaf10
+  cv     n_splits=5 n_repeats=5 quick=False
+  model  seed=42 n_estimators=500 learning_rate=0.05 max_depth=3 subsample=0.7 min_samples_leaf=10
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+
+  [gbm] fold 1/25: AUC=0.8722
+  [gbm] fold 2/25: AUC=0.8570
+  [gbm] fold 3/25: AUC=0.9003
+  [gbm] fold 4/25: AUC=0.9093
+  [gbm] fold 5/25: AUC=0.9223
+  [gbm] fold 6/25: AUC=0.8550
+  [gbm] fold 7/25: AUC=0.9101
+  [gbm] fold 8/25: AUC=0.8803
+  [gbm] fold 9/25: AUC=0.9344
+  [gbm] fold 10/25: AUC=0.8741
+  [gbm] fold 11/25: AUC=0.8802
+  [gbm] fold 12/25: AUC=0.8596
+  [gbm] fold 13/25: AUC=0.8700
+  [gbm] fold 14/25: AUC=0.9309
+  [gbm] fold 15/25: AUC=0.8795
+  [gbm] fold 16/25: AUC=0.8067
+  [gbm] fold 17/25: AUC=0.8965
+  [gbm] fold 18/25: AUC=0.8923
+  [gbm] fold 19/25: AUC=0.9320
+  [gbm] fold 20/25: AUC=0.9342
+  [gbm] fold 21/25: AUC=0.8267
+  [gbm] fold 22/25: AUC=0.9049
+  [gbm] fold 23/25: AUC=0.9046
+  [gbm] fold 24/25: AUC=0.9080
+  [gbm] fold 25/25: AUC=0.8645
+gbm: mean=0.8882, std=0.0323, q25=0.8700, q10=0.8558 over 25 folds

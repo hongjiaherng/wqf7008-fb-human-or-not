@@ -1,0 +1,1666 @@
+
+== cv hybrid ==
+  out:   ./runs/cv_full/hybrid
+  cv     n_splits=5 n_repeats=20 quick=False
+  model  seed=42 device=cuda epochs=30 batch_size=256 lr=0.001 weight_decay=0.0001 early_stop_patience=10 hidden=256 dropout=0.3 max_len=512
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+
+    [hybrid] epoch 01/30: train_loss=1.2935 val_auc=0.7892 best=0.7892 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1373 val_auc=0.8254 best=0.8254 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9839 val_auc=0.6008 best=0.8254 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9743 val_auc=0.8441 best=0.8441 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8649 val_auc=0.6936 best=0.8441 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7081 val_auc=0.5990 best=0.8441 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6168 val_auc=0.7024 best=0.8441 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5193 val_auc=0.7646 best=0.8441 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4089 val_auc=0.7822 best=0.8441 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2795 val_auc=0.7204 best=0.8441 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1722 val_auc=0.4668 best=0.8441 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.2142 val_auc=0.6907 best=0.8441 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0719 val_auc=0.4950 best=0.8441 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.1029 val_auc=0.6599 best=0.8441 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 1/100: AUC=0.8441
+    [hybrid] epoch 01/30: train_loss=1.3119 val_auc=0.8414 best=0.8414 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2499 val_auc=0.8391 best=0.8414 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0770 val_auc=0.8719 best=0.8719 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9006 val_auc=0.6263 best=0.8719 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.7860 val_auc=0.7790 best=0.8719 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8684 val_auc=0.8479 best=0.8719 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6659 val_auc=0.8160 best=0.8719 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4899 val_auc=0.8322 best=0.8719 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3251 val_auc=0.7529 best=0.8719 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2572 val_auc=0.6927 best=0.8719 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1935 val_auc=0.6850 best=0.8719 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1167 val_auc=0.6805 best=0.8719 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0765 val_auc=0.5831 best=0.8719 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 2/100: AUC=0.8719
+    [hybrid] epoch 01/30: train_loss=1.2584 val_auc=0.7687 best=0.7687 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1284 val_auc=0.7508 best=0.7687 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0396 val_auc=0.8242 best=0.8242 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9279 val_auc=0.8408 best=0.8408 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9067 val_auc=0.8589 best=0.8589 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7625 val_auc=0.7244 best=0.8589 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.8193 val_auc=0.7685 best=0.8589 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.9993 val_auc=0.7776 best=0.8589 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6818 val_auc=0.8524 best=0.8589 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.5304 val_auc=0.7744 best=0.8589 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.3981 val_auc=0.7474 best=0.8589 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.3100 val_auc=0.8138 best=0.8589 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1414 val_auc=0.8285 best=0.8589 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0518 val_auc=0.7853 best=0.8589 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.1469 val_auc=0.8342 best=0.8589 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 3/100: AUC=0.8589
+    [hybrid] epoch 01/30: train_loss=1.2863 val_auc=0.7620 best=0.7620 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1996 val_auc=0.7199 best=0.7620 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9954 val_auc=0.6993 best=0.7620 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9124 val_auc=0.8440 best=0.8440 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=1.4499 val_auc=0.4671 best=0.8440 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.9478 val_auc=0.8136 best=0.8440 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.8046 val_auc=0.6873 best=0.8440 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.7798 val_auc=0.6785 best=0.8440 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5314 val_auc=0.6304 best=0.8440 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.5099 val_auc=0.6212 best=0.8440 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.2794 val_auc=0.6120 best=0.8440 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.2658 val_auc=0.6339 best=0.8440 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.2207 val_auc=0.5970 best=0.8440 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.1872 val_auc=0.6890 best=0.8440 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 4/100: AUC=0.8440
+    [hybrid] epoch 01/30: train_loss=1.2714 val_auc=0.8419 best=0.8419 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1574 val_auc=0.7903 best=0.8419 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9333 val_auc=0.7465 best=0.8419 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.7792 val_auc=0.6410 best=0.8419 patience=3/10
+    [hybrid] epoch 05/30: train_loss=1.0817 val_auc=0.8937 best=0.8937 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=1.2244 val_auc=0.5709 best=0.8937 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.0530 val_auc=0.7887 best=0.8937 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.6953 val_auc=0.7671 best=0.8937 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6745 val_auc=0.7581 best=0.8937 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.5005 val_auc=0.7344 best=0.8937 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.3407 val_auc=0.6937 best=0.8937 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1808 val_auc=0.5868 best=0.8937 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2504 val_auc=0.6865 best=0.8937 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0922 val_auc=0.6312 best=0.8937 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0368 val_auc=0.6119 best=0.8937 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 5/100: AUC=0.8937
+    [hybrid] epoch 01/30: train_loss=1.2804 val_auc=0.7438 best=0.7438 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1496 val_auc=0.7826 best=0.7826 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.8791 val_auc=0.9006 best=0.9006 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.1699 val_auc=0.6911 best=0.9006 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.0683 val_auc=0.8680 best=0.9006 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8839 val_auc=0.8534 best=0.9006 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6776 val_auc=0.7706 best=0.9006 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4111 val_auc=0.7802 best=0.9006 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3426 val_auc=0.7440 best=0.9006 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.5898 val_auc=0.6886 best=0.9006 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1461 val_auc=0.7258 best=0.9006 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1577 val_auc=0.7349 best=0.9006 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0886 val_auc=0.6520 best=0.9006 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 6/100: AUC=0.9006
+    [hybrid] epoch 01/30: train_loss=1.3222 val_auc=0.8209 best=0.8209 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1916 val_auc=0.8687 best=0.8687 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0328 val_auc=0.8753 best=0.8753 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7336 val_auc=0.8191 best=0.8753 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.6987 val_auc=0.8310 best=0.8753 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7228 val_auc=0.8999 best=0.8999 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.6480 val_auc=0.8190 best=0.8999 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.5054 val_auc=0.8411 best=0.8999 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.3415 val_auc=0.8121 best=0.8999 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.4251 val_auc=0.6760 best=0.8999 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.2179 val_auc=0.7689 best=0.8999 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.1602 val_auc=0.6987 best=0.8999 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0775 val_auc=0.5093 best=0.8999 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.2318 val_auc=0.7417 best=0.8999 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0854 val_auc=0.5952 best=0.8999 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0976 val_auc=0.6897 best=0.8999 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 7/100: AUC=0.8999
+    [hybrid] epoch 01/30: train_loss=1.2877 val_auc=0.7714 best=0.7714 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1712 val_auc=0.6965 best=0.7714 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0011 val_auc=0.6640 best=0.7714 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8615 val_auc=0.7818 best=0.7818 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.6832 val_auc=0.6374 best=0.7818 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.5866 val_auc=0.5957 best=0.7818 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.5691 val_auc=0.6407 best=0.7818 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6563 val_auc=0.5324 best=0.7818 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4025 val_auc=0.5598 best=0.7818 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.4459 val_auc=0.7061 best=0.7818 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.3302 val_auc=0.6194 best=0.7818 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1580 val_auc=0.5884 best=0.7818 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.1382 val_auc=0.6073 best=0.7818 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0529 val_auc=0.6161 best=0.7818 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 8/100: AUC=0.7818
+    [hybrid] epoch 01/30: train_loss=1.3105 val_auc=0.8399 best=0.8399 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2076 val_auc=0.8696 best=0.8696 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9654 val_auc=0.9212 best=0.9212 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8085 val_auc=0.6297 best=0.9212 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7838 val_auc=0.8997 best=0.9212 patience=2/10
+    [hybrid] epoch 06/30: train_loss=1.2196 val_auc=0.7619 best=0.9212 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.7028 val_auc=0.8263 best=0.9212 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5128 val_auc=0.8700 best=0.9212 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.5301 val_auc=0.7868 best=0.9212 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.3263 val_auc=0.7046 best=0.9212 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.2187 val_auc=0.7093 best=0.9212 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1273 val_auc=0.6509 best=0.9212 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.1554 val_auc=0.7086 best=0.9212 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 9/100: AUC=0.9212
+    [hybrid] epoch 01/30: train_loss=1.2751 val_auc=0.7616 best=0.7616 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1314 val_auc=0.7992 best=0.7992 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9733 val_auc=0.4698 best=0.7992 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.2285 val_auc=0.7797 best=0.7992 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8793 val_auc=0.7704 best=0.7992 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.7674 val_auc=0.5658 best=0.7992 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.6973 val_auc=0.6001 best=0.7992 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.8192 val_auc=0.7229 best=0.7992 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.6103 val_auc=0.7368 best=0.7992 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.4020 val_auc=0.7204 best=0.7992 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.1677 val_auc=0.5893 best=0.7992 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.1127 val_auc=0.5051 best=0.7992 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 10/100: AUC=0.7992
+    [hybrid] epoch 01/30: train_loss=1.2923 val_auc=0.7654 best=0.7654 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1587 val_auc=0.7818 best=0.7818 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9625 val_auc=0.6739 best=0.7818 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.0568 val_auc=0.7219 best=0.7818 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.7858 val_auc=0.7755 best=0.7818 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.7997 val_auc=0.7432 best=0.7818 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.6168 val_auc=0.7276 best=0.7818 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.4452 val_auc=0.7240 best=0.7818 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.3856 val_auc=0.7175 best=0.7818 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.2682 val_auc=0.6654 best=0.7818 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.2048 val_auc=0.7175 best=0.7818 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.1383 val_auc=0.6983 best=0.7818 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 11/100: AUC=0.7818
+    [hybrid] epoch 01/30: train_loss=1.2760 val_auc=0.7517 best=0.7517 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1759 val_auc=0.7484 best=0.7517 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0330 val_auc=0.6572 best=0.7517 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8911 val_auc=0.7735 best=0.7735 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7977 val_auc=0.6424 best=0.7735 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8174 val_auc=0.8518 best=0.8518 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.8442 val_auc=0.8455 best=0.8518 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.5092 val_auc=0.8139 best=0.8518 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.6571 val_auc=0.6144 best=0.8518 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.3999 val_auc=0.6493 best=0.8518 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.1532 val_auc=0.6235 best=0.8518 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.2486 val_auc=0.6197 best=0.8518 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0971 val_auc=0.6664 best=0.8518 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0526 val_auc=0.6694 best=0.8518 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0394 val_auc=0.5251 best=0.8518 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0197 val_auc=0.5168 best=0.8518 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 12/100: AUC=0.8518
+    [hybrid] epoch 01/30: train_loss=1.2652 val_auc=0.7649 best=0.7649 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1570 val_auc=0.7645 best=0.7649 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0011 val_auc=0.6997 best=0.7649 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9109 val_auc=0.8307 best=0.8307 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.6680 val_auc=0.7043 best=0.8307 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6060 val_auc=0.8649 best=0.8649 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.4956 val_auc=0.7024 best=0.8649 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.4203 val_auc=0.6543 best=0.8649 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.2280 val_auc=0.6233 best=0.8649 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.2829 val_auc=0.6329 best=0.8649 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.1023 val_auc=0.5532 best=0.8649 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.2339 val_auc=0.6411 best=0.8649 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0995 val_auc=0.6267 best=0.8649 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0370 val_auc=0.6315 best=0.8649 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0265 val_auc=0.6188 best=0.8649 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0198 val_auc=0.6243 best=0.8649 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 13/100: AUC=0.8649
+    [hybrid] epoch 01/30: train_loss=1.3026 val_auc=0.8661 best=0.8661 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2053 val_auc=0.8827 best=0.8827 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0441 val_auc=0.9312 best=0.9312 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8448 val_auc=0.6332 best=0.9312 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.9760 val_auc=0.9143 best=0.9312 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8188 val_auc=0.9127 best=0.9312 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5646 val_auc=0.6508 best=0.9312 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.3752 val_auc=0.7517 best=0.9312 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.2765 val_auc=0.7840 best=0.9312 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.1375 val_auc=0.6819 best=0.9312 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1325 val_auc=0.6109 best=0.9312 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.0813 val_auc=0.4759 best=0.9312 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.1110 val_auc=0.5605 best=0.9312 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 14/100: AUC=0.9312
+    [hybrid] epoch 01/30: train_loss=1.2786 val_auc=0.8153 best=0.8153 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1991 val_auc=0.7705 best=0.8153 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0611 val_auc=0.8651 best=0.8651 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8160 val_auc=0.7411 best=0.8651 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8725 val_auc=0.8893 best=0.8893 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7138 val_auc=0.7507 best=0.8893 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.8465 val_auc=0.7106 best=0.8893 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4963 val_auc=0.7538 best=0.8893 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.4579 val_auc=0.7245 best=0.8893 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3763 val_auc=0.7908 best=0.8893 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2812 val_auc=0.6866 best=0.8893 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1437 val_auc=0.6517 best=0.8893 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1234 val_auc=0.5924 best=0.8893 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0540 val_auc=0.6219 best=0.8893 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0571 val_auc=0.5908 best=0.8893 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 15/100: AUC=0.8893
+    [hybrid] epoch 01/30: train_loss=1.2967 val_auc=0.7104 best=0.7104 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1315 val_auc=0.5009 best=0.7104 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1094 val_auc=0.7340 best=0.7340 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9254 val_auc=0.6714 best=0.7340 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8648 val_auc=0.5141 best=0.7340 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7345 val_auc=0.7225 best=0.7340 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5696 val_auc=0.5936 best=0.7340 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4419 val_auc=0.6821 best=0.7340 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.5300 val_auc=0.4797 best=0.7340 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2671 val_auc=0.6475 best=0.7340 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1082 val_auc=0.5186 best=0.7340 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1673 val_auc=0.5466 best=0.7340 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0518 val_auc=0.5081 best=0.7340 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 16/100: AUC=0.7340
+    [hybrid] epoch 01/30: train_loss=1.3112 val_auc=0.8608 best=0.8608 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1965 val_auc=0.8686 best=0.8686 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9645 val_auc=0.7354 best=0.8686 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.2610 val_auc=0.8919 best=0.8919 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8907 val_auc=0.8251 best=0.8919 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7131 val_auc=0.7745 best=0.8919 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6506 val_auc=0.8894 best=0.8919 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5673 val_auc=0.7422 best=0.8919 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4894 val_auc=0.6849 best=0.8919 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2509 val_auc=0.7285 best=0.8919 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.3411 val_auc=0.7912 best=0.8919 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1133 val_auc=0.7770 best=0.8919 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0686 val_auc=0.7881 best=0.8919 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0315 val_auc=0.7564 best=0.8919 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 17/100: AUC=0.8919
+    [hybrid] epoch 01/30: train_loss=1.2827 val_auc=0.8060 best=0.8060 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2024 val_auc=0.7509 best=0.8060 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8209 val_auc=0.8378 best=0.8378 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9106 val_auc=0.4878 best=0.8378 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.4829 val_auc=0.8600 best=0.8600 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7797 val_auc=0.5269 best=0.8600 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.4126 val_auc=0.5999 best=0.8600 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.7852 val_auc=0.7850 best=0.8600 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6789 val_auc=0.7623 best=0.8600 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.4865 val_auc=0.6978 best=0.8600 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.4895 val_auc=0.6748 best=0.8600 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1614 val_auc=0.6516 best=0.8600 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1619 val_auc=0.6283 best=0.8600 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.1267 val_auc=0.6678 best=0.8600 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0910 val_auc=0.6197 best=0.8600 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 18/100: AUC=0.8600
+    [hybrid] epoch 01/30: train_loss=1.2909 val_auc=0.8110 best=0.8110 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1061 val_auc=0.8637 best=0.8637 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9052 val_auc=0.8861 best=0.8861 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9525 val_auc=0.7785 best=0.8861 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8031 val_auc=0.8935 best=0.8935 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.8225 val_auc=0.7255 best=0.8935 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.6084 val_auc=0.7274 best=0.8935 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.5277 val_auc=0.7414 best=0.8935 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.3618 val_auc=0.7842 best=0.8935 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.2326 val_auc=0.7301 best=0.8935 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1510 val_auc=0.7760 best=0.8935 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.2063 val_auc=0.7445 best=0.8935 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2018 val_auc=0.7455 best=0.8935 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0626 val_auc=0.7014 best=0.8935 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0326 val_auc=0.6486 best=0.8935 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 19/100: AUC=0.8935
+    [hybrid] epoch 01/30: train_loss=1.2562 val_auc=0.8038 best=0.8038 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1143 val_auc=0.7740 best=0.8038 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9680 val_auc=0.8415 best=0.8415 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8320 val_auc=0.8039 best=0.8415 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7910 val_auc=0.8191 best=0.8415 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.6953 val_auc=0.7000 best=0.8415 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5886 val_auc=0.7691 best=0.8415 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4614 val_auc=0.7349 best=0.8415 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3145 val_auc=0.7022 best=0.8415 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.1451 val_auc=0.5342 best=0.8415 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1874 val_auc=0.5857 best=0.8415 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.3242 val_auc=0.5685 best=0.8415 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0796 val_auc=0.5029 best=0.8415 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 20/100: AUC=0.8415
+    [hybrid] epoch 01/30: train_loss=1.3038 val_auc=0.7774 best=0.7774 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1507 val_auc=0.7467 best=0.7774 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8826 val_auc=0.8328 best=0.8328 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8631 val_auc=0.5547 best=0.8328 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.4585 val_auc=0.8427 best=0.8427 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7704 val_auc=0.5878 best=0.8427 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5986 val_auc=0.6172 best=0.8427 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4853 val_auc=0.6152 best=0.8427 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.3950 val_auc=0.6262 best=0.8427 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.2581 val_auc=0.6577 best=0.8427 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1029 val_auc=0.5985 best=0.8427 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.3831 val_auc=0.6521 best=0.8427 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.0650 val_auc=0.6753 best=0.8427 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0509 val_auc=0.6022 best=0.8427 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0216 val_auc=0.5793 best=0.8427 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 21/100: AUC=0.8427
+    [hybrid] epoch 01/30: train_loss=1.3142 val_auc=0.7958 best=0.7958 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1200 val_auc=0.7423 best=0.7958 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9381 val_auc=0.7843 best=0.7958 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.1749 val_auc=0.5790 best=0.7958 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.9979 val_auc=0.8659 best=0.8659 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7288 val_auc=0.6987 best=0.8659 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.7371 val_auc=0.7137 best=0.8659 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.6041 val_auc=0.6961 best=0.8659 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.5160 val_auc=0.7287 best=0.8659 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.4448 val_auc=0.7345 best=0.8659 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1987 val_auc=0.6356 best=0.8659 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1099 val_auc=0.6144 best=0.8659 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1229 val_auc=0.5969 best=0.8659 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0561 val_auc=0.6197 best=0.8659 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0285 val_auc=0.5618 best=0.8659 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 22/100: AUC=0.8659
+    [hybrid] epoch 01/30: train_loss=1.3182 val_auc=0.7932 best=0.7932 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2025 val_auc=0.6890 best=0.7932 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1033 val_auc=0.8235 best=0.8235 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9014 val_auc=0.8204 best=0.8235 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.6096 val_auc=0.5334 best=0.8235 patience=2/10
+    [hybrid] epoch 06/30: train_loss=1.4541 val_auc=0.8882 best=0.8882 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.8007 val_auc=0.8776 best=0.8882 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.8501 val_auc=0.8175 best=0.8882 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.5282 val_auc=0.7443 best=0.8882 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.4112 val_auc=0.6636 best=0.8882 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.2731 val_auc=0.6218 best=0.8882 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.2073 val_auc=0.6350 best=0.8882 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.1002 val_auc=0.6385 best=0.8882 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0583 val_auc=0.6889 best=0.8882 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0466 val_auc=0.5784 best=0.8882 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0286 val_auc=0.6730 best=0.8882 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 23/100: AUC=0.8882
+    [hybrid] epoch 01/30: train_loss=1.2634 val_auc=0.8861 best=0.8861 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2122 val_auc=0.8832 best=0.8861 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0626 val_auc=0.8651 best=0.8861 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8147 val_auc=0.7834 best=0.8861 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.7258 val_auc=0.8526 best=0.8861 patience=4/10
+    [hybrid] epoch 06/30: train_loss=1.3083 val_auc=0.7024 best=0.8861 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.6818 val_auc=0.8157 best=0.8861 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.7106 val_auc=0.8562 best=0.8861 patience=7/10
+    [hybrid] epoch 09/30: train_loss=0.4997 val_auc=0.6891 best=0.8861 patience=8/10
+    [hybrid] epoch 10/30: train_loss=0.3274 val_auc=0.7260 best=0.8861 patience=9/10
+    [hybrid] epoch 11/30: train_loss=0.1712 val_auc=0.6589 best=0.8861 patience=10/10
+    [hybrid] early stop at epoch 11
+  [hybrid] fold 24/100: AUC=0.8861
+    [hybrid] epoch 01/30: train_loss=1.3240 val_auc=0.8445 best=0.8445 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2119 val_auc=0.8445 best=0.8445 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9852 val_auc=0.8195 best=0.8445 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9294 val_auc=0.7982 best=0.8445 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.7017 val_auc=0.7056 best=0.8445 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.7591 val_auc=0.8730 best=0.8730 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.5245 val_auc=0.7280 best=0.8730 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.4856 val_auc=0.8510 best=0.8730 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.4803 val_auc=0.6665 best=0.8730 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.2216 val_auc=0.6495 best=0.8730 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.2415 val_auc=0.6421 best=0.8730 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.1053 val_auc=0.6668 best=0.8730 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.2328 val_auc=0.5340 best=0.8730 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0705 val_auc=0.7109 best=0.8730 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0547 val_auc=0.5732 best=0.8730 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.1578 val_auc=0.6878 best=0.8730 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 25/100: AUC=0.8730
+    [hybrid] epoch 01/30: train_loss=1.2989 val_auc=0.9159 best=0.9159 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1338 val_auc=0.8079 best=0.9159 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9506 val_auc=0.9039 best=0.9159 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.7942 val_auc=0.9126 best=0.9159 patience=3/10
+    [hybrid] epoch 05/30: train_loss=1.2936 val_auc=0.6598 best=0.9159 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.9898 val_auc=0.8509 best=0.9159 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.8265 val_auc=0.8608 best=0.9159 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.8051 val_auc=0.8408 best=0.9159 patience=7/10
+    [hybrid] epoch 09/30: train_loss=0.6855 val_auc=0.8746 best=0.9159 patience=8/10
+    [hybrid] epoch 10/30: train_loss=0.5110 val_auc=0.8194 best=0.9159 patience=9/10
+    [hybrid] epoch 11/30: train_loss=0.3959 val_auc=0.8325 best=0.9159 patience=10/10
+    [hybrid] early stop at epoch 11
+  [hybrid] fold 26/100: AUC=0.9159
+    [hybrid] epoch 01/30: train_loss=1.2939 val_auc=0.8114 best=0.8114 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1775 val_auc=0.7923 best=0.8114 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9942 val_auc=0.9081 best=0.9081 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8620 val_auc=0.8124 best=0.9081 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7138 val_auc=0.8413 best=0.9081 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8482 val_auc=0.8161 best=0.9081 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.7003 val_auc=0.8364 best=0.9081 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4694 val_auc=0.8100 best=0.9081 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3969 val_auc=0.6840 best=0.9081 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2489 val_auc=0.7229 best=0.9081 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1873 val_auc=0.6953 best=0.9081 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1417 val_auc=0.6242 best=0.9081 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0595 val_auc=0.5921 best=0.9081 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 27/100: AUC=0.9081
+    [hybrid] epoch 01/30: train_loss=1.2808 val_auc=0.7292 best=0.7292 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1666 val_auc=0.7164 best=0.7292 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9850 val_auc=0.5345 best=0.7292 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.0127 val_auc=0.8116 best=0.8116 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7415 val_auc=0.6127 best=0.8116 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7628 val_auc=0.7911 best=0.8116 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6017 val_auc=0.7895 best=0.8116 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.4547 val_auc=0.7189 best=0.8116 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3037 val_auc=0.7209 best=0.8116 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.5690 val_auc=0.7981 best=0.8116 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.2795 val_auc=0.7276 best=0.8116 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1828 val_auc=0.7115 best=0.8116 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0628 val_auc=0.5580 best=0.8116 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.1462 val_auc=0.7021 best=0.8116 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 28/100: AUC=0.8116
+    [hybrid] epoch 01/30: train_loss=1.2857 val_auc=0.7418 best=0.7418 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1592 val_auc=0.7806 best=0.7806 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0484 val_auc=0.6107 best=0.7806 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.7902 val_auc=0.7628 best=0.7806 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.6851 val_auc=0.8086 best=0.8086 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.6891 val_auc=0.5056 best=0.8086 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5762 val_auc=0.7301 best=0.8086 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.5090 val_auc=0.6073 best=0.8086 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.3962 val_auc=0.6639 best=0.8086 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.2834 val_auc=0.6798 best=0.8086 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1117 val_auc=0.5743 best=0.8086 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.3228 val_auc=0.6836 best=0.8086 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1082 val_auc=0.5885 best=0.8086 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0539 val_auc=0.6473 best=0.8086 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0278 val_auc=0.5878 best=0.8086 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 29/100: AUC=0.8086
+    [hybrid] epoch 01/30: train_loss=1.3427 val_auc=0.8145 best=0.8145 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2051 val_auc=0.8245 best=0.8245 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.8680 val_auc=0.7260 best=0.8245 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.7736 val_auc=0.7579 best=0.8245 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.9811 val_auc=0.7657 best=0.8245 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.6553 val_auc=0.7568 best=0.8245 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.7135 val_auc=0.7495 best=0.8245 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.5069 val_auc=0.7831 best=0.8245 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.4660 val_auc=0.7679 best=0.8245 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.4088 val_auc=0.6325 best=0.8245 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.2115 val_auc=0.7336 best=0.8245 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.1335 val_auc=0.6787 best=0.8245 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 30/100: AUC=0.8245
+    [hybrid] epoch 01/30: train_loss=1.2948 val_auc=0.8156 best=0.8156 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1120 val_auc=0.6316 best=0.8156 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0382 val_auc=0.8924 best=0.8924 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.0212 val_auc=0.6923 best=0.8924 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8208 val_auc=0.8482 best=0.8924 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7621 val_auc=0.7441 best=0.8924 patience=3/10
+    [hybrid] epoch 07/30: train_loss=1.0224 val_auc=0.8432 best=0.8924 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.6932 val_auc=0.8401 best=0.8924 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.6671 val_auc=0.7797 best=0.8924 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.4333 val_auc=0.8002 best=0.8924 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.2293 val_auc=0.7450 best=0.8924 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1052 val_auc=0.6769 best=0.8924 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.2196 val_auc=0.7418 best=0.8924 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 31/100: AUC=0.8924
+    [hybrid] epoch 01/30: train_loss=1.2918 val_auc=0.6291 best=0.6291 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1823 val_auc=0.5539 best=0.6291 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0216 val_auc=0.3881 best=0.6291 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9037 val_auc=0.5526 best=0.6291 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.7642 val_auc=0.6319 best=0.6319 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7119 val_auc=0.7602 best=0.7602 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.6171 val_auc=0.5957 best=0.7602 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.7000 val_auc=0.8174 best=0.8174 patience=0/10 *
+    [hybrid] epoch 09/30: train_loss=0.6069 val_auc=0.7857 best=0.8174 patience=1/10
+    [hybrid] epoch 10/30: train_loss=0.4483 val_auc=0.8079 best=0.8174 patience=2/10
+    [hybrid] epoch 11/30: train_loss=0.2446 val_auc=0.6404 best=0.8174 patience=3/10
+    [hybrid] epoch 12/30: train_loss=0.1783 val_auc=0.6905 best=0.8174 patience=4/10
+    [hybrid] epoch 13/30: train_loss=0.1718 val_auc=0.5383 best=0.8174 patience=5/10
+    [hybrid] epoch 14/30: train_loss=0.0841 val_auc=0.5836 best=0.8174 patience=6/10
+    [hybrid] epoch 15/30: train_loss=0.0371 val_auc=0.5360 best=0.8174 patience=7/10
+    [hybrid] epoch 16/30: train_loss=0.0225 val_auc=0.5186 best=0.8174 patience=8/10
+    [hybrid] epoch 17/30: train_loss=0.0180 val_auc=0.5025 best=0.8174 patience=9/10
+    [hybrid] epoch 18/30: train_loss=0.0165 val_auc=0.5037 best=0.8174 patience=10/10
+    [hybrid] early stop at epoch 18
+  [hybrid] fold 32/100: AUC=0.8174
+    [hybrid] epoch 01/30: train_loss=1.2435 val_auc=0.7907 best=0.7907 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2254 val_auc=0.8163 best=0.8163 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.1017 val_auc=0.8288 best=0.8288 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9674 val_auc=0.7855 best=0.8288 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8020 val_auc=0.8813 best=0.8813 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7948 val_auc=0.7731 best=0.8813 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.7536 val_auc=0.6344 best=0.8813 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.7293 val_auc=0.7452 best=0.8813 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6674 val_auc=0.7661 best=0.8813 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3535 val_auc=0.7240 best=0.8813 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1858 val_auc=0.6551 best=0.8813 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1332 val_auc=0.6441 best=0.8813 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.0632 val_auc=0.6396 best=0.8813 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0480 val_auc=0.6552 best=0.8813 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0471 val_auc=0.6326 best=0.8813 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 33/100: AUC=0.8813
+    [hybrid] epoch 01/30: train_loss=1.2865 val_auc=0.9131 best=0.9131 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1874 val_auc=0.9322 best=0.9322 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.2542 val_auc=0.9226 best=0.9322 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8023 val_auc=0.6899 best=0.9322 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.9491 val_auc=0.8111 best=0.9322 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.6750 val_auc=0.6619 best=0.9322 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.7158 val_auc=0.7508 best=0.9322 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.5012 val_auc=0.6772 best=0.9322 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.4490 val_auc=0.7022 best=0.9322 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.4327 val_auc=0.7258 best=0.9322 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.2706 val_auc=0.7695 best=0.9322 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.1225 val_auc=0.5901 best=0.9322 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 34/100: AUC=0.9322
+    [hybrid] epoch 01/30: train_loss=1.3089 val_auc=0.7643 best=0.7643 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1185 val_auc=0.7852 best=0.7852 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.8766 val_auc=0.8021 best=0.8021 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9869 val_auc=0.8450 best=0.8450 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7876 val_auc=0.8398 best=0.8450 patience=1/10
+    [hybrid] epoch 06/30: train_loss=1.0207 val_auc=0.6497 best=0.8450 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.7999 val_auc=0.6973 best=0.8450 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.8898 val_auc=0.7361 best=0.8450 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.6079 val_auc=0.7330 best=0.8450 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.4168 val_auc=0.7115 best=0.8450 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.3847 val_auc=0.6699 best=0.8450 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1689 val_auc=0.6317 best=0.8450 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0451 val_auc=0.5306 best=0.8450 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0917 val_auc=0.7106 best=0.8450 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 35/100: AUC=0.8450
+    [hybrid] epoch 01/30: train_loss=1.3117 val_auc=0.8529 best=0.8529 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1881 val_auc=0.8692 best=0.8692 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0442 val_auc=0.8854 best=0.8854 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7974 val_auc=0.6018 best=0.8854 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.2997 val_auc=0.9202 best=0.9202 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7503 val_auc=0.6435 best=0.9202 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.0125 val_auc=0.7756 best=0.9202 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.6960 val_auc=0.8054 best=0.9202 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6520 val_auc=0.7450 best=0.9202 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3747 val_auc=0.7100 best=0.9202 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.3933 val_auc=0.6268 best=0.9202 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1802 val_auc=0.6598 best=0.9202 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2093 val_auc=0.6669 best=0.9202 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0594 val_auc=0.6597 best=0.9202 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0390 val_auc=0.6205 best=0.9202 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 36/100: AUC=0.9202
+    [hybrid] epoch 01/30: train_loss=1.2552 val_auc=0.6892 best=0.6892 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.0491 val_auc=0.6289 best=0.6892 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8674 val_auc=0.7997 best=0.7997 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8366 val_auc=0.8104 best=0.8104 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8049 val_auc=0.6031 best=0.8104 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8097 val_auc=0.7458 best=0.8104 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6118 val_auc=0.6708 best=0.8104 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5130 val_auc=0.6684 best=0.8104 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5454 val_auc=0.6859 best=0.8104 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2712 val_auc=0.6508 best=0.8104 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1157 val_auc=0.4990 best=0.8104 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.6590 val_auc=0.6045 best=0.8104 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0715 val_auc=0.5952 best=0.8104 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0470 val_auc=0.5340 best=0.8104 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 37/100: AUC=0.8104
+    [hybrid] epoch 01/30: train_loss=1.3265 val_auc=0.8438 best=0.8438 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1877 val_auc=0.8412 best=0.8438 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0434 val_auc=0.8876 best=0.8876 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9749 val_auc=0.8735 best=0.8876 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8878 val_auc=0.8733 best=0.8876 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.9203 val_auc=0.8943 best=0.8943 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.7939 val_auc=0.8569 best=0.8943 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.5221 val_auc=0.7658 best=0.8943 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.3764 val_auc=0.5627 best=0.8943 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.5265 val_auc=0.7361 best=0.8943 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.3078 val_auc=0.6779 best=0.8943 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.3402 val_auc=0.8220 best=0.8943 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.2228 val_auc=0.5699 best=0.8943 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.2256 val_auc=0.7186 best=0.8943 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.1238 val_auc=0.5288 best=0.8943 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0549 val_auc=0.5024 best=0.8943 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 38/100: AUC=0.8943
+    [hybrid] epoch 01/30: train_loss=1.2548 val_auc=0.7927 best=0.7927 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1050 val_auc=0.8370 best=0.8370 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.8243 val_auc=0.8086 best=0.8370 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9721 val_auc=0.8542 best=0.8542 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7203 val_auc=0.5785 best=0.8542 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7396 val_auc=0.7340 best=0.8542 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.7560 val_auc=0.6928 best=0.8542 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6099 val_auc=0.7585 best=0.8542 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3935 val_auc=0.6568 best=0.8542 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2299 val_auc=0.5639 best=0.8542 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.4150 val_auc=0.6787 best=0.8542 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1132 val_auc=0.6005 best=0.8542 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0979 val_auc=0.6626 best=0.8542 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.2576 val_auc=0.5527 best=0.8542 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 39/100: AUC=0.8542
+    [hybrid] epoch 01/30: train_loss=1.3158 val_auc=0.8448 best=0.8448 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2219 val_auc=0.8114 best=0.8448 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0444 val_auc=0.8173 best=0.8448 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9924 val_auc=0.8855 best=0.8855 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7583 val_auc=0.8966 best=0.8966 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.6760 val_auc=0.8966 best=0.8966 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.6089 val_auc=0.8543 best=0.8966 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4795 val_auc=0.8880 best=0.8966 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.4293 val_auc=0.6156 best=0.8966 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3538 val_auc=0.8054 best=0.8966 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2732 val_auc=0.6263 best=0.8966 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1482 val_auc=0.5171 best=0.8966 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1275 val_auc=0.6297 best=0.8966 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0567 val_auc=0.5664 best=0.8966 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0399 val_auc=0.5932 best=0.8966 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 40/100: AUC=0.8966
+    [hybrid] epoch 01/30: train_loss=1.2850 val_auc=0.8376 best=0.8376 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1943 val_auc=0.8078 best=0.8376 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1266 val_auc=0.7838 best=0.8376 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8100 val_auc=0.8211 best=0.8376 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.8370 val_auc=0.8987 best=0.8987 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7415 val_auc=0.5622 best=0.8987 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.7637 val_auc=0.8119 best=0.8987 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.5051 val_auc=0.6113 best=0.8987 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.5657 val_auc=0.7109 best=0.8987 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.4080 val_auc=0.5566 best=0.8987 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.5136 val_auc=0.6071 best=0.8987 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1737 val_auc=0.5972 best=0.8987 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.0958 val_auc=0.5501 best=0.8987 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0618 val_auc=0.5165 best=0.8987 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0309 val_auc=0.4813 best=0.8987 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 41/100: AUC=0.8987
+    [hybrid] epoch 01/30: train_loss=1.2763 val_auc=0.8246 best=0.8246 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1612 val_auc=0.8241 best=0.8246 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9379 val_auc=0.8785 best=0.8785 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.1461 val_auc=0.8311 best=0.8785 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.6584 val_auc=0.8509 best=0.8785 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.5414 val_auc=0.7183 best=0.8785 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.9767 val_auc=0.8548 best=0.8785 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4142 val_auc=0.8099 best=0.8785 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.5603 val_auc=0.7643 best=0.8785 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2418 val_auc=0.6569 best=0.8785 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.5064 val_auc=0.7433 best=0.8785 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.3468 val_auc=0.7597 best=0.8785 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.1973 val_auc=0.6399 best=0.8785 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 42/100: AUC=0.8785
+    [hybrid] epoch 01/30: train_loss=1.3326 val_auc=0.7536 best=0.7536 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2006 val_auc=0.7326 best=0.7536 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0763 val_auc=0.7668 best=0.7668 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7438 val_auc=0.5711 best=0.7668 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.1989 val_auc=0.6321 best=0.7668 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7267 val_auc=0.7550 best=0.7668 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6439 val_auc=0.7066 best=0.7668 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5139 val_auc=0.7569 best=0.7668 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.6751 val_auc=0.6891 best=0.7668 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.4464 val_auc=0.7524 best=0.7668 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1918 val_auc=0.6977 best=0.7668 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.2605 val_auc=0.7044 best=0.7668 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0628 val_auc=0.6309 best=0.7668 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 43/100: AUC=0.7668
+    [hybrid] epoch 01/30: train_loss=1.2653 val_auc=0.8789 best=0.8789 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1267 val_auc=0.8632 best=0.8789 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9987 val_auc=0.8539 best=0.8789 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9165 val_auc=0.7632 best=0.8789 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.9799 val_auc=0.6832 best=0.8789 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.7663 val_auc=0.7877 best=0.8789 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.7714 val_auc=0.7410 best=0.8789 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.5866 val_auc=0.8135 best=0.8789 patience=7/10
+    [hybrid] epoch 09/30: train_loss=0.5158 val_auc=0.6940 best=0.8789 patience=8/10
+    [hybrid] epoch 10/30: train_loss=0.2799 val_auc=0.7440 best=0.8789 patience=9/10
+    [hybrid] epoch 11/30: train_loss=0.1568 val_auc=0.6751 best=0.8789 patience=10/10
+    [hybrid] early stop at epoch 11
+  [hybrid] fold 44/100: AUC=0.8789
+    [hybrid] epoch 01/30: train_loss=1.2664 val_auc=0.6791 best=0.6791 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1425 val_auc=0.7359 best=0.7359 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0629 val_auc=0.6827 best=0.7359 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8121 val_auc=0.8618 best=0.8618 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7089 val_auc=0.7449 best=0.8618 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6639 val_auc=0.6577 best=0.8618 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6129 val_auc=0.7492 best=0.8618 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5414 val_auc=0.6802 best=0.8618 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4218 val_auc=0.7330 best=0.8618 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.4603 val_auc=0.7331 best=0.8618 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.3284 val_auc=0.7089 best=0.8618 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1486 val_auc=0.7055 best=0.8618 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.3871 val_auc=0.7221 best=0.8618 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0524 val_auc=0.6966 best=0.8618 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 45/100: AUC=0.8618
+    [hybrid] epoch 01/30: train_loss=1.3786 val_auc=0.7620 best=0.7620 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2792 val_auc=0.7762 best=0.7762 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0916 val_auc=0.7230 best=0.7762 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9141 val_auc=0.7638 best=0.7762 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.9158 val_auc=0.8605 best=0.8605 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7470 val_auc=0.8595 best=0.8605 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.7663 val_auc=0.8611 best=0.8611 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.7125 val_auc=0.7021 best=0.8611 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.5844 val_auc=0.7315 best=0.8611 patience=2/10
+    [hybrid] epoch 10/30: train_loss=0.4094 val_auc=0.8447 best=0.8611 patience=3/10
+    [hybrid] epoch 11/30: train_loss=0.2190 val_auc=0.7598 best=0.8611 patience=4/10
+    [hybrid] epoch 12/30: train_loss=0.1158 val_auc=0.7123 best=0.8611 patience=5/10
+    [hybrid] epoch 13/30: train_loss=0.0648 val_auc=0.7032 best=0.8611 patience=6/10
+    [hybrid] epoch 14/30: train_loss=0.0387 val_auc=0.6799 best=0.8611 patience=7/10
+    [hybrid] epoch 15/30: train_loss=0.0251 val_auc=0.6411 best=0.8611 patience=8/10
+    [hybrid] epoch 16/30: train_loss=0.2565 val_auc=0.7446 best=0.8611 patience=9/10
+    [hybrid] epoch 17/30: train_loss=0.0238 val_auc=0.7620 best=0.8611 patience=10/10
+    [hybrid] early stop at epoch 17
+  [hybrid] fold 46/100: AUC=0.8611
+    [hybrid] epoch 01/30: train_loss=1.2948 val_auc=0.8044 best=0.8044 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1579 val_auc=0.8191 best=0.8191 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9110 val_auc=0.7958 best=0.8191 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.0375 val_auc=0.8272 best=0.8272 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7090 val_auc=0.7336 best=0.8272 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.9166 val_auc=0.7579 best=0.8272 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6724 val_auc=0.8231 best=0.8272 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6138 val_auc=0.6911 best=0.8272 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4746 val_auc=0.7213 best=0.8272 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.3613 val_auc=0.7129 best=0.8272 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.3055 val_auc=0.6528 best=0.8272 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0766 val_auc=0.6795 best=0.8272 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0910 val_auc=0.5935 best=0.8272 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0476 val_auc=0.6168 best=0.8272 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 47/100: AUC=0.8272
+    [hybrid] epoch 01/30: train_loss=1.2964 val_auc=0.8492 best=0.8492 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1453 val_auc=0.7741 best=0.8492 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9893 val_auc=0.9273 best=0.9273 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9843 val_auc=0.7082 best=0.9273 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8741 val_auc=0.8473 best=0.9273 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8139 val_auc=0.7223 best=0.9273 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.7988 val_auc=0.8882 best=0.9273 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.7226 val_auc=0.7780 best=0.9273 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.6085 val_auc=0.8335 best=0.9273 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.3450 val_auc=0.6093 best=0.9273 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.2459 val_auc=0.5591 best=0.9273 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.2887 val_auc=0.7056 best=0.9273 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0810 val_auc=0.6182 best=0.9273 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 48/100: AUC=0.9273
+    [hybrid] epoch 01/30: train_loss=1.2644 val_auc=0.7673 best=0.7673 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2098 val_auc=0.7217 best=0.7673 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9723 val_auc=0.7423 best=0.7673 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8254 val_auc=0.8280 best=0.8280 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.6747 val_auc=0.7579 best=0.8280 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7188 val_auc=0.8954 best=0.8954 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.7902 val_auc=0.7395 best=0.8954 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.7068 val_auc=0.8673 best=0.8954 patience=2/10
+    [hybrid] epoch 09/30: train_loss=1.1839 val_auc=0.6953 best=0.8954 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.7702 val_auc=0.8243 best=0.8954 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.5200 val_auc=0.7619 best=0.8954 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.2807 val_auc=0.7446 best=0.8954 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.1281 val_auc=0.6755 best=0.8954 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0969 val_auc=0.6894 best=0.8954 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0604 val_auc=0.6152 best=0.8954 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0320 val_auc=0.6016 best=0.8954 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 49/100: AUC=0.8954
+    [hybrid] epoch 01/30: train_loss=1.2623 val_auc=0.7730 best=0.7730 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1932 val_auc=0.7755 best=0.7755 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0413 val_auc=0.5444 best=0.7755 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9085 val_auc=0.6988 best=0.7755 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8665 val_auc=0.8545 best=0.8545 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7193 val_auc=0.7996 best=0.8545 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5393 val_auc=0.7649 best=0.8545 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.3570 val_auc=0.7264 best=0.8545 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.2513 val_auc=0.6882 best=0.8545 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.1866 val_auc=0.7772 best=0.8545 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.3742 val_auc=0.7582 best=0.8545 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1465 val_auc=0.7276 best=0.8545 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2346 val_auc=0.7021 best=0.8545 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0616 val_auc=0.6946 best=0.8545 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0664 val_auc=0.7145 best=0.8545 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 50/100: AUC=0.8545
+    [hybrid] epoch 01/30: train_loss=1.3114 val_auc=0.8000 best=0.8000 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1417 val_auc=0.7954 best=0.8000 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1082 val_auc=0.8489 best=0.8489 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8724 val_auc=0.5911 best=0.8489 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.6494 val_auc=0.5793 best=0.8489 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.9381 val_auc=0.8416 best=0.8489 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.9493 val_auc=0.8623 best=0.8623 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.8233 val_auc=0.8533 best=0.8623 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.8163 val_auc=0.8530 best=0.8623 patience=2/10
+    [hybrid] epoch 10/30: train_loss=0.6551 val_auc=0.8434 best=0.8623 patience=3/10
+    [hybrid] epoch 11/30: train_loss=0.4314 val_auc=0.8062 best=0.8623 patience=4/10
+    [hybrid] epoch 12/30: train_loss=0.4679 val_auc=0.8242 best=0.8623 patience=5/10
+    [hybrid] epoch 13/30: train_loss=0.2869 val_auc=0.7115 best=0.8623 patience=6/10
+    [hybrid] epoch 14/30: train_loss=0.1251 val_auc=0.5388 best=0.8623 patience=7/10
+    [hybrid] epoch 15/30: train_loss=0.0643 val_auc=0.5089 best=0.8623 patience=8/10
+    [hybrid] epoch 16/30: train_loss=0.1131 val_auc=0.5096 best=0.8623 patience=9/10
+    [hybrid] epoch 17/30: train_loss=0.0316 val_auc=0.5032 best=0.8623 patience=10/10
+    [hybrid] early stop at epoch 17
+  [hybrid] fold 51/100: AUC=0.8623
+    [hybrid] epoch 01/30: train_loss=1.2543 val_auc=0.8040 best=0.8040 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1587 val_auc=0.8053 best=0.8053 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0683 val_auc=0.7797 best=0.8053 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9914 val_auc=0.8239 best=0.8239 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=1.0117 val_auc=0.7244 best=0.8239 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8830 val_auc=0.7840 best=0.8239 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.8541 val_auc=0.7777 best=0.8239 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.7026 val_auc=0.7402 best=0.8239 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5437 val_auc=0.7094 best=0.8239 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.5229 val_auc=0.6759 best=0.8239 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.5536 val_auc=0.6532 best=0.8239 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1998 val_auc=0.6586 best=0.8239 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.1771 val_auc=0.6642 best=0.8239 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.1065 val_auc=0.5975 best=0.8239 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 52/100: AUC=0.8239
+    [hybrid] epoch 01/30: train_loss=1.2948 val_auc=0.8569 best=0.8569 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2197 val_auc=0.8782 best=0.8782 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0164 val_auc=0.5931 best=0.8782 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.3738 val_auc=0.8508 best=0.8782 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8124 val_auc=0.8411 best=0.8782 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.7584 val_auc=0.8217 best=0.8782 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.5878 val_auc=0.8060 best=0.8782 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.3963 val_auc=0.7944 best=0.8782 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.4358 val_auc=0.6803 best=0.8782 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.1579 val_auc=0.7502 best=0.8782 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.1314 val_auc=0.7527 best=0.8782 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.0644 val_auc=0.7215 best=0.8782 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 53/100: AUC=0.8782
+    [hybrid] epoch 01/30: train_loss=1.2919 val_auc=0.7186 best=0.7186 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1999 val_auc=0.8305 best=0.8305 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0145 val_auc=0.7003 best=0.8305 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8206 val_auc=0.5855 best=0.8305 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8845 val_auc=0.8171 best=0.8305 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.6735 val_auc=0.7993 best=0.8305 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.5064 val_auc=0.7377 best=0.8305 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.5358 val_auc=0.6336 best=0.8305 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.6299 val_auc=0.7524 best=0.8305 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.2632 val_auc=0.7330 best=0.8305 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.2312 val_auc=0.7963 best=0.8305 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.1880 val_auc=0.8221 best=0.8305 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 54/100: AUC=0.8305
+    [hybrid] epoch 01/30: train_loss=1.2754 val_auc=0.7573 best=0.7573 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1701 val_auc=0.8232 best=0.8232 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9640 val_auc=0.8760 best=0.8760 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8239 val_auc=0.7818 best=0.8760 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7424 val_auc=0.5940 best=0.8760 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.8438 val_auc=0.7886 best=0.8760 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6971 val_auc=0.8365 best=0.8760 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.7312 val_auc=0.8067 best=0.8760 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.5584 val_auc=0.8098 best=0.8760 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2726 val_auc=0.6843 best=0.8760 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.4484 val_auc=0.7539 best=0.8760 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.2423 val_auc=0.6369 best=0.8760 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.2736 val_auc=0.7637 best=0.8760 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 55/100: AUC=0.8760
+    [hybrid] epoch 01/30: train_loss=1.2756 val_auc=0.7802 best=0.7802 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1659 val_auc=0.7597 best=0.7802 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0524 val_auc=0.6965 best=0.7802 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9905 val_auc=0.8311 best=0.8311 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8225 val_auc=0.5684 best=0.8311 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8385 val_auc=0.7364 best=0.8311 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6243 val_auc=0.6060 best=0.8311 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6636 val_auc=0.7602 best=0.8311 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5818 val_auc=0.6805 best=0.8311 patience=5/10
+    [hybrid] epoch 10/30: train_loss=1.0049 val_auc=0.7345 best=0.8311 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.4785 val_auc=0.7243 best=0.8311 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.3139 val_auc=0.6033 best=0.8311 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.3170 val_auc=0.6291 best=0.8311 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.1726 val_auc=0.6203 best=0.8311 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 56/100: AUC=0.8311
+    [hybrid] epoch 01/30: train_loss=1.2807 val_auc=0.8010 best=0.8010 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2049 val_auc=0.7110 best=0.8010 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0603 val_auc=0.8449 best=0.8449 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8249 val_auc=0.7665 best=0.8449 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.9896 val_auc=0.8520 best=0.8520 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7401 val_auc=0.8451 best=0.8520 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5488 val_auc=0.8245 best=0.8520 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4476 val_auc=0.8556 best=0.8556 patience=0/10 *
+    [hybrid] epoch 09/30: train_loss=0.5865 val_auc=0.7094 best=0.8556 patience=1/10
+    [hybrid] epoch 10/30: train_loss=0.2085 val_auc=0.7696 best=0.8556 patience=2/10
+    [hybrid] epoch 11/30: train_loss=0.1335 val_auc=0.8018 best=0.8556 patience=3/10
+    [hybrid] epoch 12/30: train_loss=0.0776 val_auc=0.6881 best=0.8556 patience=4/10
+    [hybrid] epoch 13/30: train_loss=0.2661 val_auc=0.7402 best=0.8556 patience=5/10
+    [hybrid] epoch 14/30: train_loss=0.0491 val_auc=0.7168 best=0.8556 patience=6/10
+    [hybrid] epoch 15/30: train_loss=0.0441 val_auc=0.7669 best=0.8556 patience=7/10
+    [hybrid] epoch 16/30: train_loss=0.0220 val_auc=0.7523 best=0.8556 patience=8/10
+    [hybrid] epoch 17/30: train_loss=0.0199 val_auc=0.7140 best=0.8556 patience=9/10
+    [hybrid] epoch 18/30: train_loss=0.0163 val_auc=0.7119 best=0.8556 patience=10/10
+    [hybrid] early stop at epoch 18
+  [hybrid] fold 57/100: AUC=0.8556
+    [hybrid] epoch 01/30: train_loss=1.2726 val_auc=0.7430 best=0.7430 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1330 val_auc=0.7466 best=0.7466 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.8939 val_auc=0.7714 best=0.7714 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8481 val_auc=0.6493 best=0.7714 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8213 val_auc=0.8519 best=0.8519 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7262 val_auc=0.8306 best=0.8519 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.6750 val_auc=0.7335 best=0.8519 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.8329 val_auc=0.7426 best=0.8519 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.4024 val_auc=0.6799 best=0.8519 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3793 val_auc=0.7575 best=0.8519 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2083 val_auc=0.6832 best=0.8519 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1010 val_auc=0.5718 best=0.8519 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1817 val_auc=0.5906 best=0.8519 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0546 val_auc=0.5055 best=0.8519 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.1012 val_auc=0.5883 best=0.8519 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 58/100: AUC=0.8519
+    [hybrid] epoch 01/30: train_loss=1.3026 val_auc=0.8462 best=0.8462 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2491 val_auc=0.8665 best=0.8665 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0899 val_auc=0.9249 best=0.9249 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8785 val_auc=0.9313 best=0.9313 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9385 val_auc=0.6712 best=0.9313 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.9599 val_auc=0.8887 best=0.9313 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.7668 val_auc=0.8572 best=0.9313 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6668 val_auc=0.8733 best=0.9313 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5828 val_auc=0.6952 best=0.9313 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.4039 val_auc=0.8622 best=0.9313 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.2978 val_auc=0.7976 best=0.9313 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1911 val_auc=0.7369 best=0.9313 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0640 val_auc=0.6493 best=0.9313 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0406 val_auc=0.6517 best=0.9313 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 59/100: AUC=0.9313
+    [hybrid] epoch 01/30: train_loss=1.2812 val_auc=0.8487 best=0.8487 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.0808 val_auc=0.6687 best=0.8487 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9226 val_auc=0.5877 best=0.8487 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9672 val_auc=0.8499 best=0.8499 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8556 val_auc=0.6924 best=0.8499 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6656 val_auc=0.7407 best=0.8499 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6608 val_auc=0.5987 best=0.8499 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6290 val_auc=0.5741 best=0.8499 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5230 val_auc=0.7891 best=0.8499 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.4141 val_auc=0.7404 best=0.8499 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.4511 val_auc=0.8575 best=0.8575 patience=0/10 *
+    [hybrid] epoch 12/30: train_loss=0.2071 val_auc=0.6238 best=0.8575 patience=1/10
+    [hybrid] epoch 13/30: train_loss=0.4549 val_auc=0.7491 best=0.8575 patience=2/10
+    [hybrid] epoch 14/30: train_loss=0.1501 val_auc=0.7685 best=0.8575 patience=3/10
+    [hybrid] epoch 15/30: train_loss=0.0597 val_auc=0.7076 best=0.8575 patience=4/10
+    [hybrid] epoch 16/30: train_loss=0.0444 val_auc=0.6711 best=0.8575 patience=5/10
+    [hybrid] epoch 17/30: train_loss=0.0817 val_auc=0.6665 best=0.8575 patience=6/10
+    [hybrid] epoch 18/30: train_loss=0.0291 val_auc=0.6697 best=0.8575 patience=7/10
+    [hybrid] epoch 19/30: train_loss=0.0169 val_auc=0.6498 best=0.8575 patience=8/10
+    [hybrid] epoch 20/30: train_loss=0.0647 val_auc=0.6605 best=0.8575 patience=9/10
+    [hybrid] epoch 21/30: train_loss=0.0089 val_auc=0.7027 best=0.8575 patience=10/10
+    [hybrid] early stop at epoch 21
+  [hybrid] fold 60/100: AUC=0.8575
+    [hybrid] epoch 01/30: train_loss=1.2847 val_auc=0.8604 best=0.8604 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1972 val_auc=0.8579 best=0.8604 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1183 val_auc=0.9166 best=0.9166 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.0098 val_auc=0.7909 best=0.9166 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.1266 val_auc=0.8407 best=0.9166 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7650 val_auc=0.8851 best=0.9166 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6857 val_auc=0.9030 best=0.9166 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.4672 val_auc=0.8337 best=0.9166 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3501 val_auc=0.8654 best=0.9166 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.6503 val_auc=0.6586 best=0.9166 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1659 val_auc=0.7974 best=0.9166 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1012 val_auc=0.7443 best=0.9166 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0409 val_auc=0.7809 best=0.9166 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 61/100: AUC=0.9166
+    [hybrid] epoch 01/30: train_loss=1.3751 val_auc=0.8033 best=0.8033 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1632 val_auc=0.6950 best=0.8033 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0176 val_auc=0.8257 best=0.8257 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.1134 val_auc=0.6993 best=0.8257 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8593 val_auc=0.7901 best=0.8257 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.6339 val_auc=0.7208 best=0.8257 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5365 val_auc=0.5768 best=0.8257 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5783 val_auc=0.6771 best=0.8257 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.2846 val_auc=0.5007 best=0.8257 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2160 val_auc=0.4726 best=0.8257 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.2861 val_auc=0.5989 best=0.8257 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1509 val_auc=0.4847 best=0.8257 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0633 val_auc=0.5238 best=0.8257 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 62/100: AUC=0.8257
+    [hybrid] epoch 01/30: train_loss=1.2763 val_auc=0.7311 best=0.7311 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1950 val_auc=0.6486 best=0.7311 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0465 val_auc=0.8499 best=0.8499 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7593 val_auc=0.8631 best=0.8631 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7795 val_auc=0.5754 best=0.8631 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.9144 val_auc=0.7686 best=0.8631 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.7006 val_auc=0.7365 best=0.8631 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5035 val_auc=0.7177 best=0.8631 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3801 val_auc=0.6278 best=0.8631 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2113 val_auc=0.6598 best=0.8631 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1603 val_auc=0.5070 best=0.8631 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0592 val_auc=0.4717 best=0.8631 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0424 val_auc=0.4619 best=0.8631 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0309 val_auc=0.4592 best=0.8631 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 63/100: AUC=0.8631
+    [hybrid] epoch 01/30: train_loss=1.3449 val_auc=0.8118 best=0.8118 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1971 val_auc=0.8236 best=0.8236 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0504 val_auc=0.8651 best=0.8651 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.2912 val_auc=0.7624 best=0.8651 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.9744 val_auc=0.8207 best=0.8651 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.9271 val_auc=0.8384 best=0.8651 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.8841 val_auc=0.8711 best=0.8711 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.7941 val_auc=0.8547 best=0.8711 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.5297 val_auc=0.8721 best=0.8721 patience=0/10 *
+    [hybrid] epoch 10/30: train_loss=0.6776 val_auc=0.7518 best=0.8721 patience=1/10
+    [hybrid] epoch 11/30: train_loss=0.2866 val_auc=0.8164 best=0.8721 patience=2/10
+    [hybrid] epoch 12/30: train_loss=0.2053 val_auc=0.8215 best=0.8721 patience=3/10
+    [hybrid] epoch 13/30: train_loss=0.1129 val_auc=0.8160 best=0.8721 patience=4/10
+    [hybrid] epoch 14/30: train_loss=0.0592 val_auc=0.7547 best=0.8721 patience=5/10
+    [hybrid] epoch 15/30: train_loss=0.1726 val_auc=0.7516 best=0.8721 patience=6/10
+    [hybrid] epoch 16/30: train_loss=0.0616 val_auc=0.7599 best=0.8721 patience=7/10
+    [hybrid] epoch 17/30: train_loss=0.0297 val_auc=0.7192 best=0.8721 patience=8/10
+    [hybrid] epoch 18/30: train_loss=0.0265 val_auc=0.7094 best=0.8721 patience=9/10
+    [hybrid] epoch 19/30: train_loss=0.0213 val_auc=0.7077 best=0.8721 patience=10/10
+    [hybrid] early stop at epoch 19
+  [hybrid] fold 64/100: AUC=0.8721
+    [hybrid] epoch 01/30: train_loss=1.2601 val_auc=0.7758 best=0.7758 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2191 val_auc=0.7844 best=0.7844 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0358 val_auc=0.8026 best=0.8026 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8094 val_auc=0.8760 best=0.8760 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7718 val_auc=0.7630 best=0.8760 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8814 val_auc=0.8651 best=0.8760 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.5768 val_auc=0.5530 best=0.8760 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5745 val_auc=0.9115 best=0.9115 patience=0/10 *
+    [hybrid] epoch 09/30: train_loss=0.6379 val_auc=0.5429 best=0.9115 patience=1/10
+    [hybrid] epoch 10/30: train_loss=0.2761 val_auc=0.6386 best=0.9115 patience=2/10
+    [hybrid] epoch 11/30: train_loss=0.2732 val_auc=0.7300 best=0.9115 patience=3/10
+    [hybrid] epoch 12/30: train_loss=0.1296 val_auc=0.5253 best=0.9115 patience=4/10
+    [hybrid] epoch 13/30: train_loss=0.1580 val_auc=0.5281 best=0.9115 patience=5/10
+    [hybrid] epoch 14/30: train_loss=0.0583 val_auc=0.4860 best=0.9115 patience=6/10
+    [hybrid] epoch 15/30: train_loss=0.0427 val_auc=0.4504 best=0.9115 patience=7/10
+    [hybrid] epoch 16/30: train_loss=0.0501 val_auc=0.4143 best=0.9115 patience=8/10
+    [hybrid] epoch 17/30: train_loss=0.0550 val_auc=0.5211 best=0.9115 patience=9/10
+    [hybrid] epoch 18/30: train_loss=0.0214 val_auc=0.5147 best=0.9115 patience=10/10
+    [hybrid] early stop at epoch 18
+  [hybrid] fold 65/100: AUC=0.9115
+    [hybrid] epoch 01/30: train_loss=1.2816 val_auc=0.8158 best=0.8158 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1672 val_auc=0.8564 best=0.8564 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9631 val_auc=0.8731 best=0.8731 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7575 val_auc=0.8072 best=0.8731 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7294 val_auc=0.7341 best=0.8731 patience=2/10
+    [hybrid] epoch 06/30: train_loss=1.2126 val_auc=0.7221 best=0.8731 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5641 val_auc=0.7183 best=0.8731 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5335 val_auc=0.7939 best=0.8731 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3214 val_auc=0.7167 best=0.8731 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2079 val_auc=0.7088 best=0.8731 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.2415 val_auc=0.7746 best=0.8731 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.3593 val_auc=0.7019 best=0.8731 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.1149 val_auc=0.7254 best=0.8731 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 66/100: AUC=0.8731
+    [hybrid] epoch 01/30: train_loss=1.2989 val_auc=0.7220 best=0.7220 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1871 val_auc=0.7600 best=0.7600 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.1039 val_auc=0.4535 best=0.7600 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9169 val_auc=0.8310 best=0.8310 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7091 val_auc=0.8570 best=0.8570 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.4997 val_auc=0.8345 best=0.8570 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.6096 val_auc=0.7777 best=0.8570 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.3732 val_auc=0.7438 best=0.8570 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.2471 val_auc=0.7038 best=0.8570 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.1701 val_auc=0.5760 best=0.8570 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1724 val_auc=0.7463 best=0.8570 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.2268 val_auc=0.5186 best=0.8570 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.0908 val_auc=0.5657 best=0.8570 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0776 val_auc=0.5859 best=0.8570 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0357 val_auc=0.5616 best=0.8570 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 67/100: AUC=0.8570
+    [hybrid] epoch 01/30: train_loss=1.3172 val_auc=0.8362 best=0.8362 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1511 val_auc=0.7977 best=0.8362 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9850 val_auc=0.8982 best=0.8982 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8354 val_auc=0.8670 best=0.8982 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.9772 val_auc=0.6872 best=0.8982 patience=2/10
+    [hybrid] epoch 06/30: train_loss=1.0054 val_auc=0.8254 best=0.8982 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.5789 val_auc=0.7440 best=0.8982 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5713 val_auc=0.7236 best=0.8982 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.4545 val_auc=0.7951 best=0.8982 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.3149 val_auc=0.7253 best=0.8982 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1604 val_auc=0.6714 best=0.8982 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1094 val_auc=0.6712 best=0.8982 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0547 val_auc=0.6653 best=0.8982 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 68/100: AUC=0.8982
+    [hybrid] epoch 01/30: train_loss=1.2650 val_auc=0.8219 best=0.8219 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1166 val_auc=0.7965 best=0.8219 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9122 val_auc=0.8942 best=0.8942 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8102 val_auc=0.8346 best=0.8942 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8380 val_auc=0.8298 best=0.8942 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.5783 val_auc=0.8370 best=0.8942 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.4106 val_auc=0.5678 best=0.8942 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5218 val_auc=0.7369 best=0.8942 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.3716 val_auc=0.7785 best=0.8942 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.2281 val_auc=0.6635 best=0.8942 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.0950 val_auc=0.6436 best=0.8942 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.0579 val_auc=0.6433 best=0.8942 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0370 val_auc=0.5072 best=0.8942 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 69/100: AUC=0.8942
+    [hybrid] epoch 01/30: train_loss=1.2650 val_auc=0.8130 best=0.8130 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1861 val_auc=0.8109 best=0.8130 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9955 val_auc=0.8124 best=0.8130 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.1351 val_auc=0.8071 best=0.8130 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.8816 val_auc=0.6264 best=0.8130 patience=4/10
+    [hybrid] epoch 06/30: train_loss=1.0490 val_auc=0.8205 best=0.8205 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.7769 val_auc=0.7796 best=0.8205 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.6338 val_auc=0.7780 best=0.8205 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.4111 val_auc=0.6955 best=0.8205 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.2271 val_auc=0.7334 best=0.8205 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.3483 val_auc=0.7308 best=0.8205 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.1269 val_auc=0.6800 best=0.8205 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.1162 val_auc=0.5707 best=0.8205 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0468 val_auc=0.6599 best=0.8205 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0290 val_auc=0.6453 best=0.8205 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0468 val_auc=0.6469 best=0.8205 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 70/100: AUC=0.8205
+    [hybrid] epoch 01/30: train_loss=1.3044 val_auc=0.7609 best=0.7609 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1344 val_auc=0.6751 best=0.7609 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9340 val_auc=0.8656 best=0.8656 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7836 val_auc=0.7598 best=0.8656 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.9867 val_auc=0.7049 best=0.8656 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.9068 val_auc=0.8460 best=0.8656 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.7033 val_auc=0.8469 best=0.8656 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5302 val_auc=0.7749 best=0.8656 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.4129 val_auc=0.7959 best=0.8656 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.3051 val_auc=0.8103 best=0.8656 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.1709 val_auc=0.7908 best=0.8656 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.1268 val_auc=0.6921 best=0.8656 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.0748 val_auc=0.7304 best=0.8656 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 71/100: AUC=0.8656
+    [hybrid] epoch 01/30: train_loss=1.2922 val_auc=0.8886 best=0.8886 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2081 val_auc=0.9134 best=0.9134 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0562 val_auc=0.9267 best=0.9267 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9431 val_auc=0.9361 best=0.9361 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9225 val_auc=0.8388 best=0.9361 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6717 val_auc=0.9339 best=0.9361 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.5409 val_auc=0.6936 best=0.9361 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6088 val_auc=0.7178 best=0.9361 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5441 val_auc=0.8503 best=0.9361 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2666 val_auc=0.6697 best=0.9361 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1588 val_auc=0.6733 best=0.9361 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0793 val_auc=0.5747 best=0.9361 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.1946 val_auc=0.7483 best=0.9361 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0442 val_auc=0.6869 best=0.9361 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 72/100: AUC=0.9361
+    [hybrid] epoch 01/30: train_loss=1.2863 val_auc=0.7241 best=0.7241 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1278 val_auc=0.8010 best=0.8010 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9624 val_auc=0.7912 best=0.8010 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.3635 val_auc=0.6103 best=0.8010 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.9358 val_auc=0.8316 best=0.8316 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.8220 val_auc=0.7895 best=0.8316 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.9163 val_auc=0.7832 best=0.8316 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.7703 val_auc=0.7478 best=0.8316 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.7006 val_auc=0.7488 best=0.8316 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.5416 val_auc=0.6927 best=0.8316 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.3299 val_auc=0.6214 best=0.8316 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.3488 val_auc=0.6313 best=0.8316 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2024 val_auc=0.6842 best=0.8316 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.1904 val_auc=0.6778 best=0.8316 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.1826 val_auc=0.6799 best=0.8316 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 73/100: AUC=0.8316
+    [hybrid] epoch 01/30: train_loss=1.2805 val_auc=0.8132 best=0.8132 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1459 val_auc=0.8093 best=0.8132 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9306 val_auc=0.8644 best=0.8644 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9925 val_auc=0.8852 best=0.8852 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8111 val_auc=0.6844 best=0.8852 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6442 val_auc=0.7729 best=0.8852 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.5858 val_auc=0.8026 best=0.8852 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5024 val_auc=0.7645 best=0.8852 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3287 val_auc=0.7149 best=0.8852 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.1799 val_auc=0.6444 best=0.8852 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.0958 val_auc=0.5696 best=0.8852 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0541 val_auc=0.5702 best=0.8852 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0359 val_auc=0.4935 best=0.8852 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0377 val_auc=0.6186 best=0.8852 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 74/100: AUC=0.8852
+    [hybrid] epoch 01/30: train_loss=1.2445 val_auc=0.8009 best=0.8009 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.0982 val_auc=0.7720 best=0.8009 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1531 val_auc=0.6915 best=0.8009 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9276 val_auc=0.8666 best=0.8666 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7988 val_auc=0.7825 best=0.8666 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7637 val_auc=0.6916 best=0.8666 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.7326 val_auc=0.7427 best=0.8666 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.5559 val_auc=0.7394 best=0.8666 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3100 val_auc=0.6927 best=0.8666 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2061 val_auc=0.6281 best=0.8666 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.0964 val_auc=0.5496 best=0.8666 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0417 val_auc=0.4826 best=0.8666 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0328 val_auc=0.4692 best=0.8666 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0303 val_auc=0.4514 best=0.8666 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 75/100: AUC=0.8666
+    [hybrid] epoch 01/30: train_loss=1.3528 val_auc=0.7324 best=0.7324 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1539 val_auc=0.6925 best=0.7324 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0452 val_auc=0.6386 best=0.7324 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.9197 val_auc=0.7367 best=0.7367 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.7842 val_auc=0.7934 best=0.7934 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7125 val_auc=0.7058 best=0.7934 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5575 val_auc=0.7907 best=0.7934 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.6421 val_auc=0.6586 best=0.7934 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.6000 val_auc=0.7279 best=0.7934 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.2599 val_auc=0.6144 best=0.7934 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.1543 val_auc=0.4934 best=0.7934 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.0702 val_auc=0.5146 best=0.7934 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1248 val_auc=0.4791 best=0.7934 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0305 val_auc=0.5170 best=0.7934 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0190 val_auc=0.5135 best=0.7934 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 76/100: AUC=0.7934
+    [hybrid] epoch 01/30: train_loss=1.2569 val_auc=0.8108 best=0.8108 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1508 val_auc=0.8363 best=0.8363 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9561 val_auc=0.8418 best=0.8418 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8892 val_auc=0.9013 best=0.9013 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9194 val_auc=0.8116 best=0.9013 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.9106 val_auc=0.6549 best=0.9013 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.9181 val_auc=0.8381 best=0.9013 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6755 val_auc=0.8005 best=0.9013 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.5354 val_auc=0.8283 best=0.9013 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.3040 val_auc=0.7756 best=0.9013 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.4151 val_auc=0.8161 best=0.9013 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1646 val_auc=0.7740 best=0.9013 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.1146 val_auc=0.7937 best=0.9013 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.4361 val_auc=0.6568 best=0.9013 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 77/100: AUC=0.9013
+    [hybrid] epoch 01/30: train_loss=1.2913 val_auc=0.8898 best=0.8898 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1433 val_auc=0.8215 best=0.8898 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9185 val_auc=0.8398 best=0.8898 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.7911 val_auc=0.8922 best=0.8922 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=1.0796 val_auc=0.7580 best=0.8922 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.6961 val_auc=0.8327 best=0.8922 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6736 val_auc=0.8116 best=0.8922 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.4706 val_auc=0.6778 best=0.8922 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.2900 val_auc=0.6119 best=0.8922 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.2907 val_auc=0.6582 best=0.8922 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1999 val_auc=0.5702 best=0.8922 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0880 val_auc=0.5460 best=0.8922 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.1868 val_auc=0.6571 best=0.8922 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0590 val_auc=0.5809 best=0.8922 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 78/100: AUC=0.8922
+    [hybrid] epoch 01/30: train_loss=1.2745 val_auc=0.6677 best=0.6677 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2368 val_auc=0.5208 best=0.6677 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8733 val_auc=0.7509 best=0.7509 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9953 val_auc=0.5174 best=0.7509 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.4412 val_auc=0.7116 best=0.7509 patience=2/10
+    [hybrid] epoch 06/30: train_loss=1.1379 val_auc=0.7573 best=0.7573 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.9388 val_auc=0.7815 best=0.7815 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.8821 val_auc=0.7627 best=0.7815 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.7904 val_auc=0.7598 best=0.7815 patience=2/10
+    [hybrid] epoch 10/30: train_loss=0.7009 val_auc=0.7725 best=0.7815 patience=3/10
+    [hybrid] epoch 11/30: train_loss=0.6619 val_auc=0.7433 best=0.7815 patience=4/10
+    [hybrid] epoch 12/30: train_loss=0.5287 val_auc=0.7360 best=0.7815 patience=5/10
+    [hybrid] epoch 13/30: train_loss=0.3076 val_auc=0.6631 best=0.7815 patience=6/10
+    [hybrid] epoch 14/30: train_loss=0.1914 val_auc=0.6183 best=0.7815 patience=7/10
+    [hybrid] epoch 15/30: train_loss=0.2060 val_auc=0.5190 best=0.7815 patience=8/10
+    [hybrid] epoch 16/30: train_loss=0.2235 val_auc=0.5901 best=0.7815 patience=9/10
+    [hybrid] epoch 17/30: train_loss=0.1126 val_auc=0.5319 best=0.7815 patience=10/10
+    [hybrid] early stop at epoch 17
+  [hybrid] fold 79/100: AUC=0.7815
+    [hybrid] epoch 01/30: train_loss=1.2793 val_auc=0.8851 best=0.8851 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2025 val_auc=0.8962 best=0.8962 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.1599 val_auc=0.8976 best=0.8976 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.1883 val_auc=0.9148 best=0.9148 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9481 val_auc=0.6982 best=0.9148 patience=1/10
+    [hybrid] epoch 06/30: train_loss=1.1262 val_auc=0.8973 best=0.9148 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.8278 val_auc=0.8736 best=0.9148 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.6491 val_auc=0.9026 best=0.9148 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.4566 val_auc=0.7584 best=0.9148 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.3369 val_auc=0.8118 best=0.9148 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1476 val_auc=0.7835 best=0.9148 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.0786 val_auc=0.5407 best=0.9148 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0449 val_auc=0.6772 best=0.9148 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0344 val_auc=0.6161 best=0.9148 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 80/100: AUC=0.9148
+    [hybrid] epoch 01/30: train_loss=1.3049 val_auc=0.8750 best=0.8750 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1718 val_auc=0.8808 best=0.8808 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.1115 val_auc=0.8478 best=0.8808 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8550 val_auc=0.8994 best=0.8994 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9394 val_auc=0.8235 best=0.8994 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.8454 val_auc=0.9046 best=0.9046 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.5605 val_auc=0.8220 best=0.9046 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.5070 val_auc=0.8040 best=0.9046 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.4215 val_auc=0.6682 best=0.9046 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.3033 val_auc=0.6915 best=0.9046 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.2354 val_auc=0.7314 best=0.9046 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.1037 val_auc=0.6493 best=0.9046 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0501 val_auc=0.6018 best=0.9046 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0401 val_auc=0.6035 best=0.9046 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0331 val_auc=0.5974 best=0.9046 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0153 val_auc=0.5843 best=0.9046 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 81/100: AUC=0.9046
+    [hybrid] epoch 01/30: train_loss=1.2973 val_auc=0.8024 best=0.8024 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1926 val_auc=0.8090 best=0.8090 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9995 val_auc=0.7847 best=0.8090 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8193 val_auc=0.7504 best=0.8090 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8094 val_auc=0.9066 best=0.9066 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.6702 val_auc=0.7961 best=0.9066 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.5569 val_auc=0.8073 best=0.9066 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.3891 val_auc=0.7400 best=0.9066 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.4977 val_auc=0.9101 best=0.9101 patience=0/10 *
+    [hybrid] epoch 10/30: train_loss=0.3335 val_auc=0.7016 best=0.9101 patience=1/10
+    [hybrid] epoch 11/30: train_loss=0.4212 val_auc=0.9131 best=0.9131 patience=0/10 *
+    [hybrid] epoch 12/30: train_loss=0.3661 val_auc=0.7095 best=0.9131 patience=1/10
+    [hybrid] epoch 13/30: train_loss=0.1642 val_auc=0.8049 best=0.9131 patience=2/10
+    [hybrid] epoch 14/30: train_loss=0.1127 val_auc=0.6421 best=0.9131 patience=3/10
+    [hybrid] epoch 15/30: train_loss=0.0920 val_auc=0.6745 best=0.9131 patience=4/10
+    [hybrid] epoch 16/30: train_loss=0.0339 val_auc=0.5176 best=0.9131 patience=5/10
+    [hybrid] epoch 17/30: train_loss=0.1205 val_auc=0.8291 best=0.9131 patience=6/10
+    [hybrid] epoch 18/30: train_loss=0.0465 val_auc=0.6850 best=0.9131 patience=7/10
+    [hybrid] epoch 19/30: train_loss=0.0286 val_auc=0.7191 best=0.9131 patience=8/10
+    [hybrid] epoch 20/30: train_loss=0.0110 val_auc=0.7597 best=0.9131 patience=9/10
+    [hybrid] epoch 21/30: train_loss=0.0098 val_auc=0.7291 best=0.9131 patience=10/10
+    [hybrid] early stop at epoch 21
+  [hybrid] fold 82/100: AUC=0.9131
+    [hybrid] epoch 01/30: train_loss=1.3018 val_auc=0.7157 best=0.7157 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1358 val_auc=0.7355 best=0.7355 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0852 val_auc=0.6259 best=0.7355 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.9847 val_auc=0.7731 best=0.7731 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8171 val_auc=0.6805 best=0.7731 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7596 val_auc=0.7755 best=0.7755 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.6216 val_auc=0.7649 best=0.7755 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.4278 val_auc=0.7745 best=0.7755 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.2348 val_auc=0.6768 best=0.7755 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.2038 val_auc=0.7878 best=0.7878 patience=0/10 *
+    [hybrid] epoch 11/30: train_loss=0.1260 val_auc=0.6827 best=0.7878 patience=1/10
+    [hybrid] epoch 12/30: train_loss=0.1190 val_auc=0.7427 best=0.7878 patience=2/10
+    [hybrid] epoch 13/30: train_loss=0.0706 val_auc=0.7127 best=0.7878 patience=3/10
+    [hybrid] epoch 14/30: train_loss=0.0514 val_auc=0.6291 best=0.7878 patience=4/10
+    [hybrid] epoch 15/30: train_loss=0.0436 val_auc=0.7061 best=0.7878 patience=5/10
+    [hybrid] epoch 16/30: train_loss=0.0420 val_auc=0.7699 best=0.7878 patience=6/10
+    [hybrid] epoch 17/30: train_loss=0.0338 val_auc=0.7666 best=0.7878 patience=7/10
+    [hybrid] epoch 18/30: train_loss=0.0137 val_auc=0.7139 best=0.7878 patience=8/10
+    [hybrid] epoch 19/30: train_loss=0.0113 val_auc=0.6558 best=0.7878 patience=9/10
+    [hybrid] epoch 20/30: train_loss=0.0108 val_auc=0.6080 best=0.7878 patience=10/10
+    [hybrid] early stop at epoch 20
+  [hybrid] fold 83/100: AUC=0.7878
+    [hybrid] epoch 01/30: train_loss=1.3051 val_auc=0.7937 best=0.7937 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1802 val_auc=0.7893 best=0.7937 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.1813 val_auc=0.4169 best=0.7937 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.5020 val_auc=0.5767 best=0.7937 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.9296 val_auc=0.7986 best=0.7986 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.8298 val_auc=0.6945 best=0.7986 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.9000 val_auc=0.7795 best=0.7986 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.6717 val_auc=0.6844 best=0.7986 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.5258 val_auc=0.6476 best=0.7986 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.4606 val_auc=0.6359 best=0.7986 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2809 val_auc=0.6627 best=0.7986 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1642 val_auc=0.6559 best=0.7986 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.0745 val_auc=0.5641 best=0.7986 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0433 val_auc=0.5153 best=0.7986 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0389 val_auc=0.5391 best=0.7986 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 84/100: AUC=0.7986
+    [hybrid] epoch 01/30: train_loss=1.3427 val_auc=0.8628 best=0.8628 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2154 val_auc=0.8869 best=0.8869 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9810 val_auc=0.6861 best=0.8869 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.0042 val_auc=0.8843 best=0.8869 patience=2/10
+    [hybrid] epoch 05/30: train_loss=1.0363 val_auc=0.7327 best=0.8869 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.9310 val_auc=0.8535 best=0.8869 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.6566 val_auc=0.7047 best=0.8869 patience=5/10
+    [hybrid] epoch 08/30: train_loss=0.5703 val_auc=0.8169 best=0.8869 patience=6/10
+    [hybrid] epoch 09/30: train_loss=0.4124 val_auc=0.7175 best=0.8869 patience=7/10
+    [hybrid] epoch 10/30: train_loss=0.2100 val_auc=0.6746 best=0.8869 patience=8/10
+    [hybrid] epoch 11/30: train_loss=0.1508 val_auc=0.6546 best=0.8869 patience=9/10
+    [hybrid] epoch 12/30: train_loss=0.0667 val_auc=0.4958 best=0.8869 patience=10/10
+    [hybrid] early stop at epoch 12
+  [hybrid] fold 85/100: AUC=0.8869
+    [hybrid] epoch 01/30: train_loss=1.2798 val_auc=0.8357 best=0.8357 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1210 val_auc=0.7701 best=0.8357 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9438 val_auc=0.8273 best=0.8357 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8247 val_auc=0.8348 best=0.8357 patience=3/10
+    [hybrid] epoch 05/30: train_loss=1.0929 val_auc=0.5955 best=0.8357 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.9280 val_auc=0.8272 best=0.8357 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.9222 val_auc=0.7964 best=0.8357 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.9416 val_auc=0.8363 best=0.8363 patience=0/10 *
+    [hybrid] epoch 09/30: train_loss=0.7215 val_auc=0.8524 best=0.8524 patience=0/10 *
+    [hybrid] epoch 10/30: train_loss=0.5561 val_auc=0.8189 best=0.8524 patience=1/10
+    [hybrid] epoch 11/30: train_loss=0.3194 val_auc=0.6770 best=0.8524 patience=2/10
+    [hybrid] epoch 12/30: train_loss=0.4382 val_auc=0.8171 best=0.8524 patience=3/10
+    [hybrid] epoch 13/30: train_loss=0.1350 val_auc=0.7589 best=0.8524 patience=4/10
+    [hybrid] epoch 14/30: train_loss=0.0488 val_auc=0.5974 best=0.8524 patience=5/10
+    [hybrid] epoch 15/30: train_loss=0.0309 val_auc=0.5925 best=0.8524 patience=6/10
+    [hybrid] epoch 16/30: train_loss=0.0213 val_auc=0.5213 best=0.8524 patience=7/10
+    [hybrid] epoch 17/30: train_loss=0.0112 val_auc=0.4877 best=0.8524 patience=8/10
+    [hybrid] epoch 18/30: train_loss=0.0083 val_auc=0.4924 best=0.8524 patience=9/10
+    [hybrid] epoch 19/30: train_loss=0.0071 val_auc=0.5012 best=0.8524 patience=10/10
+    [hybrid] early stop at epoch 19
+  [hybrid] fold 86/100: AUC=0.8524
+    [hybrid] epoch 01/30: train_loss=1.3218 val_auc=0.8007 best=0.8007 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1852 val_auc=0.8424 best=0.8424 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0029 val_auc=0.8862 best=0.8862 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.9772 val_auc=0.8212 best=0.8862 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8223 val_auc=0.8566 best=0.8862 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.6739 val_auc=0.8655 best=0.8862 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6591 val_auc=0.8851 best=0.8862 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.3611 val_auc=0.8881 best=0.8881 patience=0/10 *
+    [hybrid] epoch 09/30: train_loss=0.3465 val_auc=0.6728 best=0.8881 patience=1/10
+    [hybrid] epoch 10/30: train_loss=0.1865 val_auc=0.7105 best=0.8881 patience=2/10
+    [hybrid] epoch 11/30: train_loss=0.0845 val_auc=0.6930 best=0.8881 patience=3/10
+    [hybrid] epoch 12/30: train_loss=0.1102 val_auc=0.6654 best=0.8881 patience=4/10
+    [hybrid] epoch 13/30: train_loss=0.0919 val_auc=0.6765 best=0.8881 patience=5/10
+    [hybrid] epoch 14/30: train_loss=0.0255 val_auc=0.5969 best=0.8881 patience=6/10
+    [hybrid] epoch 15/30: train_loss=0.5594 val_auc=0.7598 best=0.8881 patience=7/10
+    [hybrid] epoch 16/30: train_loss=0.0343 val_auc=0.6938 best=0.8881 patience=8/10
+    [hybrid] epoch 17/30: train_loss=0.2106 val_auc=0.8023 best=0.8881 patience=9/10
+    [hybrid] epoch 18/30: train_loss=0.0299 val_auc=0.6608 best=0.8881 patience=10/10
+    [hybrid] early stop at epoch 18
+  [hybrid] fold 87/100: AUC=0.8881
+    [hybrid] epoch 01/30: train_loss=1.2875 val_auc=0.7942 best=0.7942 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1998 val_auc=0.7984 best=0.7984 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9252 val_auc=0.7575 best=0.7984 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.7848 val_auc=0.7190 best=0.7984 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8398 val_auc=0.8493 best=0.8493 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.7460 val_auc=0.8161 best=0.8493 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.7859 val_auc=0.7172 best=0.8493 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4893 val_auc=0.7380 best=0.8493 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.4095 val_auc=0.7552 best=0.8493 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.3568 val_auc=0.7233 best=0.8493 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2184 val_auc=0.6116 best=0.8493 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.1290 val_auc=0.6205 best=0.8493 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1801 val_auc=0.6000 best=0.8493 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0572 val_auc=0.6161 best=0.8493 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0405 val_auc=0.5790 best=0.8493 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 88/100: AUC=0.8493
+    [hybrid] epoch 01/30: train_loss=1.2966 val_auc=0.8148 best=0.8148 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1120 val_auc=0.7569 best=0.8148 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8817 val_auc=0.7958 best=0.8148 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8298 val_auc=0.6037 best=0.8148 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.8700 val_auc=0.8127 best=0.8148 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.6184 val_auc=0.7860 best=0.8148 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.6198 val_auc=0.7762 best=0.8148 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.3784 val_auc=0.7586 best=0.8148 patience=7/10
+    [hybrid] epoch 09/30: train_loss=0.2680 val_auc=0.7033 best=0.8148 patience=8/10
+    [hybrid] epoch 10/30: train_loss=0.1286 val_auc=0.7255 best=0.8148 patience=9/10
+    [hybrid] epoch 11/30: train_loss=0.0645 val_auc=0.5385 best=0.8148 patience=10/10
+    [hybrid] early stop at epoch 11
+  [hybrid] fold 89/100: AUC=0.8148
+    [hybrid] epoch 01/30: train_loss=1.2894 val_auc=0.7923 best=0.7923 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1082 val_auc=0.8058 best=0.8058 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9695 val_auc=0.8394 best=0.8394 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8522 val_auc=0.8250 best=0.8394 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.1522 val_auc=0.8641 best=0.8641 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.8772 val_auc=0.8178 best=0.8641 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.1702 val_auc=0.6873 best=0.8641 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.8560 val_auc=0.8251 best=0.8641 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.8488 val_auc=0.8144 best=0.8641 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.6789 val_auc=0.8165 best=0.8641 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.4476 val_auc=0.7826 best=0.8641 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.3381 val_auc=0.7657 best=0.8641 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.2860 val_auc=0.7657 best=0.8641 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.1297 val_auc=0.7780 best=0.8641 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0695 val_auc=0.7645 best=0.8641 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 90/100: AUC=0.8641
+    [hybrid] epoch 01/30: train_loss=1.3110 val_auc=0.7275 best=0.7275 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1418 val_auc=0.8025 best=0.8025 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9871 val_auc=0.8412 best=0.8412 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=1.1116 val_auc=0.8546 best=0.8546 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8756 val_auc=0.8399 best=0.8546 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7725 val_auc=0.8636 best=0.8636 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.6577 val_auc=0.8528 best=0.8636 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.5596 val_auc=0.8265 best=0.8636 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.4624 val_auc=0.7727 best=0.8636 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.3480 val_auc=0.7506 best=0.8636 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.1651 val_auc=0.6665 best=0.8636 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.5439 val_auc=0.7632 best=0.8636 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0981 val_auc=0.7226 best=0.8636 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.0577 val_auc=0.7352 best=0.8636 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0419 val_auc=0.6263 best=0.8636 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0351 val_auc=0.7479 best=0.8636 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 91/100: AUC=0.8636
+    [hybrid] epoch 01/30: train_loss=1.2965 val_auc=0.7436 best=0.7436 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2348 val_auc=0.8143 best=0.8143 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.1558 val_auc=0.4509 best=0.8143 patience=1/10
+    [hybrid] epoch 04/30: train_loss=1.2533 val_auc=0.5373 best=0.8143 patience=2/10
+    [hybrid] epoch 05/30: train_loss=0.8543 val_auc=0.7580 best=0.8143 patience=3/10
+    [hybrid] epoch 06/30: train_loss=0.7592 val_auc=0.5462 best=0.8143 patience=4/10
+    [hybrid] epoch 07/30: train_loss=0.8800 val_auc=0.8363 best=0.8363 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.6108 val_auc=0.5684 best=0.8363 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.6105 val_auc=0.7799 best=0.8363 patience=2/10
+    [hybrid] epoch 10/30: train_loss=0.4732 val_auc=0.5946 best=0.8363 patience=3/10
+    [hybrid] epoch 11/30: train_loss=0.4640 val_auc=0.7093 best=0.8363 patience=4/10
+    [hybrid] epoch 12/30: train_loss=0.1737 val_auc=0.6172 best=0.8363 patience=5/10
+    [hybrid] epoch 13/30: train_loss=0.2602 val_auc=0.7518 best=0.8363 patience=6/10
+    [hybrid] epoch 14/30: train_loss=0.1556 val_auc=0.7155 best=0.8363 patience=7/10
+    [hybrid] epoch 15/30: train_loss=0.0770 val_auc=0.6500 best=0.8363 patience=8/10
+    [hybrid] epoch 16/30: train_loss=0.0366 val_auc=0.5881 best=0.8363 patience=9/10
+    [hybrid] epoch 17/30: train_loss=0.0359 val_auc=0.6051 best=0.8363 patience=10/10
+    [hybrid] early stop at epoch 17
+  [hybrid] fold 92/100: AUC=0.8363
+    [hybrid] epoch 01/30: train_loss=1.2978 val_auc=0.8184 best=0.8184 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1166 val_auc=0.7779 best=0.8184 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0460 val_auc=0.6249 best=0.8184 patience=2/10
+    [hybrid] epoch 04/30: train_loss=0.8339 val_auc=0.7260 best=0.8184 patience=3/10
+    [hybrid] epoch 05/30: train_loss=0.7921 val_auc=0.7729 best=0.8184 patience=4/10
+    [hybrid] epoch 06/30: train_loss=0.7721 val_auc=0.7149 best=0.8184 patience=5/10
+    [hybrid] epoch 07/30: train_loss=0.7383 val_auc=0.8136 best=0.8184 patience=6/10
+    [hybrid] epoch 08/30: train_loss=0.6052 val_auc=0.6627 best=0.8184 patience=7/10
+    [hybrid] epoch 09/30: train_loss=0.3951 val_auc=0.7388 best=0.8184 patience=8/10
+    [hybrid] epoch 10/30: train_loss=0.5290 val_auc=0.5143 best=0.8184 patience=9/10
+    [hybrid] epoch 11/30: train_loss=0.2747 val_auc=0.8033 best=0.8184 patience=10/10
+    [hybrid] early stop at epoch 11
+  [hybrid] fold 93/100: AUC=0.8184
+    [hybrid] epoch 01/30: train_loss=1.2768 val_auc=0.8730 best=0.8730 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1283 val_auc=0.8403 best=0.8730 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9565 val_auc=0.9000 best=0.9000 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8387 val_auc=0.8592 best=0.9000 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7420 val_auc=0.7596 best=0.9000 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.9551 val_auc=0.9058 best=0.9058 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.7749 val_auc=0.9092 best=0.9092 patience=0/10 *
+    [hybrid] epoch 08/30: train_loss=0.5851 val_auc=0.7260 best=0.9092 patience=1/10
+    [hybrid] epoch 09/30: train_loss=0.5205 val_auc=0.8542 best=0.9092 patience=2/10
+    [hybrid] epoch 10/30: train_loss=0.5146 val_auc=0.8406 best=0.9092 patience=3/10
+    [hybrid] epoch 11/30: train_loss=0.2093 val_auc=0.7285 best=0.9092 patience=4/10
+    [hybrid] epoch 12/30: train_loss=0.1433 val_auc=0.8004 best=0.9092 patience=5/10
+    [hybrid] epoch 13/30: train_loss=0.4369 val_auc=0.5742 best=0.9092 patience=6/10
+    [hybrid] epoch 14/30: train_loss=0.1018 val_auc=0.7928 best=0.9092 patience=7/10
+    [hybrid] epoch 15/30: train_loss=0.0536 val_auc=0.6241 best=0.9092 patience=8/10
+    [hybrid] epoch 16/30: train_loss=0.0463 val_auc=0.6493 best=0.9092 patience=9/10
+    [hybrid] epoch 17/30: train_loss=0.0352 val_auc=0.6978 best=0.9092 patience=10/10
+    [hybrid] early stop at epoch 17
+  [hybrid] fold 94/100: AUC=0.9092
+    [hybrid] epoch 01/30: train_loss=1.3019 val_auc=0.8366 best=0.8366 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1314 val_auc=0.7518 best=0.8366 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.9073 val_auc=0.8164 best=0.8366 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.4988 val_auc=0.5560 best=0.8366 patience=3/10
+    [hybrid] epoch 05/30: train_loss=1.0020 val_auc=0.8589 best=0.8589 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.8917 val_auc=0.8196 best=0.8589 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.1466 val_auc=0.7826 best=0.8589 patience=2/10
+    [hybrid] epoch 08/30: train_loss=1.1161 val_auc=0.8139 best=0.8589 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.9142 val_auc=0.8567 best=0.8589 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.7202 val_auc=0.7732 best=0.8589 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.6277 val_auc=0.8459 best=0.8589 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.4601 val_auc=0.6318 best=0.8589 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.4578 val_auc=0.6022 best=0.8589 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.6354 val_auc=0.4266 best=0.8589 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.1336 val_auc=0.5292 best=0.8589 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 95/100: AUC=0.8589
+    [hybrid] epoch 01/30: train_loss=1.3119 val_auc=0.8259 best=0.8259 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1529 val_auc=0.7189 best=0.8259 patience=1/10
+    [hybrid] epoch 03/30: train_loss=0.8790 val_auc=0.8682 best=0.8682 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.8799 val_auc=0.7158 best=0.8682 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.8268 val_auc=0.8844 best=0.8844 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.9126 val_auc=0.5743 best=0.8844 patience=1/10
+    [hybrid] epoch 07/30: train_loss=1.8753 val_auc=0.6680 best=0.8844 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.8202 val_auc=0.7496 best=0.8844 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.8078 val_auc=0.8315 best=0.8844 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.6586 val_auc=0.7860 best=0.8844 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.4994 val_auc=0.7306 best=0.8844 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.2609 val_auc=0.6653 best=0.8844 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.4431 val_auc=0.7069 best=0.8844 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.2194 val_auc=0.6381 best=0.8844 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.1009 val_auc=0.6892 best=0.8844 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 96/100: AUC=0.8844
+    [hybrid] epoch 01/30: train_loss=1.2577 val_auc=0.8146 best=0.8146 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1907 val_auc=0.8433 best=0.8433 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0765 val_auc=0.8373 best=0.8433 patience=1/10
+    [hybrid] epoch 04/30: train_loss=0.8160 val_auc=0.8871 best=0.8871 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.9988 val_auc=0.7489 best=0.8871 patience=1/10
+    [hybrid] epoch 06/30: train_loss=0.7819 val_auc=0.8712 best=0.8871 patience=2/10
+    [hybrid] epoch 07/30: train_loss=0.6364 val_auc=0.8229 best=0.8871 patience=3/10
+    [hybrid] epoch 08/30: train_loss=0.4997 val_auc=0.6918 best=0.8871 patience=4/10
+    [hybrid] epoch 09/30: train_loss=0.3978 val_auc=0.7539 best=0.8871 patience=5/10
+    [hybrid] epoch 10/30: train_loss=0.3527 val_auc=0.7145 best=0.8871 patience=6/10
+    [hybrid] epoch 11/30: train_loss=0.1303 val_auc=0.6350 best=0.8871 patience=7/10
+    [hybrid] epoch 12/30: train_loss=0.1294 val_auc=0.6227 best=0.8871 patience=8/10
+    [hybrid] epoch 13/30: train_loss=0.0581 val_auc=0.5982 best=0.8871 patience=9/10
+    [hybrid] epoch 14/30: train_loss=0.0349 val_auc=0.5775 best=0.8871 patience=10/10
+    [hybrid] early stop at epoch 14
+  [hybrid] fold 97/100: AUC=0.8871
+    [hybrid] epoch 01/30: train_loss=1.2447 val_auc=0.8431 best=0.8431 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1502 val_auc=0.8459 best=0.8459 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=1.0202 val_auc=0.8984 best=0.8984 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7955 val_auc=0.5942 best=0.8984 patience=1/10
+    [hybrid] epoch 05/30: train_loss=1.2604 val_auc=0.8341 best=0.8984 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7388 val_auc=0.8439 best=0.8984 patience=3/10
+    [hybrid] epoch 07/30: train_loss=0.6553 val_auc=0.7956 best=0.8984 patience=4/10
+    [hybrid] epoch 08/30: train_loss=0.5272 val_auc=0.8272 best=0.8984 patience=5/10
+    [hybrid] epoch 09/30: train_loss=0.4613 val_auc=0.6248 best=0.8984 patience=6/10
+    [hybrid] epoch 10/30: train_loss=0.3484 val_auc=0.5607 best=0.8984 patience=7/10
+    [hybrid] epoch 11/30: train_loss=0.3579 val_auc=0.8256 best=0.8984 patience=8/10
+    [hybrid] epoch 12/30: train_loss=0.3255 val_auc=0.6121 best=0.8984 patience=9/10
+    [hybrid] epoch 13/30: train_loss=0.2757 val_auc=0.6799 best=0.8984 patience=10/10
+    [hybrid] early stop at epoch 13
+  [hybrid] fold 98/100: AUC=0.8984
+    [hybrid] epoch 01/30: train_loss=1.3530 val_auc=0.7721 best=0.7721 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.1391 val_auc=0.6475 best=0.7721 patience=1/10
+    [hybrid] epoch 03/30: train_loss=1.0230 val_auc=0.6102 best=0.7721 patience=2/10
+    [hybrid] epoch 04/30: train_loss=1.0467 val_auc=0.8065 best=0.8065 patience=0/10 *
+    [hybrid] epoch 05/30: train_loss=0.8046 val_auc=0.8411 best=0.8411 patience=0/10 *
+    [hybrid] epoch 06/30: train_loss=0.6605 val_auc=0.7679 best=0.8411 patience=1/10
+    [hybrid] epoch 07/30: train_loss=0.6222 val_auc=0.8353 best=0.8411 patience=2/10
+    [hybrid] epoch 08/30: train_loss=0.4925 val_auc=0.7191 best=0.8411 patience=3/10
+    [hybrid] epoch 09/30: train_loss=0.3947 val_auc=0.6233 best=0.8411 patience=4/10
+    [hybrid] epoch 10/30: train_loss=0.2959 val_auc=0.6314 best=0.8411 patience=5/10
+    [hybrid] epoch 11/30: train_loss=0.2935 val_auc=0.5907 best=0.8411 patience=6/10
+    [hybrid] epoch 12/30: train_loss=0.2342 val_auc=0.5983 best=0.8411 patience=7/10
+    [hybrid] epoch 13/30: train_loss=0.1643 val_auc=0.6289 best=0.8411 patience=8/10
+    [hybrid] epoch 14/30: train_loss=0.0988 val_auc=0.6402 best=0.8411 patience=9/10
+    [hybrid] epoch 15/30: train_loss=0.0749 val_auc=0.5901 best=0.8411 patience=10/10
+    [hybrid] early stop at epoch 15
+  [hybrid] fold 99/100: AUC=0.8411
+    [hybrid] epoch 01/30: train_loss=1.2580 val_auc=0.7496 best=0.7496 patience=0/10 *
+    [hybrid] epoch 02/30: train_loss=1.2011 val_auc=0.7598 best=0.7598 patience=0/10 *
+    [hybrid] epoch 03/30: train_loss=0.9149 val_auc=0.8042 best=0.8042 patience=0/10 *
+    [hybrid] epoch 04/30: train_loss=0.7672 val_auc=0.8004 best=0.8042 patience=1/10
+    [hybrid] epoch 05/30: train_loss=0.7185 val_auc=0.7268 best=0.8042 patience=2/10
+    [hybrid] epoch 06/30: train_loss=0.7938 val_auc=0.8331 best=0.8331 patience=0/10 *
+    [hybrid] epoch 07/30: train_loss=0.4277 val_auc=0.6521 best=0.8331 patience=1/10
+    [hybrid] epoch 08/30: train_loss=0.3922 val_auc=0.5848 best=0.8331 patience=2/10
+    [hybrid] epoch 09/30: train_loss=0.3181 val_auc=0.6402 best=0.8331 patience=3/10
+    [hybrid] epoch 10/30: train_loss=0.3846 val_auc=0.6736 best=0.8331 patience=4/10
+    [hybrid] epoch 11/30: train_loss=0.2346 val_auc=0.7628 best=0.8331 patience=5/10
+    [hybrid] epoch 12/30: train_loss=0.1159 val_auc=0.6780 best=0.8331 patience=6/10
+    [hybrid] epoch 13/30: train_loss=0.0978 val_auc=0.6597 best=0.8331 patience=7/10
+    [hybrid] epoch 14/30: train_loss=0.1743 val_auc=0.6518 best=0.8331 patience=8/10
+    [hybrid] epoch 15/30: train_loss=0.0713 val_auc=0.6950 best=0.8331 patience=9/10
+    [hybrid] epoch 16/30: train_loss=0.0424 val_auc=0.6470 best=0.8331 patience=10/10
+    [hybrid] early stop at epoch 16
+  [hybrid] fold 100/100: AUC=0.8331
+hybrid: mean=0.8636, std=0.0408, q25=0.8399, q10=0.8102 over 100 folds

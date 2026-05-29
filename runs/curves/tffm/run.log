@@ -1,0 +1,111 @@
+/usr/local/lib/python3.11/dist-packages/torch_frame/data/mapper.py:105: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:203.)
+  index = torch.from_numpy(index).to(device)
+
+== train tffm ==
+  out:   ./runs/curves/tffm
+  model  seed=42 device=cuda epochs=100 batch_size=256 lr=0.0001 weight_decay=1e-05 early_stop_patience=100 channels=256 num_layers=3
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+  run    val_fraction=0.2 quick=False save_model=False
+
+    [tffm] epoch 01/100: train_loss=1.1633 val_auc=0.8742 best=0.8742 patience=0/100 *
+    [tffm] epoch 02/100: train_loss=0.9736 val_auc=0.8918 best=0.8918 patience=0/100 *
+    [tffm] epoch 03/100: train_loss=0.8154 val_auc=0.8930 best=0.8930 patience=0/100 *
+    [tffm] epoch 04/100: train_loss=0.8087 val_auc=0.9010 best=0.9010 patience=0/100 *
+    [tffm] epoch 05/100: train_loss=0.9440 val_auc=0.9177 best=0.9177 patience=0/100 *
+    [tffm] epoch 06/100: train_loss=0.7564 val_auc=0.9149 best=0.9177 patience=1/100
+    [tffm] epoch 07/100: train_loss=0.8266 val_auc=0.9170 best=0.9177 patience=2/100
+    [tffm] epoch 08/100: train_loss=0.7242 val_auc=0.9203 best=0.9203 patience=0/100 *
+    [tffm] epoch 09/100: train_loss=0.7427 val_auc=0.9228 best=0.9228 patience=0/100 *
+    [tffm] epoch 10/100: train_loss=0.7850 val_auc=0.9023 best=0.9228 patience=1/100
+    [tffm] epoch 11/100: train_loss=0.7175 val_auc=0.9150 best=0.9228 patience=2/100
+    [tffm] epoch 12/100: train_loss=0.7139 val_auc=0.9162 best=0.9228 patience=3/100
+    [tffm] epoch 13/100: train_loss=0.6877 val_auc=0.9164 best=0.9228 patience=4/100
+    [tffm] epoch 14/100: train_loss=0.6683 val_auc=0.9165 best=0.9228 patience=5/100
+    [tffm] epoch 15/100: train_loss=0.6762 val_auc=0.9164 best=0.9228 patience=6/100
+    [tffm] epoch 16/100: train_loss=0.6926 val_auc=0.8801 best=0.9228 patience=7/100
+    [tffm] epoch 17/100: train_loss=0.6794 val_auc=0.9144 best=0.9228 patience=8/100
+    [tffm] epoch 18/100: train_loss=0.7291 val_auc=0.9161 best=0.9228 patience=9/100
+    [tffm] epoch 19/100: train_loss=0.6666 val_auc=0.9124 best=0.9228 patience=10/100
+    [tffm] epoch 20/100: train_loss=0.7068 val_auc=0.9145 best=0.9228 patience=11/100
+    [tffm] epoch 21/100: train_loss=0.6841 val_auc=0.9167 best=0.9228 patience=12/100
+    [tffm] epoch 22/100: train_loss=0.7089 val_auc=0.8960 best=0.9228 patience=13/100
+    [tffm] epoch 23/100: train_loss=0.6053 val_auc=0.9221 best=0.9228 patience=14/100
+    [tffm] epoch 24/100: train_loss=0.6464 val_auc=0.8728 best=0.9228 patience=15/100
+    [tffm] epoch 25/100: train_loss=0.6632 val_auc=0.9208 best=0.9228 patience=16/100
+    [tffm] epoch 26/100: train_loss=0.6104 val_auc=0.8973 best=0.9228 patience=17/100
+    [tffm] epoch 27/100: train_loss=0.5890 val_auc=0.8983 best=0.9228 patience=18/100
+    [tffm] epoch 28/100: train_loss=0.6046 val_auc=0.9212 best=0.9228 patience=19/100
+    [tffm] epoch 29/100: train_loss=0.5899 val_auc=0.9227 best=0.9228 patience=20/100
+    [tffm] epoch 30/100: train_loss=0.5452 val_auc=0.9217 best=0.9228 patience=21/100
+    [tffm] epoch 31/100: train_loss=0.5438 val_auc=0.7992 best=0.9228 patience=22/100
+    [tffm] epoch 32/100: train_loss=0.5869 val_auc=0.9023 best=0.9228 patience=23/100
+    [tffm] epoch 33/100: train_loss=0.6322 val_auc=0.8080 best=0.9228 patience=24/100
+    [tffm] epoch 34/100: train_loss=0.5571 val_auc=0.8345 best=0.9228 patience=25/100
+    [tffm] epoch 35/100: train_loss=0.6066 val_auc=0.8201 best=0.9228 patience=26/100
+    [tffm] epoch 36/100: train_loss=0.5836 val_auc=0.8624 best=0.9228 patience=27/100
+    [tffm] epoch 37/100: train_loss=0.5618 val_auc=0.8009 best=0.9228 patience=28/100
+    [tffm] epoch 38/100: train_loss=0.6870 val_auc=0.8644 best=0.9228 patience=29/100
+    [tffm] epoch 39/100: train_loss=0.5405 val_auc=0.8267 best=0.9228 patience=30/100
+    [tffm] epoch 40/100: train_loss=0.5658 val_auc=0.8544 best=0.9228 patience=31/100
+    [tffm] epoch 41/100: train_loss=0.5066 val_auc=0.8084 best=0.9228 patience=32/100
+    [tffm] epoch 42/100: train_loss=0.5325 val_auc=0.8659 best=0.9228 patience=33/100
+    [tffm] epoch 43/100: train_loss=0.5428 val_auc=0.8014 best=0.9228 patience=34/100
+    [tffm] epoch 44/100: train_loss=0.5567 val_auc=0.8225 best=0.9228 patience=35/100
+    [tffm] epoch 45/100: train_loss=0.4780 val_auc=0.8215 best=0.9228 patience=36/100
+    [tffm] epoch 46/100: train_loss=0.4865 val_auc=0.7958 best=0.9228 patience=37/100
+    [tffm] epoch 47/100: train_loss=0.5510 val_auc=0.7974 best=0.9228 patience=38/100
+    [tffm] epoch 48/100: train_loss=0.4934 val_auc=0.8293 best=0.9228 patience=39/100
+    [tffm] epoch 49/100: train_loss=0.5075 val_auc=0.7983 best=0.9228 patience=40/100
+    [tffm] epoch 50/100: train_loss=0.5097 val_auc=0.8360 best=0.9228 patience=41/100
+    [tffm] epoch 51/100: train_loss=0.6117 val_auc=0.8022 best=0.9228 patience=42/100
+    [tffm] epoch 52/100: train_loss=0.5180 val_auc=0.8467 best=0.9228 patience=43/100
+    [tffm] epoch 53/100: train_loss=0.6401 val_auc=0.8163 best=0.9228 patience=44/100
+    [tffm] epoch 54/100: train_loss=0.4906 val_auc=0.8133 best=0.9228 patience=45/100
+    [tffm] epoch 55/100: train_loss=0.5746 val_auc=0.7769 best=0.9228 patience=46/100
+    [tffm] epoch 56/100: train_loss=0.5181 val_auc=0.7760 best=0.9228 patience=47/100
+    [tffm] epoch 57/100: train_loss=0.5566 val_auc=0.7716 best=0.9228 patience=48/100
+    [tffm] epoch 58/100: train_loss=0.4594 val_auc=0.8158 best=0.9228 patience=49/100
+    [tffm] epoch 59/100: train_loss=0.4698 val_auc=0.8145 best=0.9228 patience=50/100
+    [tffm] epoch 60/100: train_loss=0.4892 val_auc=0.7856 best=0.9228 patience=51/100
+    [tffm] epoch 61/100: train_loss=0.5084 val_auc=0.7858 best=0.9228 patience=52/100
+    [tffm] epoch 62/100: train_loss=0.4511 val_auc=0.7528 best=0.9228 patience=53/100
+    [tffm] epoch 63/100: train_loss=0.4691 val_auc=0.8839 best=0.9228 patience=54/100
+    [tffm] epoch 64/100: train_loss=0.5454 val_auc=0.7881 best=0.9228 patience=55/100
+    [tffm] epoch 65/100: train_loss=0.4897 val_auc=0.8530 best=0.9228 patience=56/100
+    [tffm] epoch 66/100: train_loss=0.5260 val_auc=0.8103 best=0.9228 patience=57/100
+    [tffm] epoch 67/100: train_loss=0.4913 val_auc=0.8512 best=0.9228 patience=58/100
+    [tffm] epoch 68/100: train_loss=0.5324 val_auc=0.8032 best=0.9228 patience=59/100
+    [tffm] epoch 69/100: train_loss=0.4748 val_auc=0.8240 best=0.9228 patience=60/100
+    [tffm] epoch 70/100: train_loss=0.4967 val_auc=0.7928 best=0.9228 patience=61/100
+    [tffm] epoch 71/100: train_loss=0.4639 val_auc=0.8345 best=0.9228 patience=62/100
+    [tffm] epoch 72/100: train_loss=0.4522 val_auc=0.8141 best=0.9228 patience=63/100
+    [tffm] epoch 73/100: train_loss=0.5408 val_auc=0.8544 best=0.9228 patience=64/100
+    [tffm] epoch 74/100: train_loss=0.4511 val_auc=0.8524 best=0.9228 patience=65/100
+    [tffm] epoch 75/100: train_loss=0.4828 val_auc=0.8533 best=0.9228 patience=66/100
+    [tffm] epoch 76/100: train_loss=0.4501 val_auc=0.8083 best=0.9228 patience=67/100
+    [tffm] epoch 77/100: train_loss=0.4287 val_auc=0.8326 best=0.9228 patience=68/100
+    [tffm] epoch 78/100: train_loss=0.4115 val_auc=0.8312 best=0.9228 patience=69/100
+    [tffm] epoch 79/100: train_loss=0.5576 val_auc=0.8210 best=0.9228 patience=70/100
+    [tffm] epoch 80/100: train_loss=0.4415 val_auc=0.8332 best=0.9228 patience=71/100
+    [tffm] epoch 81/100: train_loss=0.4247 val_auc=0.8286 best=0.9228 patience=72/100
+    [tffm] epoch 82/100: train_loss=0.5933 val_auc=0.8827 best=0.9228 patience=73/100
+    [tffm] epoch 83/100: train_loss=0.4902 val_auc=0.8406 best=0.9228 patience=74/100
+    [tffm] epoch 84/100: train_loss=0.4348 val_auc=0.8560 best=0.9228 patience=75/100
+    [tffm] epoch 85/100: train_loss=0.4140 val_auc=0.8514 best=0.9228 patience=76/100
+    [tffm] epoch 86/100: train_loss=0.4007 val_auc=0.8331 best=0.9228 patience=77/100
+    [tffm] epoch 87/100: train_loss=0.4059 val_auc=0.8626 best=0.9228 patience=78/100
+    [tffm] epoch 88/100: train_loss=0.4213 val_auc=0.8535 best=0.9228 patience=79/100
+    [tffm] epoch 89/100: train_loss=0.4253 val_auc=0.8684 best=0.9228 patience=80/100
+    [tffm] epoch 90/100: train_loss=0.4043 val_auc=0.8553 best=0.9228 patience=81/100
+    [tffm] epoch 91/100: train_loss=0.5231 val_auc=0.8647 best=0.9228 patience=82/100
+    [tffm] epoch 92/100: train_loss=0.4019 val_auc=0.8368 best=0.9228 patience=83/100
+    [tffm] epoch 93/100: train_loss=0.4072 val_auc=0.8318 best=0.9228 patience=84/100
+    [tffm] epoch 94/100: train_loss=0.3713 val_auc=0.8519 best=0.9228 patience=85/100
+    [tffm] epoch 95/100: train_loss=0.3987 val_auc=0.8593 best=0.9228 patience=86/100
+    [tffm] epoch 96/100: train_loss=0.3660 val_auc=0.8109 best=0.9228 patience=87/100
+    [tffm] epoch 97/100: train_loss=0.4764 val_auc=0.8449 best=0.9228 patience=88/100
+    [tffm] epoch 98/100: train_loss=0.3954 val_auc=0.8155 best=0.9228 patience=89/100
+    [tffm] epoch 99/100: train_loss=0.4092 val_auc=0.8336 best=0.9228 patience=90/100
+    [tffm] epoch 100/100: train_loss=0.3704 val_auc=0.8463 best=0.9228 patience=91/100
+  [tffm] val AUC=0.9228
+tffm: val_auc=0.9228

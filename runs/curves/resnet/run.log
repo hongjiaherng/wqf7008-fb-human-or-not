@@ -1,0 +1,109 @@
+
+== train resnet ==
+  out:   ./runs/curves/resnet
+  model  seed=42 device=cuda epochs=100 batch_size=256 lr=0.0003 weight_decay=0.0001 early_stop_patience=100 hidden=128 block_hidden=256 n_layers=4 dropout=0.2
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+  run    val_fraction=0.2 quick=False save_model=False
+
+    [resnet] epoch 01/100: train_loss=1.4053 val_auc=0.2408 best=0.2408 patience=0/100 *
+    [resnet] epoch 02/100: train_loss=1.3640 val_auc=0.2409 best=0.2409 patience=0/100 *
+    [resnet] epoch 03/100: train_loss=1.4317 val_auc=0.4260 best=0.4260 patience=0/100 *
+    [resnet] epoch 04/100: train_loss=1.3546 val_auc=0.5165 best=0.5165 patience=0/100 *
+    [resnet] epoch 05/100: train_loss=1.3114 val_auc=0.7200 best=0.7200 patience=0/100 *
+    [resnet] epoch 06/100: train_loss=1.3336 val_auc=0.7413 best=0.7413 patience=0/100 *
+    [resnet] epoch 07/100: train_loss=1.2607 val_auc=0.7640 best=0.7640 patience=0/100 *
+    [resnet] epoch 08/100: train_loss=1.2425 val_auc=0.7638 best=0.7640 patience=1/100
+    [resnet] epoch 09/100: train_loss=1.2291 val_auc=0.7633 best=0.7640 patience=2/100
+    [resnet] epoch 10/100: train_loss=1.2072 val_auc=0.7632 best=0.7640 patience=3/100
+    [resnet] epoch 11/100: train_loss=1.2278 val_auc=0.7632 best=0.7640 patience=4/100
+    [resnet] epoch 12/100: train_loss=1.1971 val_auc=0.7627 best=0.7640 patience=5/100
+    [resnet] epoch 13/100: train_loss=1.2426 val_auc=0.7627 best=0.7640 patience=6/100
+    [resnet] epoch 14/100: train_loss=1.1967 val_auc=0.7628 best=0.7640 patience=7/100
+    [resnet] epoch 15/100: train_loss=1.2552 val_auc=0.7630 best=0.7640 patience=8/100
+    [resnet] epoch 16/100: train_loss=1.1887 val_auc=0.7631 best=0.7640 patience=9/100
+    [resnet] epoch 17/100: train_loss=1.2093 val_auc=0.7631 best=0.7640 patience=10/100
+    [resnet] epoch 18/100: train_loss=1.2169 val_auc=0.7627 best=0.7640 patience=11/100
+    [resnet] epoch 19/100: train_loss=1.2049 val_auc=0.7628 best=0.7640 patience=12/100
+    [resnet] epoch 20/100: train_loss=1.1666 val_auc=0.7630 best=0.7640 patience=13/100
+    [resnet] epoch 21/100: train_loss=1.2179 val_auc=0.7628 best=0.7640 patience=14/100
+    [resnet] epoch 22/100: train_loss=1.2082 val_auc=0.7630 best=0.7640 patience=15/100
+    [resnet] epoch 23/100: train_loss=1.1889 val_auc=0.7630 best=0.7640 patience=16/100
+    [resnet] epoch 24/100: train_loss=1.1667 val_auc=0.7629 best=0.7640 patience=17/100
+    [resnet] epoch 25/100: train_loss=1.1752 val_auc=0.7628 best=0.7640 patience=18/100
+    [resnet] epoch 26/100: train_loss=1.1886 val_auc=0.7628 best=0.7640 patience=19/100
+    [resnet] epoch 27/100: train_loss=1.1703 val_auc=0.7628 best=0.7640 patience=20/100
+    [resnet] epoch 28/100: train_loss=1.1632 val_auc=0.7627 best=0.7640 patience=21/100
+    [resnet] epoch 29/100: train_loss=1.1488 val_auc=0.7627 best=0.7640 patience=22/100
+    [resnet] epoch 30/100: train_loss=1.1512 val_auc=0.7627 best=0.7640 patience=23/100
+    [resnet] epoch 31/100: train_loss=1.1707 val_auc=0.7627 best=0.7640 patience=24/100
+    [resnet] epoch 32/100: train_loss=1.1700 val_auc=0.7626 best=0.7640 patience=25/100
+    [resnet] epoch 33/100: train_loss=1.1473 val_auc=0.7626 best=0.7640 patience=26/100
+    [resnet] epoch 34/100: train_loss=1.1504 val_auc=0.7625 best=0.7640 patience=27/100
+    [resnet] epoch 35/100: train_loss=1.1484 val_auc=0.7625 best=0.7640 patience=28/100
+    [resnet] epoch 36/100: train_loss=1.1447 val_auc=0.7625 best=0.7640 patience=29/100
+    [resnet] epoch 37/100: train_loss=1.1504 val_auc=0.7625 best=0.7640 patience=30/100
+    [resnet] epoch 38/100: train_loss=1.1465 val_auc=0.7625 best=0.7640 patience=31/100
+    [resnet] epoch 39/100: train_loss=1.1816 val_auc=0.7623 best=0.7640 patience=32/100
+    [resnet] epoch 40/100: train_loss=1.1329 val_auc=0.7623 best=0.7640 patience=33/100
+    [resnet] epoch 41/100: train_loss=1.1618 val_auc=0.7623 best=0.7640 patience=34/100
+    [resnet] epoch 42/100: train_loss=1.1473 val_auc=0.7623 best=0.7640 patience=35/100
+    [resnet] epoch 43/100: train_loss=1.1275 val_auc=0.7623 best=0.7640 patience=36/100
+    [resnet] epoch 44/100: train_loss=1.1448 val_auc=0.7623 best=0.7640 patience=37/100
+    [resnet] epoch 45/100: train_loss=1.1436 val_auc=0.7617 best=0.7640 patience=38/100
+    [resnet] epoch 46/100: train_loss=1.1377 val_auc=0.7617 best=0.7640 patience=39/100
+    [resnet] epoch 47/100: train_loss=1.1066 val_auc=0.7617 best=0.7640 patience=40/100
+    [resnet] epoch 48/100: train_loss=1.1246 val_auc=0.7610 best=0.7640 patience=41/100
+    [resnet] epoch 49/100: train_loss=1.1616 val_auc=0.7598 best=0.7640 patience=42/100
+    [resnet] epoch 50/100: train_loss=1.1236 val_auc=0.7598 best=0.7640 patience=43/100
+    [resnet] epoch 51/100: train_loss=1.1338 val_auc=0.7598 best=0.7640 patience=44/100
+    [resnet] epoch 52/100: train_loss=1.0925 val_auc=0.7603 best=0.7640 patience=45/100
+    [resnet] epoch 53/100: train_loss=1.1300 val_auc=0.7600 best=0.7640 patience=46/100
+    [resnet] epoch 54/100: train_loss=1.1668 val_auc=0.7600 best=0.7640 patience=47/100
+    [resnet] epoch 55/100: train_loss=1.1063 val_auc=0.7610 best=0.7640 patience=48/100
+    [resnet] epoch 56/100: train_loss=1.0988 val_auc=0.7618 best=0.7640 patience=49/100
+    [resnet] epoch 57/100: train_loss=1.1383 val_auc=0.7626 best=0.7640 patience=50/100
+    [resnet] epoch 58/100: train_loss=1.0865 val_auc=0.7603 best=0.7640 patience=51/100
+    [resnet] epoch 59/100: train_loss=1.1509 val_auc=0.7593 best=0.7640 patience=52/100
+    [resnet] epoch 60/100: train_loss=1.1081 val_auc=0.7617 best=0.7640 patience=53/100
+    [resnet] epoch 61/100: train_loss=1.0755 val_auc=0.7623 best=0.7640 patience=54/100
+    [resnet] epoch 62/100: train_loss=1.1458 val_auc=0.7627 best=0.7640 patience=55/100
+    [resnet] epoch 63/100: train_loss=1.1672 val_auc=0.7627 best=0.7640 patience=56/100
+    [resnet] epoch 64/100: train_loss=1.0876 val_auc=0.7617 best=0.7640 patience=57/100
+    [resnet] epoch 65/100: train_loss=1.1200 val_auc=0.7626 best=0.7640 patience=58/100
+    [resnet] epoch 66/100: train_loss=1.1183 val_auc=0.7627 best=0.7640 patience=59/100
+    [resnet] epoch 67/100: train_loss=1.1194 val_auc=0.7627 best=0.7640 patience=60/100
+    [resnet] epoch 68/100: train_loss=1.1223 val_auc=0.7623 best=0.7640 patience=61/100
+    [resnet] epoch 69/100: train_loss=1.1311 val_auc=0.7603 best=0.7640 patience=62/100
+    [resnet] epoch 70/100: train_loss=1.1222 val_auc=0.7622 best=0.7640 patience=63/100
+    [resnet] epoch 71/100: train_loss=1.1206 val_auc=0.7623 best=0.7640 patience=64/100
+    [resnet] epoch 72/100: train_loss=1.1036 val_auc=0.7618 best=0.7640 patience=65/100
+    [resnet] epoch 73/100: train_loss=1.1464 val_auc=0.7607 best=0.7640 patience=66/100
+    [resnet] epoch 74/100: train_loss=1.0679 val_auc=0.7608 best=0.7640 patience=67/100
+    [resnet] epoch 75/100: train_loss=1.1118 val_auc=0.7611 best=0.7640 patience=68/100
+    [resnet] epoch 76/100: train_loss=1.1182 val_auc=0.7574 best=0.7640 patience=69/100
+    [resnet] epoch 77/100: train_loss=1.1171 val_auc=0.7586 best=0.7640 patience=70/100
+    [resnet] epoch 78/100: train_loss=1.1164 val_auc=0.7606 best=0.7640 patience=71/100
+    [resnet] epoch 79/100: train_loss=1.1132 val_auc=0.7616 best=0.7640 patience=72/100
+    [resnet] epoch 80/100: train_loss=1.0945 val_auc=0.7617 best=0.7640 patience=73/100
+    [resnet] epoch 81/100: train_loss=1.0878 val_auc=0.7602 best=0.7640 patience=74/100
+    [resnet] epoch 82/100: train_loss=1.0920 val_auc=0.7618 best=0.7640 patience=75/100
+    [resnet] epoch 83/100: train_loss=1.1226 val_auc=0.7616 best=0.7640 patience=76/100
+    [resnet] epoch 84/100: train_loss=1.0677 val_auc=0.7576 best=0.7640 patience=77/100
+    [resnet] epoch 85/100: train_loss=1.1218 val_auc=0.7606 best=0.7640 patience=78/100
+    [resnet] epoch 86/100: train_loss=1.0989 val_auc=0.7622 best=0.7640 patience=79/100
+    [resnet] epoch 87/100: train_loss=1.0896 val_auc=0.7623 best=0.7640 patience=80/100
+    [resnet] epoch 88/100: train_loss=1.0791 val_auc=0.7612 best=0.7640 patience=81/100
+    [resnet] epoch 89/100: train_loss=1.2039 val_auc=0.7577 best=0.7640 patience=82/100
+    [resnet] epoch 90/100: train_loss=1.1387 val_auc=0.7575 best=0.7640 patience=83/100
+    [resnet] epoch 91/100: train_loss=1.1350 val_auc=0.7577 best=0.7640 patience=84/100
+    [resnet] epoch 92/100: train_loss=1.1012 val_auc=0.7577 best=0.7640 patience=85/100
+    [resnet] epoch 93/100: train_loss=1.1120 val_auc=0.7623 best=0.7640 patience=86/100
+    [resnet] epoch 94/100: train_loss=1.0535 val_auc=0.7602 best=0.7640 patience=87/100
+    [resnet] epoch 95/100: train_loss=1.0669 val_auc=0.7623 best=0.7640 patience=88/100
+    [resnet] epoch 96/100: train_loss=1.1165 val_auc=0.7627 best=0.7640 patience=89/100
+    [resnet] epoch 97/100: train_loss=1.0652 val_auc=0.7628 best=0.7640 patience=90/100
+    [resnet] epoch 98/100: train_loss=1.0472 val_auc=0.7628 best=0.7640 patience=91/100
+    [resnet] epoch 99/100: train_loss=1.0761 val_auc=0.7627 best=0.7640 patience=92/100
+    [resnet] epoch 100/100: train_loss=1.0775 val_auc=0.7629 best=0.7640 patience=93/100
+  [resnet] val AUC=0.7640
+resnet: val_auc=0.7640

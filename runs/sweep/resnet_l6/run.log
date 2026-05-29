@@ -1,0 +1,394 @@
+
+== cv resnet ==
+  out:   ./runs/sweep/resnet_l6
+  cv     n_splits=5 n_repeats=5 quick=False
+  model  seed=42 device=cuda epochs=50 batch_size=256 lr=0.001 weight_decay=0.0001 early_stop_patience=10 hidden=128 block_hidden=256 n_layers=6 dropout=0.2
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+
+    [resnet] epoch 01/50: train_loss=1.2865 val_auc=0.7238 best=0.7238 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2354 val_auc=0.7368 best=0.7368 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2490 val_auc=0.7367 best=0.7368 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2138 val_auc=0.7362 best=0.7368 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.2021 val_auc=0.7357 best=0.7368 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1749 val_auc=0.7356 best=0.7368 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.2110 val_auc=0.7352 best=0.7368 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1551 val_auc=0.7351 best=0.7368 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1849 val_auc=0.7347 best=0.7368 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1641 val_auc=0.7345 best=0.7368 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1635 val_auc=0.7350 best=0.7368 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1615 val_auc=0.7349 best=0.7368 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 1/25: AUC=0.7368
+    [resnet] epoch 01/50: train_loss=1.2527 val_auc=0.7177 best=0.7177 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2077 val_auc=0.7205 best=0.7205 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.1757 val_auc=0.7228 best=0.7228 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1647 val_auc=0.7231 best=0.7231 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.1620 val_auc=0.7232 best=0.7232 patience=0/10 *
+    [resnet] epoch 06/50: train_loss=1.1386 val_auc=0.7226 best=0.7232 patience=1/10
+    [resnet] epoch 07/50: train_loss=1.1326 val_auc=0.7226 best=0.7232 patience=2/10
+    [resnet] epoch 08/50: train_loss=1.1392 val_auc=0.7211 best=0.7232 patience=3/10
+    [resnet] epoch 09/50: train_loss=1.1225 val_auc=0.7225 best=0.7232 patience=4/10
+    [resnet] epoch 10/50: train_loss=1.1434 val_auc=0.7206 best=0.7232 patience=5/10
+    [resnet] epoch 11/50: train_loss=1.1369 val_auc=0.7205 best=0.7232 patience=6/10
+    [resnet] epoch 12/50: train_loss=1.1190 val_auc=0.7205 best=0.7232 patience=7/10
+    [resnet] epoch 13/50: train_loss=1.1469 val_auc=0.7203 best=0.7232 patience=8/10
+    [resnet] epoch 14/50: train_loss=1.1304 val_auc=0.7208 best=0.7232 patience=9/10
+    [resnet] epoch 15/50: train_loss=1.1189 val_auc=0.7206 best=0.7232 patience=10/10
+    [resnet] early stop at epoch 15
+  [resnet] fold 2/25: AUC=0.7232
+    [resnet] epoch 01/50: train_loss=1.3266 val_auc=0.5228 best=0.5228 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2526 val_auc=0.7392 best=0.7392 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2219 val_auc=0.7378 best=0.7392 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2245 val_auc=0.7376 best=0.7392 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1731 val_auc=0.7375 best=0.7392 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1678 val_auc=0.7372 best=0.7392 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1892 val_auc=0.7369 best=0.7392 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.2083 val_auc=0.7365 best=0.7392 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1607 val_auc=0.7351 best=0.7392 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1645 val_auc=0.7350 best=0.7392 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1398 val_auc=0.7346 best=0.7392 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1733 val_auc=0.7337 best=0.7392 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 3/25: AUC=0.7392
+    [resnet] epoch 01/50: train_loss=1.3201 val_auc=0.7202 best=0.7202 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2819 val_auc=0.7251 best=0.7251 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2055 val_auc=0.7247 best=0.7251 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2176 val_auc=0.7247 best=0.7251 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1898 val_auc=0.7247 best=0.7251 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1774 val_auc=0.7247 best=0.7251 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1645 val_auc=0.7247 best=0.7251 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1748 val_auc=0.7247 best=0.7251 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1525 val_auc=0.7247 best=0.7251 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1826 val_auc=0.7246 best=0.7251 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1392 val_auc=0.7246 best=0.7251 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1529 val_auc=0.7246 best=0.7251 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 4/25: AUC=0.7251
+    [resnet] epoch 01/50: train_loss=1.3222 val_auc=0.6258 best=0.6258 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2219 val_auc=0.6818 best=0.6818 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2480 val_auc=0.7145 best=0.7145 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1967 val_auc=0.7132 best=0.7145 patience=1/10
+    [resnet] epoch 05/50: train_loss=1.2380 val_auc=0.7124 best=0.7145 patience=2/10
+    [resnet] epoch 06/50: train_loss=1.1699 val_auc=0.7124 best=0.7145 patience=3/10
+    [resnet] epoch 07/50: train_loss=1.1665 val_auc=0.7122 best=0.7145 patience=4/10
+    [resnet] epoch 08/50: train_loss=1.1619 val_auc=0.7116 best=0.7145 patience=5/10
+    [resnet] epoch 09/50: train_loss=1.1827 val_auc=0.7115 best=0.7145 patience=6/10
+    [resnet] epoch 10/50: train_loss=1.1785 val_auc=0.7115 best=0.7145 patience=7/10
+    [resnet] epoch 11/50: train_loss=1.1479 val_auc=0.7114 best=0.7145 patience=8/10
+    [resnet] epoch 12/50: train_loss=1.1869 val_auc=0.7109 best=0.7145 patience=9/10
+    [resnet] epoch 13/50: train_loss=1.1208 val_auc=0.7098 best=0.7145 patience=10/10
+    [resnet] early stop at epoch 13
+  [resnet] fold 5/25: AUC=0.7145
+    [resnet] epoch 01/50: train_loss=1.3089 val_auc=0.7204 best=0.7204 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2321 val_auc=0.7356 best=0.7356 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2374 val_auc=0.7354 best=0.7356 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.1733 val_auc=0.7351 best=0.7356 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1887 val_auc=0.7345 best=0.7356 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1737 val_auc=0.7344 best=0.7356 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1858 val_auc=0.7342 best=0.7356 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1690 val_auc=0.7341 best=0.7356 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1448 val_auc=0.7340 best=0.7356 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1849 val_auc=0.7335 best=0.7356 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1411 val_auc=0.7332 best=0.7356 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1411 val_auc=0.7340 best=0.7356 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 6/25: AUC=0.7356
+    [resnet] epoch 01/50: train_loss=1.2662 val_auc=0.6796 best=0.6796 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2750 val_auc=0.6832 best=0.6832 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2173 val_auc=0.6955 best=0.6955 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1704 val_auc=0.6965 best=0.6965 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.1905 val_auc=0.6963 best=0.6965 patience=1/10
+    [resnet] epoch 06/50: train_loss=1.2614 val_auc=0.6961 best=0.6965 patience=2/10
+    [resnet] epoch 07/50: train_loss=1.2329 val_auc=0.6961 best=0.6965 patience=3/10
+    [resnet] epoch 08/50: train_loss=1.1696 val_auc=0.6961 best=0.6965 patience=4/10
+    [resnet] epoch 09/50: train_loss=1.1926 val_auc=0.6953 best=0.6965 patience=5/10
+    [resnet] epoch 10/50: train_loss=1.1541 val_auc=0.6952 best=0.6965 patience=6/10
+    [resnet] epoch 11/50: train_loss=1.1567 val_auc=0.6948 best=0.6965 patience=7/10
+    [resnet] epoch 12/50: train_loss=1.1278 val_auc=0.6950 best=0.6965 patience=8/10
+    [resnet] epoch 13/50: train_loss=1.1518 val_auc=0.6935 best=0.6965 patience=9/10
+    [resnet] epoch 14/50: train_loss=1.1628 val_auc=0.6921 best=0.6965 patience=10/10
+    [resnet] early stop at epoch 14
+  [resnet] fold 7/25: AUC=0.6965
+    [resnet] epoch 01/50: train_loss=1.3199 val_auc=0.6722 best=0.6722 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2952 val_auc=0.7251 best=0.7251 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2550 val_auc=0.7246 best=0.7251 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2123 val_auc=0.7246 best=0.7251 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.2019 val_auc=0.7245 best=0.7251 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1622 val_auc=0.7235 best=0.7251 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.2133 val_auc=0.7233 best=0.7251 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1587 val_auc=0.7234 best=0.7251 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1540 val_auc=0.7229 best=0.7251 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1674 val_auc=0.7226 best=0.7251 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1749 val_auc=0.7220 best=0.7251 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1355 val_auc=0.7218 best=0.7251 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 8/25: AUC=0.7251
+    [resnet] epoch 01/50: train_loss=1.2639 val_auc=0.7509 best=0.7509 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2354 val_auc=0.7516 best=0.7516 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2392 val_auc=0.7516 best=0.7516 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2016 val_auc=0.7519 best=0.7519 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.1941 val_auc=0.7524 best=0.7524 patience=0/10 *
+    [resnet] epoch 06/50: train_loss=1.1508 val_auc=0.7526 best=0.7526 patience=0/10 *
+    [resnet] epoch 07/50: train_loss=1.1905 val_auc=0.7520 best=0.7526 patience=1/10
+    [resnet] epoch 08/50: train_loss=1.1201 val_auc=0.7524 best=0.7526 patience=2/10
+    [resnet] epoch 09/50: train_loss=1.1862 val_auc=0.7517 best=0.7526 patience=3/10
+    [resnet] epoch 10/50: train_loss=1.1217 val_auc=0.7513 best=0.7526 patience=4/10
+    [resnet] epoch 11/50: train_loss=1.1444 val_auc=0.7507 best=0.7526 patience=5/10
+    [resnet] epoch 12/50: train_loss=1.1646 val_auc=0.7503 best=0.7526 patience=6/10
+    [resnet] epoch 13/50: train_loss=1.1148 val_auc=0.7495 best=0.7526 patience=7/10
+    [resnet] epoch 14/50: train_loss=1.1134 val_auc=0.7475 best=0.7526 patience=8/10
+    [resnet] epoch 15/50: train_loss=1.1001 val_auc=0.7412 best=0.7526 patience=9/10
+    [resnet] epoch 16/50: train_loss=1.1175 val_auc=0.7415 best=0.7526 patience=10/10
+    [resnet] early stop at epoch 16
+  [resnet] fold 9/25: AUC=0.7526
+    [resnet] epoch 01/50: train_loss=1.3741 val_auc=0.4603 best=0.4603 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2499 val_auc=0.6687 best=0.6687 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2350 val_auc=0.7280 best=0.7280 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.2077 val_auc=0.7267 best=0.7280 patience=1/10
+    [resnet] epoch 05/50: train_loss=1.1979 val_auc=0.7262 best=0.7280 patience=2/10
+    [resnet] epoch 06/50: train_loss=1.2390 val_auc=0.7260 best=0.7280 patience=3/10
+    [resnet] epoch 07/50: train_loss=1.1787 val_auc=0.7260 best=0.7280 patience=4/10
+    [resnet] epoch 08/50: train_loss=1.1780 val_auc=0.7258 best=0.7280 patience=5/10
+    [resnet] epoch 09/50: train_loss=1.1699 val_auc=0.7257 best=0.7280 patience=6/10
+    [resnet] epoch 10/50: train_loss=1.1402 val_auc=0.7257 best=0.7280 patience=7/10
+    [resnet] epoch 11/50: train_loss=1.1638 val_auc=0.7253 best=0.7280 patience=8/10
+    [resnet] epoch 12/50: train_loss=1.1756 val_auc=0.7242 best=0.7280 patience=9/10
+    [resnet] epoch 13/50: train_loss=1.1153 val_auc=0.7238 best=0.7280 patience=10/10
+    [resnet] early stop at epoch 13
+  [resnet] fold 10/25: AUC=0.7280
+    [resnet] epoch 01/50: train_loss=1.2394 val_auc=0.7260 best=0.7260 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2080 val_auc=0.7284 best=0.7284 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.1891 val_auc=0.7289 best=0.7289 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1741 val_auc=0.7287 best=0.7289 patience=1/10
+    [resnet] epoch 05/50: train_loss=1.1579 val_auc=0.7287 best=0.7289 patience=2/10
+    [resnet] epoch 06/50: train_loss=1.1536 val_auc=0.7287 best=0.7289 patience=3/10
+    [resnet] epoch 07/50: train_loss=1.1468 val_auc=0.7286 best=0.7289 patience=4/10
+    [resnet] epoch 08/50: train_loss=1.1770 val_auc=0.7273 best=0.7289 patience=5/10
+    [resnet] epoch 09/50: train_loss=1.1232 val_auc=0.7259 best=0.7289 patience=6/10
+    [resnet] epoch 10/50: train_loss=1.1486 val_auc=0.7271 best=0.7289 patience=7/10
+    [resnet] epoch 11/50: train_loss=1.1858 val_auc=0.7256 best=0.7289 patience=8/10
+    [resnet] epoch 12/50: train_loss=1.0998 val_auc=0.7271 best=0.7289 patience=9/10
+    [resnet] epoch 13/50: train_loss=1.1362 val_auc=0.7264 best=0.7289 patience=10/10
+    [resnet] early stop at epoch 13
+  [resnet] fold 11/25: AUC=0.7289
+    [resnet] epoch 01/50: train_loss=1.3208 val_auc=0.5571 best=0.5571 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2825 val_auc=0.6947 best=0.6947 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2270 val_auc=0.6931 best=0.6947 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.1883 val_auc=0.6922 best=0.6947 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1877 val_auc=0.6920 best=0.6947 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1966 val_auc=0.6917 best=0.6947 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.2155 val_auc=0.6913 best=0.6947 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.2011 val_auc=0.6911 best=0.6947 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1875 val_auc=0.6891 best=0.6947 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.2152 val_auc=0.6892 best=0.6947 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1764 val_auc=0.6891 best=0.6947 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1359 val_auc=0.6890 best=0.6947 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 12/25: AUC=0.6947
+    [resnet] epoch 01/50: train_loss=1.2382 val_auc=0.7523 best=0.7523 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.1953 val_auc=0.7516 best=0.7523 patience=1/10
+    [resnet] epoch 03/50: train_loss=1.1447 val_auc=0.7516 best=0.7523 patience=2/10
+    [resnet] epoch 04/50: train_loss=1.1872 val_auc=0.7514 best=0.7523 patience=3/10
+    [resnet] epoch 05/50: train_loss=1.1481 val_auc=0.7514 best=0.7523 patience=4/10
+    [resnet] epoch 06/50: train_loss=1.1079 val_auc=0.7513 best=0.7523 patience=5/10
+    [resnet] epoch 07/50: train_loss=1.1242 val_auc=0.7511 best=0.7523 patience=6/10
+    [resnet] epoch 08/50: train_loss=1.1466 val_auc=0.7508 best=0.7523 patience=7/10
+    [resnet] epoch 09/50: train_loss=1.1632 val_auc=0.7508 best=0.7523 patience=8/10
+    [resnet] epoch 10/50: train_loss=1.1613 val_auc=0.7497 best=0.7523 patience=9/10
+    [resnet] epoch 11/50: train_loss=1.1057 val_auc=0.7512 best=0.7523 patience=10/10
+    [resnet] early stop at epoch 11
+  [resnet] fold 13/25: AUC=0.7523
+    [resnet] epoch 01/50: train_loss=1.3698 val_auc=0.6808 best=0.6808 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.3172 val_auc=0.7130 best=0.7130 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2568 val_auc=0.7266 best=0.7266 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1877 val_auc=0.7291 best=0.7291 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.2212 val_auc=0.7289 best=0.7291 patience=1/10
+    [resnet] epoch 06/50: train_loss=1.1985 val_auc=0.7292 best=0.7292 patience=0/10 *
+    [resnet] epoch 07/50: train_loss=1.1852 val_auc=0.7296 best=0.7296 patience=0/10 *
+    [resnet] epoch 08/50: train_loss=1.2178 val_auc=0.7289 best=0.7296 patience=1/10
+    [resnet] epoch 09/50: train_loss=1.1904 val_auc=0.7298 best=0.7298 patience=0/10 *
+    [resnet] epoch 10/50: train_loss=1.1800 val_auc=0.7313 best=0.7313 patience=0/10 *
+    [resnet] epoch 11/50: train_loss=1.1280 val_auc=0.7309 best=0.7313 patience=1/10
+    [resnet] epoch 12/50: train_loss=1.1553 val_auc=0.7289 best=0.7313 patience=2/10
+    [resnet] epoch 13/50: train_loss=1.1255 val_auc=0.7283 best=0.7313 patience=3/10
+    [resnet] epoch 14/50: train_loss=1.1306 val_auc=0.7272 best=0.7313 patience=4/10
+    [resnet] epoch 15/50: train_loss=1.1286 val_auc=0.7237 best=0.7313 patience=5/10
+    [resnet] epoch 16/50: train_loss=1.1175 val_auc=0.7226 best=0.7313 patience=6/10
+    [resnet] epoch 17/50: train_loss=1.1324 val_auc=0.7234 best=0.7313 patience=7/10
+    [resnet] epoch 18/50: train_loss=1.1256 val_auc=0.7253 best=0.7313 patience=8/10
+    [resnet] epoch 19/50: train_loss=1.1584 val_auc=0.7225 best=0.7313 patience=9/10
+    [resnet] epoch 20/50: train_loss=1.1453 val_auc=0.7295 best=0.7313 patience=10/10
+    [resnet] early stop at epoch 20
+  [resnet] fold 14/25: AUC=0.7313
+    [resnet] epoch 01/50: train_loss=1.2582 val_auc=0.7039 best=0.7039 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.3166 val_auc=0.7152 best=0.7152 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2146 val_auc=0.7183 best=0.7183 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1858 val_auc=0.7220 best=0.7220 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.1805 val_auc=0.7221 best=0.7221 patience=0/10 *
+    [resnet] epoch 06/50: train_loss=1.1568 val_auc=0.7224 best=0.7224 patience=0/10 *
+    [resnet] epoch 07/50: train_loss=1.1565 val_auc=0.7220 best=0.7224 patience=1/10
+    [resnet] epoch 08/50: train_loss=1.1565 val_auc=0.7211 best=0.7224 patience=2/10
+    [resnet] epoch 09/50: train_loss=1.1458 val_auc=0.7200 best=0.7224 patience=3/10
+    [resnet] epoch 10/50: train_loss=1.2013 val_auc=0.7183 best=0.7224 patience=4/10
+    [resnet] epoch 11/50: train_loss=1.1528 val_auc=0.7157 best=0.7224 patience=5/10
+    [resnet] epoch 12/50: train_loss=1.1400 val_auc=0.7157 best=0.7224 patience=6/10
+    [resnet] epoch 13/50: train_loss=1.1382 val_auc=0.7157 best=0.7224 patience=7/10
+    [resnet] epoch 14/50: train_loss=1.1055 val_auc=0.7156 best=0.7224 patience=8/10
+    [resnet] epoch 15/50: train_loss=1.1676 val_auc=0.7152 best=0.7224 patience=9/10
+    [resnet] epoch 16/50: train_loss=1.1199 val_auc=0.7154 best=0.7224 patience=10/10
+    [resnet] early stop at epoch 16
+  [resnet] fold 15/25: AUC=0.7224
+    [resnet] epoch 01/50: train_loss=1.3053 val_auc=0.7022 best=0.7022 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2235 val_auc=0.7016 best=0.7022 patience=1/10
+    [resnet] epoch 03/50: train_loss=1.2090 val_auc=0.7014 best=0.7022 patience=2/10
+    [resnet] epoch 04/50: train_loss=1.2370 val_auc=0.7013 best=0.7022 patience=3/10
+    [resnet] epoch 05/50: train_loss=1.1803 val_auc=0.7012 best=0.7022 patience=4/10
+    [resnet] epoch 06/50: train_loss=1.2071 val_auc=0.7007 best=0.7022 patience=5/10
+    [resnet] epoch 07/50: train_loss=1.1725 val_auc=0.7006 best=0.7022 patience=6/10
+    [resnet] epoch 08/50: train_loss=1.1617 val_auc=0.6997 best=0.7022 patience=7/10
+    [resnet] epoch 09/50: train_loss=1.1209 val_auc=0.6997 best=0.7022 patience=8/10
+    [resnet] epoch 10/50: train_loss=1.1876 val_auc=0.6988 best=0.7022 patience=9/10
+    [resnet] epoch 11/50: train_loss=1.1393 val_auc=0.6993 best=0.7022 patience=10/10
+    [resnet] early stop at epoch 11
+  [resnet] fold 16/25: AUC=0.7022
+    [resnet] epoch 01/50: train_loss=1.3964 val_auc=0.7536 best=0.7536 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2440 val_auc=0.7266 best=0.7536 patience=1/10
+    [resnet] epoch 03/50: train_loss=1.2300 val_auc=0.7263 best=0.7536 patience=2/10
+    [resnet] epoch 04/50: train_loss=1.1893 val_auc=0.7254 best=0.7536 patience=3/10
+    [resnet] epoch 05/50: train_loss=1.2312 val_auc=0.7253 best=0.7536 patience=4/10
+    [resnet] epoch 06/50: train_loss=1.1560 val_auc=0.7251 best=0.7536 patience=5/10
+    [resnet] epoch 07/50: train_loss=1.1877 val_auc=0.7250 best=0.7536 patience=6/10
+    [resnet] epoch 08/50: train_loss=1.1806 val_auc=0.7242 best=0.7536 patience=7/10
+    [resnet] epoch 09/50: train_loss=1.1327 val_auc=0.7246 best=0.7536 patience=8/10
+    [resnet] epoch 10/50: train_loss=1.1571 val_auc=0.7238 best=0.7536 patience=9/10
+    [resnet] epoch 11/50: train_loss=1.1620 val_auc=0.7238 best=0.7536 patience=10/10
+    [resnet] early stop at epoch 11
+  [resnet] fold 17/25: AUC=0.7536
+    [resnet] epoch 01/50: train_loss=1.3261 val_auc=0.6360 best=0.6360 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2303 val_auc=0.7809 best=0.7809 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2608 val_auc=0.7794 best=0.7809 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2119 val_auc=0.7776 best=0.7809 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1892 val_auc=0.7779 best=0.7809 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1766 val_auc=0.7777 best=0.7809 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1596 val_auc=0.7775 best=0.7809 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1704 val_auc=0.7770 best=0.7809 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1471 val_auc=0.7770 best=0.7809 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1824 val_auc=0.7766 best=0.7809 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1435 val_auc=0.7761 best=0.7809 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1828 val_auc=0.7760 best=0.7809 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 18/25: AUC=0.7809
+    [resnet] epoch 01/50: train_loss=1.3550 val_auc=0.3821 best=0.3821 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2538 val_auc=0.7147 best=0.7147 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2274 val_auc=0.7115 best=0.7147 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2266 val_auc=0.7103 best=0.7147 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.2035 val_auc=0.7099 best=0.7147 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1881 val_auc=0.7101 best=0.7147 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.2268 val_auc=0.7098 best=0.7147 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1554 val_auc=0.7097 best=0.7147 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1503 val_auc=0.7095 best=0.7147 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1292 val_auc=0.7093 best=0.7147 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1580 val_auc=0.7092 best=0.7147 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1543 val_auc=0.7092 best=0.7147 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 19/25: AUC=0.7147
+    [resnet] epoch 01/50: train_loss=1.2976 val_auc=0.7038 best=0.7038 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.1930 val_auc=0.7314 best=0.7314 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.1954 val_auc=0.7321 best=0.7321 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.2206 val_auc=0.7322 best=0.7322 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.2529 val_auc=0.7319 best=0.7322 patience=1/10
+    [resnet] epoch 06/50: train_loss=1.1979 val_auc=0.7322 best=0.7322 patience=2/10
+    [resnet] epoch 07/50: train_loss=1.1575 val_auc=0.7322 best=0.7322 patience=3/10
+    [resnet] epoch 08/50: train_loss=1.1972 val_auc=0.7318 best=0.7322 patience=4/10
+    [resnet] epoch 09/50: train_loss=1.1472 val_auc=0.7309 best=0.7322 patience=5/10
+    [resnet] epoch 10/50: train_loss=1.1826 val_auc=0.7305 best=0.7322 patience=6/10
+    [resnet] epoch 11/50: train_loss=1.1210 val_auc=0.7319 best=0.7322 patience=7/10
+    [resnet] epoch 12/50: train_loss=1.1405 val_auc=0.7320 best=0.7322 patience=8/10
+    [resnet] epoch 13/50: train_loss=1.1679 val_auc=0.7326 best=0.7326 patience=0/10 *
+    [resnet] epoch 14/50: train_loss=1.1055 val_auc=0.7309 best=0.7326 patience=1/10
+    [resnet] epoch 15/50: train_loss=1.1376 val_auc=0.7310 best=0.7326 patience=2/10
+    [resnet] epoch 16/50: train_loss=1.1158 val_auc=0.7288 best=0.7326 patience=3/10
+    [resnet] epoch 17/50: train_loss=1.0879 val_auc=0.7280 best=0.7326 patience=4/10
+    [resnet] epoch 18/50: train_loss=1.1177 val_auc=0.7275 best=0.7326 patience=5/10
+    [resnet] epoch 19/50: train_loss=1.1258 val_auc=0.7275 best=0.7326 patience=6/10
+    [resnet] epoch 20/50: train_loss=1.0976 val_auc=0.7280 best=0.7326 patience=7/10
+    [resnet] epoch 21/50: train_loss=1.1224 val_auc=0.7277 best=0.7326 patience=8/10
+    [resnet] epoch 22/50: train_loss=1.1047 val_auc=0.7275 best=0.7326 patience=9/10
+    [resnet] epoch 23/50: train_loss=1.0806 val_auc=0.7275 best=0.7326 patience=10/10
+    [resnet] early stop at epoch 23
+  [resnet] fold 20/25: AUC=0.7326
+    [resnet] epoch 01/50: train_loss=1.3690 val_auc=0.6824 best=0.6824 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.3290 val_auc=0.7295 best=0.7295 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2028 val_auc=0.7292 best=0.7295 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2575 val_auc=0.7292 best=0.7295 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.2051 val_auc=0.7291 best=0.7295 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.2186 val_auc=0.7291 best=0.7295 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.2280 val_auc=0.7289 best=0.7295 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.2131 val_auc=0.7289 best=0.7295 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1451 val_auc=0.7284 best=0.7295 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1674 val_auc=0.7282 best=0.7295 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1985 val_auc=0.7291 best=0.7295 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1411 val_auc=0.7274 best=0.7295 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 21/25: AUC=0.7295
+    [resnet] epoch 01/50: train_loss=1.2324 val_auc=0.6877 best=0.6877 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2279 val_auc=0.6933 best=0.6933 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2293 val_auc=0.6946 best=0.6946 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1738 val_auc=0.6952 best=0.6952 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.1693 val_auc=0.6945 best=0.6952 patience=1/10
+    [resnet] epoch 06/50: train_loss=1.1433 val_auc=0.6945 best=0.6952 patience=2/10
+    [resnet] epoch 07/50: train_loss=1.1591 val_auc=0.6938 best=0.6952 patience=3/10
+    [resnet] epoch 08/50: train_loss=1.1408 val_auc=0.6935 best=0.6952 patience=4/10
+    [resnet] epoch 09/50: train_loss=1.1712 val_auc=0.6937 best=0.6952 patience=5/10
+    [resnet] epoch 10/50: train_loss=1.1966 val_auc=0.6947 best=0.6952 patience=6/10
+    [resnet] epoch 11/50: train_loss=1.1313 val_auc=0.6905 best=0.6952 patience=7/10
+    [resnet] epoch 12/50: train_loss=1.1263 val_auc=0.6891 best=0.6952 patience=8/10
+    [resnet] epoch 13/50: train_loss=1.1103 val_auc=0.6886 best=0.6952 patience=9/10
+    [resnet] epoch 14/50: train_loss=1.1059 val_auc=0.6889 best=0.6952 patience=10/10
+    [resnet] early stop at epoch 14
+  [resnet] fold 22/25: AUC=0.6952
+    [resnet] epoch 01/50: train_loss=1.3043 val_auc=0.7208 best=0.7208 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2890 val_auc=0.7268 best=0.7268 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2353 val_auc=0.7261 best=0.7268 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.2202 val_auc=0.7256 best=0.7268 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1809 val_auc=0.7250 best=0.7268 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1809 val_auc=0.7248 best=0.7268 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1881 val_auc=0.7241 best=0.7268 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1813 val_auc=0.7241 best=0.7268 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1721 val_auc=0.7238 best=0.7268 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.2109 val_auc=0.7236 best=0.7268 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1396 val_auc=0.7238 best=0.7268 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1198 val_auc=0.7240 best=0.7268 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 23/25: AUC=0.7268
+    [resnet] epoch 01/50: train_loss=1.3636 val_auc=0.6241 best=0.6241 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2624 val_auc=0.7344 best=0.7344 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2018 val_auc=0.7357 best=0.7357 patience=0/10 *
+    [resnet] epoch 04/50: train_loss=1.1964 val_auc=0.7359 best=0.7359 patience=0/10 *
+    [resnet] epoch 05/50: train_loss=1.2297 val_auc=0.7355 best=0.7359 patience=1/10
+    [resnet] epoch 06/50: train_loss=1.2233 val_auc=0.7353 best=0.7359 patience=2/10
+    [resnet] epoch 07/50: train_loss=1.1736 val_auc=0.7347 best=0.7359 patience=3/10
+    [resnet] epoch 08/50: train_loss=1.1334 val_auc=0.7346 best=0.7359 patience=4/10
+    [resnet] epoch 09/50: train_loss=1.1721 val_auc=0.7331 best=0.7359 patience=5/10
+    [resnet] epoch 10/50: train_loss=1.1464 val_auc=0.7329 best=0.7359 patience=6/10
+    [resnet] epoch 11/50: train_loss=1.1802 val_auc=0.7330 best=0.7359 patience=7/10
+    [resnet] epoch 12/50: train_loss=1.1951 val_auc=0.7330 best=0.7359 patience=8/10
+    [resnet] epoch 13/50: train_loss=1.1510 val_auc=0.7329 best=0.7359 patience=9/10
+    [resnet] epoch 14/50: train_loss=1.1317 val_auc=0.7326 best=0.7359 patience=10/10
+    [resnet] early stop at epoch 14
+  [resnet] fold 24/25: AUC=0.7359
+    [resnet] epoch 01/50: train_loss=1.2407 val_auc=0.6637 best=0.6637 patience=0/10 *
+    [resnet] epoch 02/50: train_loss=1.2124 val_auc=0.7629 best=0.7629 patience=0/10 *
+    [resnet] epoch 03/50: train_loss=1.2042 val_auc=0.7616 best=0.7629 patience=1/10
+    [resnet] epoch 04/50: train_loss=1.1908 val_auc=0.7612 best=0.7629 patience=2/10
+    [resnet] epoch 05/50: train_loss=1.1656 val_auc=0.7604 best=0.7629 patience=3/10
+    [resnet] epoch 06/50: train_loss=1.1812 val_auc=0.7604 best=0.7629 patience=4/10
+    [resnet] epoch 07/50: train_loss=1.1797 val_auc=0.7600 best=0.7629 patience=5/10
+    [resnet] epoch 08/50: train_loss=1.1382 val_auc=0.7598 best=0.7629 patience=6/10
+    [resnet] epoch 09/50: train_loss=1.1261 val_auc=0.7600 best=0.7629 patience=7/10
+    [resnet] epoch 10/50: train_loss=1.1135 val_auc=0.7586 best=0.7629 patience=8/10
+    [resnet] epoch 11/50: train_loss=1.1174 val_auc=0.7578 best=0.7629 patience=9/10
+    [resnet] epoch 12/50: train_loss=1.1182 val_auc=0.7562 best=0.7629 patience=10/10
+    [resnet] early stop at epoch 12
+  [resnet] fold 25/25: AUC=0.7629
+resnet: mean=0.7296, std=0.0204, q25=0.7224, q10=0.6988 over 25 folds

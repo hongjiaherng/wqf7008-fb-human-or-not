@@ -1,0 +1,742 @@
+
+== cv gnn ==
+  out:   ./runs/sweep/gnn_drop0.5
+  cv     n_splits=5 n_repeats=5 quick=False
+  model  seed=42 device=cuda epochs=30 lr=0.001 weight_decay=0.0001 early_stop_patience=10 hidden=128 dropout=0.5
+  data   data_dir=./data/facebook-recruiting-iv-human-or-bot runs_dir=./runs cache_dir=./runs/cache
+
+    [gnn] epoch 01/30: train_loss=1.2994 val_auc=0.6771 best=0.6771 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2911 val_auc=0.7265 best=0.7265 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2670 val_auc=0.7450 best=0.7450 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2704 val_auc=0.7545 best=0.7545 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2108 val_auc=0.7710 best=0.7710 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.1865 val_auc=0.7731 best=0.7731 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1808 val_auc=0.7679 best=0.7731 patience=1/10
+    [gnn] epoch 08/30: train_loss=1.1381 val_auc=0.7721 best=0.7731 patience=2/10
+    [gnn] epoch 09/30: train_loss=1.1027 val_auc=0.7731 best=0.7731 patience=3/10
+    [gnn] epoch 10/30: train_loss=1.0645 val_auc=0.7731 best=0.7731 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0168 val_auc=0.7746 best=0.7746 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=0.9963 val_auc=0.7767 best=0.7767 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0060 val_auc=0.7787 best=0.7787 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9396 val_auc=0.7821 best=0.7821 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9135 val_auc=0.7840 best=0.7840 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8895 val_auc=0.7838 best=0.7840 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.8483 val_auc=0.7861 best=0.7861 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8030 val_auc=0.7868 best=0.7868 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8164 val_auc=0.7890 best=0.7890 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7725 val_auc=0.7887 best=0.7890 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.7268 val_auc=0.7871 best=0.7890 patience=2/10
+    [gnn] epoch 22/30: train_loss=0.6856 val_auc=0.7931 best=0.7931 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6213 val_auc=0.7949 best=0.7949 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6181 val_auc=0.7968 best=0.7968 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.5819 val_auc=0.7966 best=0.7968 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6155 val_auc=0.7978 best=0.7978 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5258 val_auc=0.7992 best=0.7992 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5383 val_auc=0.8009 best=0.8009 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5234 val_auc=0.7999 best=0.8009 patience=1/10
+    [gnn] epoch 30/30: train_loss=0.4669 val_auc=0.8007 best=0.8009 patience=2/10
+  [gnn] fold 1/25: AUC=0.8009
+    [gnn] epoch 01/30: train_loss=1.3137 val_auc=0.7110 best=0.7110 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2764 val_auc=0.7385 best=0.7385 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2575 val_auc=0.7474 best=0.7474 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2389 val_auc=0.7634 best=0.7634 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2023 val_auc=0.7711 best=0.7711 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.1833 val_auc=0.7785 best=0.7785 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1505 val_auc=0.7857 best=0.7857 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1198 val_auc=0.7921 best=0.7921 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1140 val_auc=0.7976 best=0.7976 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0554 val_auc=0.8053 best=0.8053 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0603 val_auc=0.8084 best=0.8084 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=0.9830 val_auc=0.8129 best=0.8129 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9603 val_auc=0.8190 best=0.8190 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9294 val_auc=0.8184 best=0.8190 patience=1/10
+    [gnn] epoch 15/30: train_loss=0.8860 val_auc=0.8205 best=0.8205 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8829 val_auc=0.8244 best=0.8244 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8101 val_auc=0.8341 best=0.8341 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8224 val_auc=0.8362 best=0.8362 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.7755 val_auc=0.8356 best=0.8362 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.7621 val_auc=0.8393 best=0.8393 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7387 val_auc=0.8494 best=0.8494 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.6687 val_auc=0.8553 best=0.8553 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6388 val_auc=0.8609 best=0.8609 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6131 val_auc=0.8645 best=0.8645 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6217 val_auc=0.8639 best=0.8645 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.5551 val_auc=0.8625 best=0.8645 patience=2/10
+    [gnn] epoch 27/30: train_loss=0.5450 val_auc=0.8664 best=0.8664 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5458 val_auc=0.8681 best=0.8681 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.4985 val_auc=0.8681 best=0.8681 patience=1/10
+    [gnn] epoch 30/30: train_loss=0.4576 val_auc=0.8711 best=0.8711 patience=0/10 *
+  [gnn] fold 2/25: AUC=0.8711
+    [gnn] epoch 01/30: train_loss=1.3133 val_auc=0.5704 best=0.5704 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3009 val_auc=0.6364 best=0.6364 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2799 val_auc=0.6724 best=0.6724 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2509 val_auc=0.6836 best=0.6836 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2371 val_auc=0.7112 best=0.7112 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2027 val_auc=0.7425 best=0.7425 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1916 val_auc=0.7655 best=0.7655 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1588 val_auc=0.7732 best=0.7732 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1076 val_auc=0.7736 best=0.7736 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1039 val_auc=0.7771 best=0.7771 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0837 val_auc=0.7862 best=0.7862 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0309 val_auc=0.7875 best=0.7875 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9888 val_auc=0.7911 best=0.7911 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9745 val_auc=0.7962 best=0.7962 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9263 val_auc=0.8027 best=0.8027 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8408 val_auc=0.8070 best=0.8070 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8440 val_auc=0.8101 best=0.8101 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8214 val_auc=0.8144 best=0.8144 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8255 val_auc=0.8173 best=0.8173 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7696 val_auc=0.8195 best=0.8195 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7516 val_auc=0.8199 best=0.8199 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.6577 val_auc=0.8202 best=0.8202 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6952 val_auc=0.8194 best=0.8202 patience=1/10
+    [gnn] epoch 24/30: train_loss=0.6289 val_auc=0.8187 best=0.8202 patience=2/10
+    [gnn] epoch 25/30: train_loss=0.5594 val_auc=0.8184 best=0.8202 patience=3/10
+    [gnn] epoch 26/30: train_loss=0.5433 val_auc=0.8209 best=0.8209 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5822 val_auc=0.8236 best=0.8236 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5304 val_auc=0.8267 best=0.8267 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5128 val_auc=0.8286 best=0.8286 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.4646 val_auc=0.8286 best=0.8286 patience=0/10 *
+  [gnn] fold 3/25: AUC=0.8286
+    [gnn] epoch 01/30: train_loss=1.3187 val_auc=0.6789 best=0.6789 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2813 val_auc=0.7164 best=0.7164 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2668 val_auc=0.7271 best=0.7271 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2419 val_auc=0.7327 best=0.7327 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2123 val_auc=0.7465 best=0.7465 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.1854 val_auc=0.7517 best=0.7517 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1436 val_auc=0.7537 best=0.7537 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1291 val_auc=0.7486 best=0.7537 patience=1/10
+    [gnn] epoch 09/30: train_loss=1.1003 val_auc=0.7491 best=0.7537 patience=2/10
+    [gnn] epoch 10/30: train_loss=1.0756 val_auc=0.7514 best=0.7537 patience=3/10
+    [gnn] epoch 11/30: train_loss=1.0254 val_auc=0.7552 best=0.7552 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0398 val_auc=0.7597 best=0.7597 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9544 val_auc=0.7671 best=0.7671 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9394 val_auc=0.7702 best=0.7702 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.8922 val_auc=0.7732 best=0.7732 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8632 val_auc=0.7757 best=0.7757 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8068 val_auc=0.7738 best=0.7757 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.8345 val_auc=0.7734 best=0.7757 patience=2/10
+    [gnn] epoch 19/30: train_loss=0.7870 val_auc=0.7793 best=0.7793 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7319 val_auc=0.7781 best=0.7793 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.6988 val_auc=0.7788 best=0.7793 patience=2/10
+    [gnn] epoch 22/30: train_loss=0.6986 val_auc=0.7810 best=0.7810 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6777 val_auc=0.7848 best=0.7848 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6799 val_auc=0.7868 best=0.7868 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6106 val_auc=0.7848 best=0.7868 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6142 val_auc=0.7877 best=0.7877 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5919 val_auc=0.7923 best=0.7923 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5192 val_auc=0.7950 best=0.7950 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5238 val_auc=0.7933 best=0.7950 patience=1/10
+    [gnn] epoch 30/30: train_loss=0.4657 val_auc=0.7891 best=0.7950 patience=2/10
+  [gnn] fold 4/25: AUC=0.7950
+    [gnn] epoch 01/30: train_loss=1.3262 val_auc=0.7461 best=0.7461 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2928 val_auc=0.7643 best=0.7643 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2757 val_auc=0.7677 best=0.7677 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2537 val_auc=0.7665 best=0.7677 patience=1/10
+    [gnn] epoch 05/30: train_loss=1.2438 val_auc=0.7605 best=0.7677 patience=2/10
+    [gnn] epoch 06/30: train_loss=1.2016 val_auc=0.7745 best=0.7745 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2261 val_auc=0.7918 best=0.7918 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1852 val_auc=0.8004 best=0.8004 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1663 val_auc=0.8054 best=0.8054 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1069 val_auc=0.8094 best=0.8094 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0870 val_auc=0.8045 best=0.8094 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0418 val_auc=0.8088 best=0.8094 patience=2/10
+    [gnn] epoch 13/30: train_loss=1.0318 val_auc=0.8149 best=0.8149 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=1.0201 val_auc=0.8199 best=0.8199 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9275 val_auc=0.8181 best=0.8199 patience=1/10
+    [gnn] epoch 16/30: train_loss=0.9156 val_auc=0.8161 best=0.8199 patience=2/10
+    [gnn] epoch 17/30: train_loss=0.8400 val_auc=0.8179 best=0.8199 patience=3/10
+    [gnn] epoch 18/30: train_loss=0.8195 val_auc=0.8209 best=0.8209 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.7860 val_auc=0.8190 best=0.8209 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.7590 val_auc=0.8151 best=0.8209 patience=2/10
+    [gnn] epoch 21/30: train_loss=0.7461 val_auc=0.8170 best=0.8209 patience=3/10
+    [gnn] epoch 22/30: train_loss=0.6870 val_auc=0.8223 best=0.8223 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6767 val_auc=0.8217 best=0.8223 patience=1/10
+    [gnn] epoch 24/30: train_loss=0.6475 val_auc=0.8199 best=0.8223 patience=2/10
+    [gnn] epoch 25/30: train_loss=0.6888 val_auc=0.8219 best=0.8223 patience=3/10
+    [gnn] epoch 26/30: train_loss=0.6523 val_auc=0.8270 best=0.8270 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.6107 val_auc=0.8275 best=0.8275 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5153 val_auc=0.8255 best=0.8275 patience=1/10
+    [gnn] epoch 29/30: train_loss=0.4942 val_auc=0.8275 best=0.8275 patience=2/10
+    [gnn] epoch 30/30: train_loss=0.5075 val_auc=0.8310 best=0.8310 patience=0/10 *
+  [gnn] fold 5/25: AUC=0.8310
+    [gnn] epoch 01/30: train_loss=1.3113 val_auc=0.5653 best=0.5653 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2692 val_auc=0.5713 best=0.5713 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2596 val_auc=0.5908 best=0.5908 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2239 val_auc=0.6123 best=0.6123 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.1868 val_auc=0.6290 best=0.6290 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2194 val_auc=0.6449 best=0.6449 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1519 val_auc=0.6614 best=0.6614 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1462 val_auc=0.6920 best=0.6920 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.0924 val_auc=0.7168 best=0.7168 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0578 val_auc=0.7223 best=0.7223 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0235 val_auc=0.7295 best=0.7295 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=0.9852 val_auc=0.7319 best=0.7319 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9900 val_auc=0.7314 best=0.7319 patience=1/10
+    [gnn] epoch 14/30: train_loss=0.9409 val_auc=0.7317 best=0.7319 patience=2/10
+    [gnn] epoch 15/30: train_loss=0.9112 val_auc=0.7346 best=0.7346 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8716 val_auc=0.7377 best=0.7377 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8155 val_auc=0.7403 best=0.7403 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8059 val_auc=0.7464 best=0.7464 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.7853 val_auc=0.7469 best=0.7469 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7316 val_auc=0.7453 best=0.7469 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.7681 val_auc=0.7427 best=0.7469 patience=2/10
+    [gnn] epoch 22/30: train_loss=0.6816 val_auc=0.7412 best=0.7469 patience=3/10
+    [gnn] epoch 23/30: train_loss=0.6763 val_auc=0.7393 best=0.7469 patience=4/10
+    [gnn] epoch 24/30: train_loss=0.6618 val_auc=0.7418 best=0.7469 patience=5/10
+    [gnn] epoch 25/30: train_loss=0.6345 val_auc=0.7420 best=0.7469 patience=6/10
+    [gnn] epoch 26/30: train_loss=0.6671 val_auc=0.7422 best=0.7469 patience=7/10
+    [gnn] epoch 27/30: train_loss=0.5815 val_auc=0.7440 best=0.7469 patience=8/10
+    [gnn] epoch 28/30: train_loss=0.6509 val_auc=0.7442 best=0.7469 patience=9/10
+    [gnn] epoch 29/30: train_loss=0.6118 val_auc=0.7459 best=0.7469 patience=10/10
+    [gnn] early stop at epoch 29
+  [gnn] fold 6/25: AUC=0.7469
+    [gnn] epoch 01/30: train_loss=1.3165 val_auc=0.6076 best=0.6076 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3067 val_auc=0.6432 best=0.6432 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2780 val_auc=0.6678 best=0.6678 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2610 val_auc=0.6789 best=0.6789 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2619 val_auc=0.7034 best=0.7034 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2485 val_auc=0.7216 best=0.7216 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2131 val_auc=0.7292 best=0.7292 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1932 val_auc=0.7357 best=0.7357 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1367 val_auc=0.7467 best=0.7467 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1320 val_auc=0.7534 best=0.7534 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0976 val_auc=0.7522 best=0.7534 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0956 val_auc=0.7481 best=0.7534 patience=2/10
+    [gnn] epoch 13/30: train_loss=1.0294 val_auc=0.7474 best=0.7534 patience=3/10
+    [gnn] epoch 14/30: train_loss=1.0034 val_auc=0.7459 best=0.7534 patience=4/10
+    [gnn] epoch 15/30: train_loss=0.9929 val_auc=0.7432 best=0.7534 patience=5/10
+    [gnn] epoch 16/30: train_loss=0.9793 val_auc=0.7494 best=0.7534 patience=6/10
+    [gnn] epoch 17/30: train_loss=0.9020 val_auc=0.7506 best=0.7534 patience=7/10
+    [gnn] epoch 18/30: train_loss=0.9131 val_auc=0.7503 best=0.7534 patience=8/10
+    [gnn] epoch 19/30: train_loss=0.8196 val_auc=0.7529 best=0.7534 patience=9/10
+    [gnn] epoch 20/30: train_loss=0.8139 val_auc=0.7613 best=0.7613 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7321 val_auc=0.7632 best=0.7632 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7293 val_auc=0.7613 best=0.7632 patience=1/10
+    [gnn] epoch 23/30: train_loss=0.6525 val_auc=0.7640 best=0.7640 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6686 val_auc=0.7679 best=0.7679 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6498 val_auc=0.7708 best=0.7708 patience=0/10 *
+    [gnn] epoch 26/30: train_loss=0.5755 val_auc=0.7703 best=0.7708 patience=1/10
+    [gnn] epoch 27/30: train_loss=0.5934 val_auc=0.7725 best=0.7725 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5580 val_auc=0.7766 best=0.7766 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5111 val_auc=0.7792 best=0.7792 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.4837 val_auc=0.7792 best=0.7792 patience=0/10 *
+  [gnn] fold 7/25: AUC=0.7792
+    [gnn] epoch 01/30: train_loss=1.3098 val_auc=0.6131 best=0.6131 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2854 val_auc=0.6683 best=0.6683 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2689 val_auc=0.7059 best=0.7059 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2538 val_auc=0.7289 best=0.7289 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2120 val_auc=0.7437 best=0.7437 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2175 val_auc=0.7557 best=0.7557 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2014 val_auc=0.7609 best=0.7609 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1339 val_auc=0.7704 best=0.7704 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1306 val_auc=0.7796 best=0.7796 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0809 val_auc=0.7830 best=0.7830 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0799 val_auc=0.7852 best=0.7852 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0629 val_auc=0.7907 best=0.7907 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9927 val_auc=0.7948 best=0.7948 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9601 val_auc=0.7966 best=0.7966 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9568 val_auc=0.7959 best=0.7966 patience=1/10
+    [gnn] epoch 16/30: train_loss=0.8809 val_auc=0.7989 best=0.7989 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8752 val_auc=0.8008 best=0.8008 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8121 val_auc=0.7997 best=0.8008 patience=1/10
+    [gnn] epoch 19/30: train_loss=0.7786 val_auc=0.7982 best=0.8008 patience=2/10
+    [gnn] epoch 20/30: train_loss=0.7408 val_auc=0.8000 best=0.8008 patience=3/10
+    [gnn] epoch 21/30: train_loss=0.7138 val_auc=0.8013 best=0.8013 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7274 val_auc=0.8003 best=0.8013 patience=1/10
+    [gnn] epoch 23/30: train_loss=0.7613 val_auc=0.8012 best=0.8013 patience=2/10
+    [gnn] epoch 24/30: train_loss=0.6901 val_auc=0.8020 best=0.8020 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6656 val_auc=0.8018 best=0.8020 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6361 val_auc=0.8059 best=0.8059 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.6256 val_auc=0.8105 best=0.8105 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.6257 val_auc=0.8111 best=0.8111 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.6008 val_auc=0.8146 best=0.8146 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.5046 val_auc=0.8136 best=0.8146 patience=1/10
+  [gnn] fold 8/25: AUC=0.8146
+    [gnn] epoch 01/30: train_loss=1.3057 val_auc=0.7677 best=0.7677 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2867 val_auc=0.7990 best=0.7990 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2661 val_auc=0.8198 best=0.8198 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2513 val_auc=0.8259 best=0.8259 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2218 val_auc=0.8272 best=0.8272 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2196 val_auc=0.8226 best=0.8272 patience=1/10
+    [gnn] epoch 07/30: train_loss=1.2104 val_auc=0.8245 best=0.8272 patience=2/10
+    [gnn] epoch 08/30: train_loss=1.1752 val_auc=0.8249 best=0.8272 patience=3/10
+    [gnn] epoch 09/30: train_loss=1.1100 val_auc=0.8238 best=0.8272 patience=4/10
+    [gnn] epoch 10/30: train_loss=1.1370 val_auc=0.8241 best=0.8272 patience=5/10
+    [gnn] epoch 11/30: train_loss=1.0985 val_auc=0.8254 best=0.8272 patience=6/10
+    [gnn] epoch 12/30: train_loss=1.0380 val_auc=0.8287 best=0.8287 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9923 val_auc=0.8295 best=0.8295 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=1.0086 val_auc=0.8305 best=0.8305 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9707 val_auc=0.8309 best=0.8309 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.9179 val_auc=0.8295 best=0.8309 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.8747 val_auc=0.8315 best=0.8315 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8679 val_auc=0.8370 best=0.8370 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8001 val_auc=0.8406 best=0.8406 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7981 val_auc=0.8432 best=0.8432 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7451 val_auc=0.8429 best=0.8432 patience=1/10
+    [gnn] epoch 22/30: train_loss=0.7183 val_auc=0.8440 best=0.8440 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6969 val_auc=0.8479 best=0.8479 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.7082 val_auc=0.8512 best=0.8512 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6425 val_auc=0.8507 best=0.8512 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6726 val_auc=0.8491 best=0.8512 patience=2/10
+    [gnn] epoch 27/30: train_loss=0.7024 val_auc=0.8520 best=0.8520 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5787 val_auc=0.8537 best=0.8537 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.6179 val_auc=0.8551 best=0.8551 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.6257 val_auc=0.8562 best=0.8562 patience=0/10 *
+  [gnn] fold 9/25: AUC=0.8562
+    [gnn] epoch 01/30: train_loss=1.3086 val_auc=0.7046 best=0.7046 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2973 val_auc=0.7209 best=0.7209 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2645 val_auc=0.7526 best=0.7526 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2454 val_auc=0.7493 best=0.7526 patience=1/10
+    [gnn] epoch 05/30: train_loss=1.2264 val_auc=0.7516 best=0.7526 patience=2/10
+    [gnn] epoch 06/30: train_loss=1.2006 val_auc=0.7558 best=0.7558 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1828 val_auc=0.7546 best=0.7558 patience=1/10
+    [gnn] epoch 08/30: train_loss=1.1438 val_auc=0.7589 best=0.7589 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1206 val_auc=0.7584 best=0.7589 patience=1/10
+    [gnn] epoch 10/30: train_loss=1.0653 val_auc=0.7589 best=0.7589 patience=2/10
+    [gnn] epoch 11/30: train_loss=1.0804 val_auc=0.7551 best=0.7589 patience=3/10
+    [gnn] epoch 12/30: train_loss=1.0366 val_auc=0.7611 best=0.7611 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0028 val_auc=0.7652 best=0.7652 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9530 val_auc=0.7685 best=0.7685 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9277 val_auc=0.7692 best=0.7692 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8869 val_auc=0.7675 best=0.7692 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.8418 val_auc=0.7687 best=0.7692 patience=2/10
+    [gnn] epoch 18/30: train_loss=0.8365 val_auc=0.7678 best=0.7692 patience=3/10
+    [gnn] epoch 19/30: train_loss=0.7769 val_auc=0.7694 best=0.7694 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.8277 val_auc=0.7711 best=0.7711 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7354 val_auc=0.7717 best=0.7717 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7179 val_auc=0.7757 best=0.7757 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6956 val_auc=0.7768 best=0.7768 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6922 val_auc=0.7796 best=0.7796 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6244 val_auc=0.7789 best=0.7796 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6018 val_auc=0.7805 best=0.7805 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5357 val_auc=0.7825 best=0.7825 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.4897 val_auc=0.7831 best=0.7831 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5523 val_auc=0.7843 best=0.7843 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.4716 val_auc=0.7859 best=0.7859 patience=0/10 *
+  [gnn] fold 10/25: AUC=0.7859
+    [gnn] epoch 01/30: train_loss=1.3197 val_auc=0.6430 best=0.6430 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3069 val_auc=0.6399 best=0.6430 patience=1/10
+    [gnn] epoch 03/30: train_loss=1.2621 val_auc=0.6579 best=0.6579 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2317 val_auc=0.6741 best=0.6741 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2527 val_auc=0.6684 best=0.6741 patience=1/10
+    [gnn] epoch 06/30: train_loss=1.1859 val_auc=0.6704 best=0.6741 patience=2/10
+    [gnn] epoch 07/30: train_loss=1.1558 val_auc=0.6814 best=0.6814 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1469 val_auc=0.6856 best=0.6856 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1320 val_auc=0.6872 best=0.6872 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0851 val_auc=0.6865 best=0.6872 patience=1/10
+    [gnn] epoch 11/30: train_loss=1.0365 val_auc=0.6851 best=0.6872 patience=2/10
+    [gnn] epoch 12/30: train_loss=1.0610 val_auc=0.6882 best=0.6882 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0100 val_auc=0.6971 best=0.6971 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=1.0031 val_auc=0.7039 best=0.7039 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9110 val_auc=0.7104 best=0.7104 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.9146 val_auc=0.7165 best=0.7165 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.9282 val_auc=0.7157 best=0.7165 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.8665 val_auc=0.7154 best=0.7165 patience=2/10
+    [gnn] epoch 19/30: train_loss=0.8193 val_auc=0.7173 best=0.7173 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7697 val_auc=0.7149 best=0.7173 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.7347 val_auc=0.7196 best=0.7196 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7138 val_auc=0.7224 best=0.7224 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.7179 val_auc=0.7281 best=0.7281 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6921 val_auc=0.7329 best=0.7329 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6453 val_auc=0.7354 best=0.7354 patience=0/10 *
+    [gnn] epoch 26/30: train_loss=0.5825 val_auc=0.7397 best=0.7397 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.6051 val_auc=0.7430 best=0.7430 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5064 val_auc=0.7450 best=0.7450 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5356 val_auc=0.7484 best=0.7484 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.5297 val_auc=0.7516 best=0.7516 patience=0/10 *
+  [gnn] fold 11/25: AUC=0.7516
+    [gnn] epoch 01/30: train_loss=1.3477 val_auc=0.7618 best=0.7618 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3004 val_auc=0.8201 best=0.8201 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2743 val_auc=0.8065 best=0.8201 patience=1/10
+    [gnn] epoch 04/30: train_loss=1.2614 val_auc=0.8023 best=0.8201 patience=2/10
+    [gnn] epoch 05/30: train_loss=1.2377 val_auc=0.7998 best=0.8201 patience=3/10
+    [gnn] epoch 06/30: train_loss=1.2199 val_auc=0.8073 best=0.8201 patience=4/10
+    [gnn] epoch 07/30: train_loss=1.1918 val_auc=0.8151 best=0.8201 patience=5/10
+    [gnn] epoch 08/30: train_loss=1.1771 val_auc=0.8192 best=0.8201 patience=6/10
+    [gnn] epoch 09/30: train_loss=1.1331 val_auc=0.8206 best=0.8206 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0873 val_auc=0.8262 best=0.8262 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0364 val_auc=0.8295 best=0.8295 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0352 val_auc=0.8303 best=0.8303 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9711 val_auc=0.8298 best=0.8303 patience=1/10
+    [gnn] epoch 14/30: train_loss=0.9881 val_auc=0.8281 best=0.8303 patience=2/10
+    [gnn] epoch 15/30: train_loss=0.9304 val_auc=0.8276 best=0.8303 patience=3/10
+    [gnn] epoch 16/30: train_loss=0.8850 val_auc=0.8259 best=0.8303 patience=4/10
+    [gnn] epoch 17/30: train_loss=0.8477 val_auc=0.8250 best=0.8303 patience=5/10
+    [gnn] epoch 18/30: train_loss=0.8285 val_auc=0.8264 best=0.8303 patience=6/10
+    [gnn] epoch 19/30: train_loss=0.7847 val_auc=0.8259 best=0.8303 patience=7/10
+    [gnn] epoch 20/30: train_loss=0.7129 val_auc=0.8266 best=0.8303 patience=8/10
+    [gnn] epoch 21/30: train_loss=0.7155 val_auc=0.8287 best=0.8303 patience=9/10
+    [gnn] epoch 22/30: train_loss=0.6733 val_auc=0.8300 best=0.8303 patience=10/10
+    [gnn] early stop at epoch 22
+  [gnn] fold 12/25: AUC=0.8303
+    [gnn] epoch 01/30: train_loss=1.3105 val_auc=0.7250 best=0.7250 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2751 val_auc=0.7537 best=0.7537 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2544 val_auc=0.7683 best=0.7683 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2503 val_auc=0.7896 best=0.7896 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.1950 val_auc=0.7948 best=0.7948 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.1877 val_auc=0.7961 best=0.7961 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1272 val_auc=0.8037 best=0.8037 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1159 val_auc=0.8028 best=0.8037 patience=1/10
+    [gnn] epoch 09/30: train_loss=1.0642 val_auc=0.7972 best=0.8037 patience=2/10
+    [gnn] epoch 10/30: train_loss=1.0286 val_auc=0.8028 best=0.8037 patience=3/10
+    [gnn] epoch 11/30: train_loss=0.9902 val_auc=0.8059 best=0.8059 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=0.9486 val_auc=0.8044 best=0.8059 patience=1/10
+    [gnn] epoch 13/30: train_loss=0.9762 val_auc=0.8022 best=0.8059 patience=2/10
+    [gnn] epoch 14/30: train_loss=0.8998 val_auc=0.8044 best=0.8059 patience=3/10
+    [gnn] epoch 15/30: train_loss=0.8816 val_auc=0.8070 best=0.8070 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8316 val_auc=0.8083 best=0.8083 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.7649 val_auc=0.8054 best=0.8083 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.7291 val_auc=0.8042 best=0.8083 patience=2/10
+    [gnn] epoch 19/30: train_loss=0.7319 val_auc=0.8032 best=0.8083 patience=3/10
+    [gnn] epoch 20/30: train_loss=0.7043 val_auc=0.8008 best=0.8083 patience=4/10
+    [gnn] epoch 21/30: train_loss=0.6974 val_auc=0.8018 best=0.8083 patience=5/10
+    [gnn] epoch 22/30: train_loss=0.6427 val_auc=0.8027 best=0.8083 patience=6/10
+    [gnn] epoch 23/30: train_loss=0.6111 val_auc=0.8014 best=0.8083 patience=7/10
+    [gnn] epoch 24/30: train_loss=0.5931 val_auc=0.8020 best=0.8083 patience=8/10
+    [gnn] epoch 25/30: train_loss=0.5356 val_auc=0.8033 best=0.8083 patience=9/10
+    [gnn] epoch 26/30: train_loss=0.5181 val_auc=0.8037 best=0.8083 patience=10/10
+    [gnn] early stop at epoch 26
+  [gnn] fold 13/25: AUC=0.8083
+    [gnn] epoch 01/30: train_loss=1.3216 val_auc=0.8161 best=0.8161 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3025 val_auc=0.8492 best=0.8492 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2811 val_auc=0.8605 best=0.8605 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2611 val_auc=0.8675 best=0.8675 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2468 val_auc=0.8692 best=0.8692 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2364 val_auc=0.8853 best=0.8853 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2278 val_auc=0.8916 best=0.8916 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.2171 val_auc=0.8983 best=0.8983 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1769 val_auc=0.9030 best=0.9030 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1332 val_auc=0.9059 best=0.9059 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.1075 val_auc=0.9042 best=0.9059 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0614 val_auc=0.9113 best=0.9113 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0491 val_auc=0.9170 best=0.9170 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=1.0415 val_auc=0.9183 best=0.9183 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9888 val_auc=0.9199 best=0.9199 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8930 val_auc=0.9198 best=0.9199 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.9263 val_auc=0.9190 best=0.9199 patience=2/10
+    [gnn] epoch 18/30: train_loss=0.8861 val_auc=0.9216 best=0.9216 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8575 val_auc=0.9208 best=0.9216 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.8117 val_auc=0.9178 best=0.9216 patience=2/10
+    [gnn] epoch 21/30: train_loss=0.8213 val_auc=0.9177 best=0.9216 patience=3/10
+    [gnn] epoch 22/30: train_loss=0.8256 val_auc=0.9145 best=0.9216 patience=4/10
+    [gnn] epoch 23/30: train_loss=0.7123 val_auc=0.9170 best=0.9216 patience=5/10
+    [gnn] epoch 24/30: train_loss=0.7423 val_auc=0.9194 best=0.9216 patience=6/10
+    [gnn] epoch 25/30: train_loss=0.7637 val_auc=0.9181 best=0.9216 patience=7/10
+    [gnn] epoch 26/30: train_loss=0.6883 val_auc=0.9152 best=0.9216 patience=8/10
+    [gnn] epoch 27/30: train_loss=0.7515 val_auc=0.9148 best=0.9216 patience=9/10
+    [gnn] epoch 28/30: train_loss=0.7389 val_auc=0.9174 best=0.9216 patience=10/10
+    [gnn] early stop at epoch 28
+  [gnn] fold 14/25: AUC=0.9216
+    [gnn] epoch 01/30: train_loss=1.3263 val_auc=0.7016 best=0.7016 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2947 val_auc=0.7098 best=0.7098 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2884 val_auc=0.6891 best=0.7098 patience=1/10
+    [gnn] epoch 04/30: train_loss=1.2727 val_auc=0.6853 best=0.7098 patience=2/10
+    [gnn] epoch 05/30: train_loss=1.2324 val_auc=0.6944 best=0.7098 patience=3/10
+    [gnn] epoch 06/30: train_loss=1.2299 val_auc=0.6996 best=0.7098 patience=4/10
+    [gnn] epoch 07/30: train_loss=1.1902 val_auc=0.6993 best=0.7098 patience=5/10
+    [gnn] epoch 08/30: train_loss=1.1593 val_auc=0.6993 best=0.7098 patience=6/10
+    [gnn] epoch 09/30: train_loss=1.1289 val_auc=0.7017 best=0.7098 patience=7/10
+    [gnn] epoch 10/30: train_loss=1.1203 val_auc=0.7010 best=0.7098 patience=8/10
+    [gnn] epoch 11/30: train_loss=1.0684 val_auc=0.7029 best=0.7098 patience=9/10
+    [gnn] epoch 12/30: train_loss=1.0411 val_auc=0.7045 best=0.7098 patience=10/10
+    [gnn] early stop at epoch 12
+  [gnn] fold 15/25: AUC=0.7098
+    [gnn] epoch 01/30: train_loss=1.3325 val_auc=0.6839 best=0.6839 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3002 val_auc=0.7104 best=0.7104 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2719 val_auc=0.7327 best=0.7327 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2730 val_auc=0.7442 best=0.7442 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2318 val_auc=0.7508 best=0.7508 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2211 val_auc=0.7579 best=0.7579 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1815 val_auc=0.7567 best=0.7579 patience=1/10
+    [gnn] epoch 08/30: train_loss=1.1637 val_auc=0.7622 best=0.7622 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1351 val_auc=0.7625 best=0.7625 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0928 val_auc=0.7593 best=0.7625 patience=1/10
+    [gnn] epoch 11/30: train_loss=1.0784 val_auc=0.7584 best=0.7625 patience=2/10
+    [gnn] epoch 12/30: train_loss=1.0284 val_auc=0.7598 best=0.7625 patience=3/10
+    [gnn] epoch 13/30: train_loss=0.9893 val_auc=0.7603 best=0.7625 patience=4/10
+    [gnn] epoch 14/30: train_loss=0.9905 val_auc=0.7655 best=0.7655 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9288 val_auc=0.7693 best=0.7693 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8693 val_auc=0.7732 best=0.7732 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8580 val_auc=0.7784 best=0.7784 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8383 val_auc=0.7791 best=0.7791 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8282 val_auc=0.7771 best=0.7791 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.7697 val_auc=0.7785 best=0.7791 patience=2/10
+    [gnn] epoch 21/30: train_loss=0.6979 val_auc=0.7789 best=0.7791 patience=3/10
+    [gnn] epoch 22/30: train_loss=0.7409 val_auc=0.7796 best=0.7796 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6692 val_auc=0.7776 best=0.7796 patience=1/10
+    [gnn] epoch 24/30: train_loss=0.7071 val_auc=0.7792 best=0.7796 patience=2/10
+    [gnn] epoch 25/30: train_loss=0.6790 val_auc=0.7794 best=0.7796 patience=3/10
+    [gnn] epoch 26/30: train_loss=0.5837 val_auc=0.7780 best=0.7796 patience=4/10
+    [gnn] epoch 27/30: train_loss=0.5755 val_auc=0.7779 best=0.7796 patience=5/10
+    [gnn] epoch 28/30: train_loss=0.5391 val_auc=0.7786 best=0.7796 patience=6/10
+    [gnn] epoch 29/30: train_loss=0.4920 val_auc=0.7806 best=0.7806 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.5098 val_auc=0.7817 best=0.7817 patience=0/10 *
+  [gnn] fold 16/25: AUC=0.7817
+    [gnn] epoch 01/30: train_loss=1.3283 val_auc=0.7324 best=0.7324 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3004 val_auc=0.7852 best=0.7852 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2677 val_auc=0.8000 best=0.8000 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2589 val_auc=0.8296 best=0.8296 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2384 val_auc=0.8326 best=0.8326 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2047 val_auc=0.8259 best=0.8326 patience=1/10
+    [gnn] epoch 07/30: train_loss=1.2120 val_auc=0.8210 best=0.8326 patience=2/10
+    [gnn] epoch 08/30: train_loss=1.1476 val_auc=0.8257 best=0.8326 patience=3/10
+    [gnn] epoch 09/30: train_loss=1.1606 val_auc=0.8252 best=0.8326 patience=4/10
+    [gnn] epoch 10/30: train_loss=1.1020 val_auc=0.8230 best=0.8326 patience=5/10
+    [gnn] epoch 11/30: train_loss=1.0686 val_auc=0.8241 best=0.8326 patience=6/10
+    [gnn] epoch 12/30: train_loss=1.0526 val_auc=0.8241 best=0.8326 patience=7/10
+    [gnn] epoch 13/30: train_loss=1.0104 val_auc=0.8246 best=0.8326 patience=8/10
+    [gnn] epoch 14/30: train_loss=0.9869 val_auc=0.8266 best=0.8326 patience=9/10
+    [gnn] epoch 15/30: train_loss=0.9284 val_auc=0.8246 best=0.8326 patience=10/10
+    [gnn] early stop at epoch 15
+  [gnn] fold 17/25: AUC=0.8326
+    [gnn] epoch 01/30: train_loss=1.3469 val_auc=0.6659 best=0.6659 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3165 val_auc=0.7031 best=0.7031 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.3097 val_auc=0.7393 best=0.7393 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2560 val_auc=0.7440 best=0.7440 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2360 val_auc=0.7452 best=0.7452 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2291 val_auc=0.7597 best=0.7597 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1867 val_auc=0.7690 best=0.7690 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1572 val_auc=0.7740 best=0.7740 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1205 val_auc=0.7761 best=0.7761 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0933 val_auc=0.7777 best=0.7777 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0809 val_auc=0.7747 best=0.7777 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0364 val_auc=0.7751 best=0.7777 patience=2/10
+    [gnn] epoch 13/30: train_loss=0.9740 val_auc=0.7744 best=0.7777 patience=3/10
+    [gnn] epoch 14/30: train_loss=0.9496 val_auc=0.7802 best=0.7802 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9213 val_auc=0.7862 best=0.7862 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.9302 val_auc=0.7857 best=0.7862 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.9276 val_auc=0.7881 best=0.7881 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8822 val_auc=0.7932 best=0.7932 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8660 val_auc=0.7953 best=0.7953 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.9325 val_auc=0.7968 best=0.7968 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.8610 val_auc=0.8015 best=0.8015 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.8401 val_auc=0.8053 best=0.8053 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.7994 val_auc=0.8090 best=0.8090 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.7289 val_auc=0.8087 best=0.8090 patience=1/10
+    [gnn] epoch 25/30: train_loss=0.7789 val_auc=0.8077 best=0.8090 patience=2/10
+    [gnn] epoch 26/30: train_loss=0.7388 val_auc=0.8044 best=0.8090 patience=3/10
+    [gnn] epoch 27/30: train_loss=0.6962 val_auc=0.7994 best=0.8090 patience=4/10
+    [gnn] epoch 28/30: train_loss=0.6370 val_auc=0.7932 best=0.8090 patience=5/10
+    [gnn] epoch 29/30: train_loss=0.6289 val_auc=0.7900 best=0.8090 patience=6/10
+    [gnn] epoch 30/30: train_loss=0.6121 val_auc=0.7858 best=0.8090 patience=7/10
+  [gnn] fold 18/25: AUC=0.8090
+    [gnn] epoch 01/30: train_loss=1.3380 val_auc=0.6938 best=0.6938 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3138 val_auc=0.7226 best=0.7226 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2804 val_auc=0.6996 best=0.7226 patience=1/10
+    [gnn] epoch 04/30: train_loss=1.2621 val_auc=0.7164 best=0.7226 patience=2/10
+    [gnn] epoch 05/30: train_loss=1.2533 val_auc=0.7237 best=0.7237 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2253 val_auc=0.7263 best=0.7263 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2027 val_auc=0.7229 best=0.7263 patience=1/10
+    [gnn] epoch 08/30: train_loss=1.1788 val_auc=0.7233 best=0.7263 patience=2/10
+    [gnn] epoch 09/30: train_loss=1.1663 val_auc=0.7314 best=0.7314 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1097 val_auc=0.7416 best=0.7416 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0686 val_auc=0.7465 best=0.7465 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0597 val_auc=0.7535 best=0.7535 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9649 val_auc=0.7594 best=0.7594 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9376 val_auc=0.7602 best=0.7602 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9517 val_auc=0.7652 best=0.7652 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8739 val_auc=0.7671 best=0.7671 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8463 val_auc=0.7652 best=0.7671 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.8168 val_auc=0.7698 best=0.7698 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8057 val_auc=0.7741 best=0.7741 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7641 val_auc=0.7707 best=0.7741 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.7485 val_auc=0.7746 best=0.7746 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.6865 val_auc=0.7774 best=0.7774 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6542 val_auc=0.7766 best=0.7774 patience=1/10
+    [gnn] epoch 24/30: train_loss=0.6317 val_auc=0.7720 best=0.7774 patience=2/10
+    [gnn] epoch 25/30: train_loss=0.5828 val_auc=0.7733 best=0.7774 patience=3/10
+    [gnn] epoch 26/30: train_loss=0.5619 val_auc=0.7683 best=0.7774 patience=4/10
+    [gnn] epoch 27/30: train_loss=0.5717 val_auc=0.7707 best=0.7774 patience=5/10
+    [gnn] epoch 28/30: train_loss=0.4898 val_auc=0.7779 best=0.7779 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5074 val_auc=0.7805 best=0.7805 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.4987 val_auc=0.7801 best=0.7805 patience=1/10
+  [gnn] fold 19/25: AUC=0.7805
+    [gnn] epoch 01/30: train_loss=1.3314 val_auc=0.6683 best=0.6683 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.3020 val_auc=0.7491 best=0.7491 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2815 val_auc=0.7798 best=0.7798 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2645 val_auc=0.7937 best=0.7937 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2389 val_auc=0.8062 best=0.8062 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2189 val_auc=0.8173 best=0.8173 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.2030 val_auc=0.8225 best=0.8225 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1684 val_auc=0.8279 best=0.8279 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1585 val_auc=0.8335 best=0.8335 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1090 val_auc=0.8365 best=0.8365 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.1105 val_auc=0.8364 best=0.8365 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0453 val_auc=0.8335 best=0.8365 patience=2/10
+    [gnn] epoch 13/30: train_loss=1.0091 val_auc=0.8326 best=0.8365 patience=3/10
+    [gnn] epoch 14/30: train_loss=0.9911 val_auc=0.8381 best=0.8381 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9546 val_auc=0.8416 best=0.8416 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8857 val_auc=0.8372 best=0.8416 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.9274 val_auc=0.8416 best=0.8416 patience=2/10
+    [gnn] epoch 18/30: train_loss=0.8876 val_auc=0.8454 best=0.8454 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.7945 val_auc=0.8458 best=0.8458 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.8051 val_auc=0.8412 best=0.8458 patience=1/10
+    [gnn] epoch 21/30: train_loss=0.7938 val_auc=0.8427 best=0.8458 patience=2/10
+    [gnn] epoch 22/30: train_loss=0.7711 val_auc=0.8492 best=0.8492 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.7103 val_auc=0.8507 best=0.8507 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.7320 val_auc=0.8501 best=0.8507 patience=1/10
+    [gnn] epoch 25/30: train_loss=0.7134 val_auc=0.8480 best=0.8507 patience=2/10
+    [gnn] epoch 26/30: train_loss=0.6681 val_auc=0.8462 best=0.8507 patience=3/10
+    [gnn] epoch 27/30: train_loss=0.6524 val_auc=0.8461 best=0.8507 patience=4/10
+    [gnn] epoch 28/30: train_loss=0.5868 val_auc=0.8461 best=0.8507 patience=5/10
+    [gnn] epoch 29/30: train_loss=0.5588 val_auc=0.8488 best=0.8507 patience=6/10
+    [gnn] epoch 30/30: train_loss=0.5193 val_auc=0.8514 best=0.8514 patience=0/10 *
+  [gnn] fold 20/25: AUC=0.8514
+    [gnn] epoch 01/30: train_loss=1.3197 val_auc=0.6370 best=0.6370 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2873 val_auc=0.6359 best=0.6370 patience=1/10
+    [gnn] epoch 03/30: train_loss=1.2640 val_auc=0.6416 best=0.6416 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2302 val_auc=0.6634 best=0.6634 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2118 val_auc=0.6778 best=0.6778 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.1751 val_auc=0.6845 best=0.6845 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1781 val_auc=0.6860 best=0.6860 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1285 val_auc=0.6896 best=0.6896 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1108 val_auc=0.6912 best=0.6912 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.0931 val_auc=0.6918 best=0.6918 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0129 val_auc=0.6951 best=0.6951 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=0.9839 val_auc=0.6982 best=0.6982 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9707 val_auc=0.7016 best=0.7016 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9255 val_auc=0.7053 best=0.7053 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.8974 val_auc=0.7058 best=0.7058 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8361 val_auc=0.7064 best=0.7064 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8619 val_auc=0.7056 best=0.7064 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.8252 val_auc=0.7095 best=0.7095 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.7758 val_auc=0.7113 best=0.7113 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7267 val_auc=0.7122 best=0.7122 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7255 val_auc=0.7110 best=0.7122 patience=1/10
+    [gnn] epoch 22/30: train_loss=0.6468 val_auc=0.7097 best=0.7122 patience=2/10
+    [gnn] epoch 23/30: train_loss=0.7682 val_auc=0.7074 best=0.7122 patience=3/10
+    [gnn] epoch 24/30: train_loss=0.8309 val_auc=0.7068 best=0.7122 patience=4/10
+    [gnn] epoch 25/30: train_loss=0.5853 val_auc=0.7058 best=0.7122 patience=5/10
+    [gnn] epoch 26/30: train_loss=0.6472 val_auc=0.7046 best=0.7122 patience=6/10
+    [gnn] epoch 27/30: train_loss=0.6741 val_auc=0.7034 best=0.7122 patience=7/10
+    [gnn] epoch 28/30: train_loss=0.5852 val_auc=0.7009 best=0.7122 patience=8/10
+    [gnn] epoch 29/30: train_loss=0.6013 val_auc=0.6990 best=0.7122 patience=9/10
+    [gnn] epoch 30/30: train_loss=0.6932 val_auc=0.7007 best=0.7122 patience=10/10
+    [gnn] early stop at epoch 30
+  [gnn] fold 21/25: AUC=0.7122
+    [gnn] epoch 01/30: train_loss=1.3187 val_auc=0.7681 best=0.7681 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2805 val_auc=0.7760 best=0.7760 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2736 val_auc=0.7715 best=0.7760 patience=1/10
+    [gnn] epoch 04/30: train_loss=1.2508 val_auc=0.7723 best=0.7760 patience=2/10
+    [gnn] epoch 05/30: train_loss=1.1998 val_auc=0.7726 best=0.7760 patience=3/10
+    [gnn] epoch 06/30: train_loss=1.2153 val_auc=0.7750 best=0.7760 patience=4/10
+    [gnn] epoch 07/30: train_loss=1.2167 val_auc=0.7810 best=0.7810 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1532 val_auc=0.7932 best=0.7932 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1172 val_auc=0.7903 best=0.7932 patience=1/10
+    [gnn] epoch 10/30: train_loss=1.0894 val_auc=0.7907 best=0.7932 patience=2/10
+    [gnn] epoch 11/30: train_loss=1.0780 val_auc=0.7919 best=0.7932 patience=3/10
+    [gnn] epoch 12/30: train_loss=1.0586 val_auc=0.7917 best=0.7932 patience=4/10
+    [gnn] epoch 13/30: train_loss=1.0018 val_auc=0.7918 best=0.7932 patience=5/10
+    [gnn] epoch 14/30: train_loss=0.9675 val_auc=0.7932 best=0.7932 patience=6/10
+    [gnn] epoch 15/30: train_loss=0.9232 val_auc=0.7958 best=0.7958 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8820 val_auc=0.7937 best=0.7958 patience=1/10
+    [gnn] epoch 17/30: train_loss=0.8393 val_auc=0.7916 best=0.7958 patience=2/10
+    [gnn] epoch 18/30: train_loss=0.8058 val_auc=0.7903 best=0.7958 patience=3/10
+    [gnn] epoch 19/30: train_loss=0.7609 val_auc=0.7895 best=0.7958 patience=4/10
+    [gnn] epoch 20/30: train_loss=0.7171 val_auc=0.7911 best=0.7958 patience=5/10
+    [gnn] epoch 21/30: train_loss=0.7438 val_auc=0.7929 best=0.7958 patience=6/10
+    [gnn] epoch 22/30: train_loss=0.6600 val_auc=0.7952 best=0.7958 patience=7/10
+    [gnn] epoch 23/30: train_loss=0.6109 val_auc=0.7991 best=0.7991 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6006 val_auc=0.7992 best=0.7992 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6274 val_auc=0.7999 best=0.7999 patience=0/10 *
+    [gnn] epoch 26/30: train_loss=0.5512 val_auc=0.8002 best=0.8002 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5636 val_auc=0.8022 best=0.8022 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5422 val_auc=0.8037 best=0.8037 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5947 val_auc=0.8058 best=0.8058 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.5846 val_auc=0.8067 best=0.8067 patience=0/10 *
+  [gnn] fold 22/25: AUC=0.8067
+    [gnn] epoch 01/30: train_loss=1.3217 val_auc=0.6921 best=0.6921 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2976 val_auc=0.7658 best=0.7658 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2744 val_auc=0.7759 best=0.7759 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2692 val_auc=0.7866 best=0.7866 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2359 val_auc=0.8018 best=0.8018 patience=0/10 *
+    [gnn] epoch 06/30: train_loss=1.2265 val_auc=0.8131 best=0.8131 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1799 val_auc=0.8144 best=0.8144 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1720 val_auc=0.8149 best=0.8149 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1193 val_auc=0.8165 best=0.8165 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1356 val_auc=0.8154 best=0.8165 patience=1/10
+    [gnn] epoch 11/30: train_loss=1.0999 val_auc=0.8158 best=0.8165 patience=2/10
+    [gnn] epoch 12/30: train_loss=1.0680 val_auc=0.8194 best=0.8194 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0280 val_auc=0.8187 best=0.8194 patience=1/10
+    [gnn] epoch 14/30: train_loss=1.0142 val_auc=0.8237 best=0.8237 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9640 val_auc=0.8287 best=0.8287 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.9716 val_auc=0.8316 best=0.8316 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8836 val_auc=0.8323 best=0.8323 patience=0/10 *
+    [gnn] epoch 18/30: train_loss=0.8243 val_auc=0.8346 best=0.8346 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8182 val_auc=0.8341 best=0.8346 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.8341 val_auc=0.8328 best=0.8346 patience=2/10
+    [gnn] epoch 21/30: train_loss=0.8100 val_auc=0.8374 best=0.8374 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7438 val_auc=0.8398 best=0.8398 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6534 val_auc=0.8416 best=0.8416 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6684 val_auc=0.8452 best=0.8452 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6054 val_auc=0.8444 best=0.8452 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6103 val_auc=0.8433 best=0.8452 patience=2/10
+    [gnn] epoch 27/30: train_loss=0.5488 val_auc=0.8449 best=0.8452 patience=3/10
+    [gnn] epoch 28/30: train_loss=0.5605 val_auc=0.8487 best=0.8487 patience=0/10 *
+    [gnn] epoch 29/30: train_loss=0.5182 val_auc=0.8489 best=0.8489 patience=0/10 *
+    [gnn] epoch 30/30: train_loss=0.5301 val_auc=0.8500 best=0.8500 patience=0/10 *
+  [gnn] fold 23/25: AUC=0.8500
+    [gnn] epoch 01/30: train_loss=1.3229 val_auc=0.7556 best=0.7556 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2916 val_auc=0.7521 best=0.7556 patience=1/10
+    [gnn] epoch 03/30: train_loss=1.2796 val_auc=0.7779 best=0.7779 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2559 val_auc=0.7813 best=0.7813 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2413 val_auc=0.7809 best=0.7813 patience=1/10
+    [gnn] epoch 06/30: train_loss=1.2342 val_auc=0.7866 best=0.7866 patience=0/10 *
+    [gnn] epoch 07/30: train_loss=1.1946 val_auc=0.7931 best=0.7931 patience=0/10 *
+    [gnn] epoch 08/30: train_loss=1.1849 val_auc=0.7957 best=0.7957 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1462 val_auc=0.8022 best=0.8022 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1386 val_auc=0.8058 best=0.8058 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0757 val_auc=0.8058 best=0.8058 patience=1/10
+    [gnn] epoch 12/30: train_loss=1.0582 val_auc=0.8119 best=0.8119 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=0.9974 val_auc=0.8114 best=0.8119 patience=1/10
+    [gnn] epoch 14/30: train_loss=1.0055 val_auc=0.8115 best=0.8119 patience=2/10
+    [gnn] epoch 15/30: train_loss=0.9596 val_auc=0.8099 best=0.8119 patience=3/10
+    [gnn] epoch 16/30: train_loss=0.9449 val_auc=0.8101 best=0.8119 patience=4/10
+    [gnn] epoch 17/30: train_loss=0.8866 val_auc=0.8114 best=0.8119 patience=5/10
+    [gnn] epoch 18/30: train_loss=0.8923 val_auc=0.8141 best=0.8141 patience=0/10 *
+    [gnn] epoch 19/30: train_loss=0.8581 val_auc=0.8122 best=0.8141 patience=1/10
+    [gnn] epoch 20/30: train_loss=0.8353 val_auc=0.8183 best=0.8183 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.7613 val_auc=0.8209 best=0.8209 patience=0/10 *
+    [gnn] epoch 22/30: train_loss=0.7182 val_auc=0.8221 best=0.8221 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6810 val_auc=0.8284 best=0.8284 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.6566 val_auc=0.8318 best=0.8318 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.6307 val_auc=0.8352 best=0.8352 patience=0/10 *
+    [gnn] epoch 26/30: train_loss=0.6015 val_auc=0.8378 best=0.8378 patience=0/10 *
+    [gnn] epoch 27/30: train_loss=0.5410 val_auc=0.8424 best=0.8424 patience=0/10 *
+    [gnn] epoch 28/30: train_loss=0.5835 val_auc=0.8424 best=0.8424 patience=1/10
+    [gnn] epoch 29/30: train_loss=0.5314 val_auc=0.8414 best=0.8424 patience=2/10
+    [gnn] epoch 30/30: train_loss=0.5378 val_auc=0.8440 best=0.8440 patience=0/10 *
+  [gnn] fold 24/25: AUC=0.8440
+    [gnn] epoch 01/30: train_loss=1.3172 val_auc=0.7101 best=0.7101 patience=0/10 *
+    [gnn] epoch 02/30: train_loss=1.2752 val_auc=0.7471 best=0.7471 patience=0/10 *
+    [gnn] epoch 03/30: train_loss=1.2529 val_auc=0.7860 best=0.7860 patience=0/10 *
+    [gnn] epoch 04/30: train_loss=1.2495 val_auc=0.8012 best=0.8012 patience=0/10 *
+    [gnn] epoch 05/30: train_loss=1.2228 val_auc=0.7944 best=0.8012 patience=1/10
+    [gnn] epoch 06/30: train_loss=1.1852 val_auc=0.7980 best=0.8012 patience=2/10
+    [gnn] epoch 07/30: train_loss=1.1847 val_auc=0.8009 best=0.8012 patience=3/10
+    [gnn] epoch 08/30: train_loss=1.1426 val_auc=0.8062 best=0.8062 patience=0/10 *
+    [gnn] epoch 09/30: train_loss=1.1420 val_auc=0.8118 best=0.8118 patience=0/10 *
+    [gnn] epoch 10/30: train_loss=1.1323 val_auc=0.8152 best=0.8152 patience=0/10 *
+    [gnn] epoch 11/30: train_loss=1.0897 val_auc=0.8173 best=0.8173 patience=0/10 *
+    [gnn] epoch 12/30: train_loss=1.0410 val_auc=0.8221 best=0.8221 patience=0/10 *
+    [gnn] epoch 13/30: train_loss=1.0277 val_auc=0.8289 best=0.8289 patience=0/10 *
+    [gnn] epoch 14/30: train_loss=0.9792 val_auc=0.8356 best=0.8356 patience=0/10 *
+    [gnn] epoch 15/30: train_loss=0.9426 val_auc=0.8393 best=0.8393 patience=0/10 *
+    [gnn] epoch 16/30: train_loss=0.8872 val_auc=0.8404 best=0.8404 patience=0/10 *
+    [gnn] epoch 17/30: train_loss=0.8425 val_auc=0.8401 best=0.8404 patience=1/10
+    [gnn] epoch 18/30: train_loss=0.8586 val_auc=0.8404 best=0.8404 patience=2/10
+    [gnn] epoch 19/30: train_loss=0.7962 val_auc=0.8449 best=0.8449 patience=0/10 *
+    [gnn] epoch 20/30: train_loss=0.7213 val_auc=0.8487 best=0.8487 patience=0/10 *
+    [gnn] epoch 21/30: train_loss=0.8877 val_auc=0.8486 best=0.8487 patience=1/10
+    [gnn] epoch 22/30: train_loss=0.8648 val_auc=0.8501 best=0.8501 patience=0/10 *
+    [gnn] epoch 23/30: train_loss=0.6673 val_auc=0.8525 best=0.8525 patience=0/10 *
+    [gnn] epoch 24/30: train_loss=0.7137 val_auc=0.8543 best=0.8543 patience=0/10 *
+    [gnn] epoch 25/30: train_loss=0.7480 val_auc=0.8541 best=0.8543 patience=1/10
+    [gnn] epoch 26/30: train_loss=0.6807 val_auc=0.8522 best=0.8543 patience=2/10
+    [gnn] epoch 27/30: train_loss=0.5790 val_auc=0.8505 best=0.8543 patience=3/10
+    [gnn] epoch 28/30: train_loss=0.6817 val_auc=0.8500 best=0.8543 patience=4/10
+    [gnn] epoch 29/30: train_loss=0.5756 val_auc=0.8486 best=0.8543 patience=5/10
+    [gnn] epoch 30/30: train_loss=0.5594 val_auc=0.8479 best=0.8543 patience=6/10
+  [gnn] fold 25/25: AUC=0.8543
+gnn: mean=0.8101, std=0.0478, q25=0.7817, q10=0.7488 over 25 folds
