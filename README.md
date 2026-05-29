@@ -69,9 +69,9 @@ The project exposes one CLI command, `bidbot`, with four top-level subcommands:
 
 ```text
 bidbot features build
-bidbot train   {gbm|hybrid|gnn|tffm|resnet}
-bidbot cv      {gbm|hybrid|gnn|tffm|resnet}
-bidbot predict {gbm|hybrid|gnn|tffm|resnet}
+bidbot train {gbm|hybrid|gnn|tffm|resnet}
+bidbot cv    {gbm|hybrid|gnn|tffm|resnet}
+bidbot eval  {gbm|hybrid|gnn|tffm|resnet}
 ```
 
 Use `--help` to inspect options:
@@ -208,7 +208,7 @@ Important reporting note:
 Use the saved checkpoint to create `submission.csv`:
 
 ```powershell
-bidbot predict tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
+bidbot eval tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
 ```
 
 The output CSV has the Kaggle submission format:
@@ -245,7 +245,7 @@ bidbot cv resnet --out runs/cv/resnet_full
 bidbot train tffm --val-fraction 0 --save-model --out runs/train/tffm_full_fit
 
 # 7. Generate predictions.
-bidbot predict tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
+bidbot eval tffm --ckpt runs/train/tffm_full_fit/ckpt.pt --out runs/submit/tffm_final/submission.csv
 ```
 
 ## Output Directory Layout
@@ -270,7 +270,7 @@ runs/
       roc.png
       tb/
       ckpt.pt          # only when --save-model is used
-      submission.csv   # only after bidbot predict if no --out is supplied
+      submission.csv   # only after bidbot eval if no --out is supplied
 
   submit/
     tffm_final/
@@ -279,30 +279,6 @@ runs/
       metrics.json
       roc.png
 ```
-
-## Hybrid SSL Pretraining
-
-The `hybrid` model can optionally use masked-bid self-supervised pretraining:
-
-```powershell
-bidbot cv hybrid --model.ssl-pretrain
-bidbot train hybrid --model.ssl-pretrain
-```
-
-Checkpoint resolution order:
-
-1. Use `--model.pretrain-ckpt <path>` if supplied.
-2. Reuse `runs/ssl/pretrain_ckpt.pt` if it exists.
-3. Otherwise run pretraining and write `runs/ssl/pretrain_ckpt.pt`.
-
-When changing architecture values such as `--model.hidden` or
-`--model.max-len`, delete the old SSL checkpoint so it is regenerated with the
-matching shape.
-
-## Notebooks
-
-`notebooks/02_train_compare.ipynb` uses the same training and evaluation code as
-the CLI, but allows inline plots and notebook-based experimentation.
 
 ## Code Quality
 

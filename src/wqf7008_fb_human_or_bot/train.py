@@ -1,88 +1,24 @@
+"""Per-fold fit engine, single-split `run_train`, and the `train` command.
+
+`run_cv` (cv.py) reuses the engine here; CV is just repeated training.
+"""
+
 import random
-from collections.abc import Callable
-from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
 import polars as pl
 import torch
-from sklearn.metrics import roc_auc_score, roc_curve
-from sklearn.model_selection import RepeatedStratifiedKFold, StratifiedShuffleSplit
+from pydantic import BaseModel
+from sklearn.model_selection import StratifiedShuffleSplit
 from torch.utils.tensorboard.writer import SummaryWriter
 
-from wqf7008_fb_human_or_bot.configs import CVConfig
-from wqf7008_fb_human_or_bot.models.base import BidderClassifier
-
-
-def default_device() -> str:
-    return "cuda" if torch.cuda.is_available() else "cpu"
-
-
-def resolve_device(device: str) -> torch.device:
-    """Turn a config device string (including 'auto') into a `torch.device`."""
-    return torch.device(default_device() if device == "auto" else device)
-
-
-@dataclass
-class FoldData:
-    Xtr: np.ndarray
-    Xval: np.ndarray
-    ytr: np.ndarray
-    yval: np.ndarray | None
-    ids_tr: np.ndarray
-    ids_val: np.ndarray
-    train_idx: np.ndarray | None = None  # GNN only
-    val_idx: np.ndarray | None = None  # GNN only
-
-
-@dataclass
-class CVResult:
-    """Result container for both `run_train` (1 entry) and `run_cv` (K×N entries).
-
-    `labels[i]` is the legend / mode tag for the i-th entry:
-      - run_cv:    "fold 0", "fold 1", ...
-      - run_train with val:  "val"
-      - run_train val=0:     "train"  (self-val AUC == train-fit AUC)
-    """
-
-    model_name: str
-    per_fold_auc: list[float]
-    roc_points: list[tuple[np.ndarray, np.ndarray]]
-    labels: list[str] = field(default_factory=list)
-    oof_predictions: pl.DataFrame | None = None
-
-    def __post_init__(self) -> None:
-        if not self.labels:
-            self.labels = [f"fold {i}" for i in range(len(self.per_fold_auc))]
-
-    @property
-    def is_single(self) -> bool:
-        return len(self.per_fold_auc) == 1
-
-    @property
-    def mean_auc(self) -> float:
-        return float(np.mean(self.per_fold_auc))
-
-    @property
-    def std_auc(self) -> float:
-        return float(np.std(self.per_fold_auc))
-
-    @property
-    def q10_auc(self) -> float:
-        return float(np.percentile(self.per_fold_auc, 10))
-
-    @property
-    def q25_auc(self) -> float:
-        return float(np.percentile(self.per_fold_auc, 25))
-
-    def summary_str(self) -> str:
-        if self.is_single:
-            return f"{self.model_name}: {self.labels[0]}_auc={self.per_fold_auc[0]:.4f}"
-        return (
-            f"{self.model_name}: mean={self.mean_auc:.4f}, std={self.std_auc:.4f}, "
-            f"q25={self.q25_auc:.4f}, q10={self.q10_auc:.4f} "
-            f"over {len(self.per_fold_auc)} folds"
-        )
+from wqf7008_fb_human_or_bot import utils
+from wqf7008_fb_human_or_bot.datasets import load_data
+from wqf7008_fb_human_or_bot.metrics import CVResult, roc_points
+from wqf7008_fb_human_or_bot.models.base import BidderClassifier, MakeModel, Split
+from wqf7008_fb_human_or_bot.models.registry import apply_quick, get_model
+from wqf7008_fb_human_or_bot.paths import PathConfig
 
 
 def set_seed(seed: int) -> None:
@@ -91,82 +27,9 @@ def set_seed(seed: int) -> None:
     torch.manual_seed(seed)
 
 
-def _resolve_quick_cv(cv: CVConfig) -> CVConfig:
-    return cv.model_copy(update={"n_splits": 2, "n_repeats": 1}) if cv.quick else cv
-
-
-def _apply_quick(model_cfg, quick: bool):
-    if not quick:
-        return model_cfg
-    overrides: dict = {}
-    names = set(model_cfg.model_fields)
-    if "epochs" in names:
-        overrides["epochs"] = 1
-    if "early_stop_patience" in names:
-        overrides["early_stop_patience"] = 1
-    return model_cfg.model_copy(update=overrides) if overrides else model_cfg
-
-
-def train_torch_loop(
-    model: torch.nn.Module,
-    model_cfg,
-    *,
-    model_name: str,
-    train_epoch: Callable[[], dict[str, float]],
-    eval_fn: Callable[[], dict[str, float]],
-    writer: SummaryWriter | None = None,
-) -> None:
-    """Per-epoch loop with best-state tracking + early stopping.
-
-    `model_cfg` must expose `epochs` and `early_stop_patience`.
-    """
-    best_auc = -1.0
-    best_state: dict[str, torch.Tensor] | None = None
-    patience = 0
-
-    for epoch in range(model_cfg.epochs):
-        model.train()
-        train_metrics = train_epoch()
-        val_metrics = eval_fn()
-
-        if writer is not None:
-            for k, v in train_metrics.items():
-                writer.add_scalar(f"{k}/train", v, epoch)
-            for k, v in val_metrics.items():
-                writer.add_scalar(f"{k}/val", v, epoch)
-
-        val_auc = val_metrics.get("auc", 0.0)
-        marker = ""
-        if val_auc > best_auc:
-            best_auc = val_auc
-            best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
-            patience = 0
-            marker = " *"
-        else:
-            patience += 1
-        train_loss = train_metrics.get("loss", float("nan"))
-        print(
-            f"    [{model_name}] epoch {epoch + 1:02d}/{model_cfg.epochs}: "
-            f"train_loss={train_loss:.4f} val_auc={val_auc:.4f} "
-            f"best={best_auc:.4f} patience={patience}/{model_cfg.early_stop_patience}{marker}"
-        )
-        if patience >= model_cfg.early_stop_patience:
-            print(f"    [{model_name}] early stop at epoch {epoch + 1}")
-            break
-
-    if best_state is not None:
-        model.load_state_dict(best_state)
-
-
-def _roc_points(yval, probs) -> tuple[float, tuple[np.ndarray, np.ndarray]]:
-    has_both = len(np.unique(yval)) > 1
-    if has_both:
-        fpr, tpr, _ = roc_curve(yval, probs)
-        return float(roc_auc_score(yval, probs)), (fpr, tpr)
-    return 0.5, (np.array([0.0, 1.0]), np.array([0.0, 1.0]))
-
-
-def _as_xy(X: pl.DataFrame | np.ndarray, y: np.ndarray, bidder_ids: np.ndarray):
+def _as_xy(
+    X: pl.DataFrame | np.ndarray, y: np.ndarray, bidder_ids: np.ndarray
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     if isinstance(X, pl.DataFrame):
         cols = [c for c in X.columns if c != "bidder_id"]
         X_np = X.select(cols).to_numpy().astype(np.float32)
@@ -175,147 +38,104 @@ def _as_xy(X: pl.DataFrame | np.ndarray, y: np.ndarray, bidder_ids: np.ndarray):
     return X_np, np.asarray(y, dtype=np.int64), np.asarray(bidder_ids)
 
 
-def _attach_graph_idx(fold: FoldData, bidder_to_graph_idx: dict[str, int] | None) -> None:
-    if bidder_to_graph_idx is None:
-        return
-    fold.train_idx = np.array([bidder_to_graph_idx[b] for b in fold.ids_tr], dtype=np.int64)
-    fold.val_idx = np.array([bidder_to_graph_idx[b] for b in fold.ids_val], dtype=np.int64)
-
-
 def _fit_one_fold(
-    factory: Callable[[], BidderClassifier],
-    fold: FoldData,
-    model_cfg,
+    make_model: MakeModel,
+    train: Split,
+    val: Split,
     writer: SummaryWriter | None = None,
 ) -> tuple[BidderClassifier, float, tuple[np.ndarray, np.ndarray], np.ndarray]:
-    """The shared core: create classifier, fit, predict, compute (auc, roc)."""
+    """Shared core: build the model for this fold, fit, predict on val, score."""
     try:
-        model = factory()
-        model.fit(fold, model_cfg, writer=writer)
-        probs = np.asarray(model.predict_proba(fold)).reshape(-1)
+        model = make_model(train)
+        model.fit(train, val, writer=writer)
+        probs = np.asarray(model.predict_proba(val)).reshape(-1)
     finally:
         if writer is not None:
             writer.close()
-    auc, rp = _roc_points(fold.yval, probs)
+    auc, rp = roc_points(val.y, probs)
     return model, auc, rp, probs
 
 
-def run_cv(
-    factory: Callable[[], BidderClassifier],
-    X: pl.DataFrame | np.ndarray,
-    y: np.ndarray,
-    bidder_ids: np.ndarray,
-    *,
-    cv: CVConfig,
-    model_cfg,
-    model_name: str,
-    bidder_to_graph_idx: dict[str, int] | None = None,
-) -> CVResult:
-    """Repeated stratified K-fold CV. No TensorBoard, no model checkpoint."""
-    cv = _resolve_quick_cv(cv)
-    model_cfg = _apply_quick(model_cfg, cv.quick)
-    set_seed(model_cfg.seed)
-
-    X_np, y_np, ids = _as_xy(X, y, bidder_ids)
-    splitter = RepeatedStratifiedKFold(
-        n_splits=cv.n_splits, n_repeats=cv.n_repeats, random_state=model_cfg.seed
-    )
-    total = cv.n_splits * cv.n_repeats
-
-    per_fold_auc: list[float] = []
-    roc_points: list[tuple[np.ndarray, np.ndarray]] = []
-    oof_parts: list[pl.DataFrame] = []
-
-    for fold_i, (tr_i, val_i) in enumerate(splitter.split(X_np, y_np)):
-        fold = FoldData(
-            Xtr=X_np[tr_i],
-            Xval=X_np[val_i],
-            ytr=y_np[tr_i],
-            yval=y_np[val_i],
-            ids_tr=ids[tr_i],
-            ids_val=ids[val_i],
-        )
-        _attach_graph_idx(fold, bidder_to_graph_idx)
-        _, auc, rp, probs = _fit_one_fold(factory, fold, model_cfg, writer=None)
-        per_fold_auc.append(auc)
-        roc_points.append(rp)
-        oof_parts.append(
-            pl.DataFrame(
-                {
-                    "fold": np.full(len(fold.ids_val), fold_i, dtype=np.int64),
-                    "bidder_id": [str(b) for b in fold.ids_val],
-                    "y_true": np.asarray(fold.yval, dtype=np.int64),
-                    "y_prob": np.asarray(probs, dtype=np.float64),
-                }
-            )
-        )
-        print(f"  [{model_name}] fold {fold_i + 1}/{total}: AUC={auc:.4f}")
-
-    return CVResult(
-        model_name=model_name,
-        per_fold_auc=per_fold_auc,
-        roc_points=roc_points,
-        oof_predictions=pl.concat(oof_parts) if oof_parts else None,
-    )
-
-
 def run_train(
-    factory: Callable[[], BidderClassifier],
+    make_model: MakeModel,
     X: pl.DataFrame | np.ndarray,
     y: np.ndarray,
     bidder_ids: np.ndarray,
-    *,
     val_fraction: float,
-    quick: bool,
-    model_cfg,
+    seed: int,
     model_name: str,
     tb_dir: Path | None = None,
-    bidder_to_graph_idx: dict[str, int] | None = None,
 ) -> tuple[BidderClassifier, CVResult]:
     """Single-pass training.
 
     - `val_fraction > 0`: stratified held-out split; reported AUC is on the val
       split. Label: `"val"`.
-    - `val_fraction == 0`: fit on all data (final-submission mode). Reported AUC
-      is the training-fit AUC (self-val). Label: `"train"`.
+    - `val_fraction == 0`: fit on all data (final-submission mode); `val` aliases
+      `train`, so the reported AUC is the training-fit AUC. Label: `"train"`.
     """
-    model_cfg = _apply_quick(model_cfg, quick)
-    set_seed(model_cfg.seed)
+    set_seed(seed)
     X_np, y_np, ids = _as_xy(X, y, bidder_ids)
 
     if val_fraction > 0:
         tr_i, val_i = next(
             iter(
-                StratifiedShuffleSplit(
-                    n_splits=1, test_size=val_fraction, random_state=model_cfg.seed
-                ).split(X_np, y_np)
+                StratifiedShuffleSplit(n_splits=1, test_size=val_fraction, random_state=seed).split(
+                    X_np, y_np
+                )
             )
         )
-        fold = FoldData(
-            Xtr=X_np[tr_i],
-            Xval=X_np[val_i],
-            ytr=y_np[tr_i],
-            yval=y_np[val_i],
-            ids_tr=ids[tr_i],
-            ids_val=ids[val_i],
-        )
+        train = Split(X=X_np[tr_i], y=y_np[tr_i], ids=ids[tr_i])
+        val = Split(X=X_np[val_i], y=y_np[val_i], ids=ids[val_i])
         label = "val"
     else:
-        # Self-val: Xval = Xtr. AUC is the training fit; early stop can't fire.
-        fold = FoldData(
-            Xtr=X_np,
-            Xval=X_np,
-            ytr=y_np,
-            yval=y_np,
-            ids_tr=ids,
-            ids_val=ids,
-        )
+        # Self-val: val mirrors train. AUC is the training fit; early stop can't fire.
+        train = Split(X=X_np, y=y_np, ids=ids)
+        val = Split(X=X_np, y=y_np, ids=ids)
         label = "train"
 
-    _attach_graph_idx(fold, bidder_to_graph_idx)
     writer = SummaryWriter(tb_dir) if tb_dir else None
-    model, auc, rp, _ = _fit_one_fold(factory, fold, model_cfg, writer=writer)
+    model, auc, rp, _ = _fit_one_fold(make_model, train, val, writer=writer)
     print(f"  [{model_name}] {label} AUC={auc:.4f}")
     return model, CVResult(
         model_name=model_name, per_fold_auc=[auc], roc_points=[rp], labels=[label]
     )
+
+
+def train_command(
+    model_name: str,
+    model_cfg: BaseModel,
+    data_cfg: PathConfig,
+    out: Path | None,
+    val_fraction: float,
+    quick: bool,
+    save_model: bool,
+) -> None:
+    """`bidbot train <model>`: fit on a train/val split, log to TensorBoard, optionally checkpoint."""
+    model_cls = get_model(model_name)
+    cfg = apply_quick(model_cfg, quick)
+    data = load_data(data_cfg)
+    # val_fraction==0 -> full-fit submission run; flag it in the folder name.
+    dir_tag = f"{model_name}_full" if val_fraction == 0 else model_name
+    out_dir = utils.run_dir(out, "train", dir_tag)
+    utils.header(
+        f"train {model_name}",
+        out_dir,
+        model=utils.fmt(cfg),
+        data=utils.fmt(data_cfg),
+        run=f"val_fraction={val_fraction} quick={quick} save_model={save_model}",
+    )
+    make_model = model_cls.from_data(cfg, data)
+    clf, result = run_train(
+        make_model,
+        data.Xtr,
+        data.ytr,
+        data.ids_tr,
+        val_fraction=val_fraction,
+        seed=cfg.model_dump()["seed"],
+        model_name=model_name,
+        tb_dir=out_dir / "tb",
+    )
+    utils.write_summary(result, out_dir)
+    if save_model:
+        clf.save(out_dir / "ckpt.pt")
+        print(f"  saved checkpoint to {utils.rel(out_dir / 'ckpt.pt')}")

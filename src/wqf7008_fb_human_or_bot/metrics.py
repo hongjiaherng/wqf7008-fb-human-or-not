@@ -1,12 +1,71 @@
 import json
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
 import polars as pl
-
-from wqf7008_fb_human_or_bot.train import CVResult
+from sklearn.metrics import roc_auc_score, roc_curve
 
 OOF_THRESHOLD = 0.5
+
+
+@dataclass
+class CVResult:
+    """Result container for both `run_train` (1 entry) and `run_cv` (KxN entries).
+
+    `labels[i]` is the legend / mode tag for the i-th entry:
+      - run_cv:    "fold 0", "fold 1", ...
+      - run_train with val:  "val"
+      - run_train val=0:     "train"  (self-val AUC == train-fit AUC)
+    """
+
+    model_name: str
+    per_fold_auc: list[float]
+    roc_points: list[tuple[np.ndarray, np.ndarray]]
+    labels: list[str] = field(default_factory=list)
+    oof_predictions: pl.DataFrame | None = None
+
+    def __post_init__(self) -> None:
+        if not self.labels:
+            self.labels = [f"fold {i}" for i in range(len(self.per_fold_auc))]
+
+    @property
+    def is_single(self) -> bool:
+        return len(self.per_fold_auc) == 1
+
+    @property
+    def mean_auc(self) -> float:
+        return float(np.mean(self.per_fold_auc))
+
+    @property
+    def std_auc(self) -> float:
+        return float(np.std(self.per_fold_auc))
+
+    @property
+    def q10_auc(self) -> float:
+        return float(np.percentile(self.per_fold_auc, 10))
+
+    @property
+    def q25_auc(self) -> float:
+        return float(np.percentile(self.per_fold_auc, 25))
+
+    def summary_str(self) -> str:
+        if self.is_single:
+            return f"{self.model_name}: {self.labels[0]}_auc={self.per_fold_auc[0]:.4f}"
+        return (
+            f"{self.model_name}: mean={self.mean_auc:.4f}, std={self.std_auc:.4f}, "
+            f"q25={self.q25_auc:.4f}, q10={self.q10_auc:.4f} "
+            f"over {len(self.per_fold_auc)} folds"
+        )
+
+
+def roc_points(y_true, probs) -> tuple[float, tuple[np.ndarray, np.ndarray]]:
+    """Return (auc, (fpr, tpr)); degenerate diagonal if only one class is present."""
+    has_both = len(np.unique(y_true)) > 1
+    if has_both:
+        fpr, tpr, _ = roc_curve(y_true, probs)
+        return float(roc_auc_score(y_true, probs)), (fpr, tpr)
+    return 0.5, (np.array([0.0, 1.0]), np.array([0.0, 1.0]))
 
 
 def _threshold_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:

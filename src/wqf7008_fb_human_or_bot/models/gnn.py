@@ -1,15 +1,19 @@
 """Heterogeneous GNN classifier using SAGEConv + to_hetero."""
 
+from collections.abc import Callable
+from pathlib import Path
+from typing import ClassVar, Self
+
 import numpy as np
 import torch
 from sklearn.metrics import roc_auc_score
 from torch import nn
 from torch_geometric.nn import SAGEConv, to_hetero
 
-from wqf7008_fb_human_or_bot.configs import GNNConfig
-from wqf7008_fb_human_or_bot.datasets.bidder_graph import GraphBundle
-from wqf7008_fb_human_or_bot.models.base import pos_weight_from_labels
-from wqf7008_fb_human_or_bot.train import resolve_device, train_torch_loop
+from wqf7008_fb_human_or_bot.datasets import Data
+from wqf7008_fb_human_or_bot.datasets.graph import GraphBundle
+from wqf7008_fb_human_or_bot.models.base import BidderClassifier, Split
+from wqf7008_fb_human_or_bot.models.registry import GNNConfig, pos_weight_from_labels
 
 
 class _HomoSAGE(nn.Module):
@@ -56,70 +60,141 @@ class HeteroBidderGNN(nn.Module):
         return self.head(h).squeeze(-1)
 
 
-class GNNBidderClassifier:
-    def __init__(self, bundle: GraphBundle):
+class GNNBidderClassifier(BidderClassifier[GNNConfig]):
+    name: ClassVar[str] = "gnn"
+
+    model: nn.Module
+    device: torch.device
+    _loss_fn: nn.Module
+    _opt: torch.optim.Optimizer
+
+    def __init__(self, cfg: GNNConfig, bundle: GraphBundle):
+        self.cfg = cfg
+        self.device = torch.device(cfg.device)
         self.bundle = bundle
-        self.model: HeteroBidderGNN | None = None
-        self.device: torch.device = torch.device("cpu")
+        self.model = HeteroBidderGNN(bundle, hidden=cfg.hidden, dropout=cfg.dropout).to(self.device)
+        # SAGEConv has lazy-init params; one forward pass materialises them.
+        self.model(bundle.data.to(self.device))
 
-    def fit(self, fold, cfg: GNNConfig, *, writer=None) -> None:
-        self.device = resolve_device(cfg.device)
-        data = self.bundle.data.to(self.device)
-        self.model = HeteroBidderGNN(self.bundle, hidden=cfg.hidden, dropout=cfg.dropout).to(
-            self.device
-        )
-        # SAGEConv lazy init needs one dummy forward to materialise params.
-        self.model(data)
+    @classmethod
+    def from_data(cls, cfg: GNNConfig, data: Data) -> Callable[[Split], Self]:
+        bundle = cls._build_bundle(data)
+        return lambda _train: cls(cfg, bundle)
 
-        train_idx = torch.as_tensor(fold.train_idx, dtype=torch.long, device=self.device)
-        val_idx = torch.as_tensor(fold.val_idx, dtype=torch.long, device=self.device)
-        ytr = torch.as_tensor(fold.ytr, dtype=torch.float32, device=self.device)
-        yval = torch.as_tensor(fold.yval, dtype=torch.float32, device=self.device)
+    @staticmethod
+    def _build_bundle(data: Data) -> GraphBundle:
+        from wqf7008_fb_human_or_bot.datasets import feature_cols
+        from wqf7008_fb_human_or_bot.datasets.graph import build_hetero_graph
 
-        pos_w = pos_weight_from_labels(fold.ytr)
-        loss_fn = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_w, device=self.device))
-        opt = torch.optim.AdamW(self.model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
+        feat = feature_cols(data.Xtr)
+        X_union = np.vstack(
+            [data.Xtr.select(feat).to_numpy(), data.Xte.select(feat).to_numpy()]
+        ).astype(np.float32)
+        all_ids = np.concatenate([data.ids_tr, data.ids_te])
+        return build_hetero_graph(data.bids, all_ids, X_union)
 
-        def train_epoch() -> dict[str, float]:
-            assert self.model is not None
-            logits = self.model(data, train_idx)
-            loss = loss_fn(logits, ytr)
-            opt.zero_grad()
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
-            opt.step()
-            ys = ytr.detach().cpu().numpy()
-            probs = torch.sigmoid(logits.detach()).cpu().numpy()
-            auc = float(roc_auc_score(ys, probs)) if len(np.unique(ys)) > 1 else 0.5
-            return {"loss": float(loss.detach()), "auc": auc}
+    def _node_idx(self, ids: np.ndarray) -> torch.Tensor:
+        idx = np.array([self.bundle.bidder_index[b] for b in ids], dtype=np.int64)
+        return torch.as_tensor(idx, dtype=torch.long, device=self.device)
 
-        @torch.no_grad()
-        def eval_fn() -> dict[str, float]:
-            assert self.model is not None
-            self.model.eval()
-            logits = self.model(data, val_idx)
-            loss = loss_fn(logits, yval)
-            ys = yval.cpu().numpy()
-            auc = (
-                float(roc_auc_score(ys, torch.sigmoid(logits).cpu().numpy()))
-                if len(np.unique(ys)) > 1
-                else 0.5
-            )
-            return {"loss": float(loss.detach()), "auc": auc}
+    def _setup(self, train: Split, val: Split) -> None:
+        self._data = self.bundle.data.to(self.device)
+        self._train_idx = self._node_idx(train.ids)
+        self._val_idx = self._node_idx(val.ids)
+        self._ytr = torch.as_tensor(np.asarray(train.y), dtype=torch.float32, device=self.device)
+        self._yval = torch.as_tensor(np.asarray(val.y), dtype=torch.float32, device=self.device)
 
-        train_torch_loop(
-            self.model,
-            cfg,
-            model_name="gnn",
-            train_epoch=train_epoch,
-            eval_fn=eval_fn,
-            writer=writer,
-        )
+    def _train_epoch(self) -> dict[str, float]:
+        logits = self.model(self._data, self._train_idx)
+        loss = self._loss_fn(logits, self._ytr)
+        self._opt.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+        self._opt.step()
+        ys = self._ytr.detach().cpu().numpy()
+        probs = torch.sigmoid(logits.detach()).cpu().numpy()
+        auc = float(roc_auc_score(ys, probs)) if len(np.unique(ys)) > 1 else 0.5
+        return {"loss": float(loss.detach()), "auc": auc}
 
     @torch.no_grad()
-    def predict_proba(self, fold_predict) -> np.ndarray:
-        assert self.model is not None, "call fit() first"
+    def _evaluate(self) -> dict[str, float]:
+        self.model.eval()
+        logits = self.model(self._data, self._val_idx)
+        loss = self._loss_fn(logits, self._yval)
+        ys = self._yval.cpu().numpy()
+        auc = (
+            float(roc_auc_score(ys, torch.sigmoid(logits).cpu().numpy()))
+            if len(np.unique(ys)) > 1
+            else 0.5
+        )
+        return {"loss": float(loss.detach()), "auc": auc}
+
+    def fit(self, train: Split, val: Split, writer=None) -> None:
+        assert train.y is not None and val.y is not None  # labels present during fit
+        pos_w = pos_weight_from_labels(train.y)
+        self._loss_fn = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_w, device=self.device))
+        self._opt = torch.optim.AdamW(
+            self.model.parameters(), lr=self.cfg.lr, weight_decay=self.cfg.weight_decay
+        )
+        self._setup(train, val)
+
+        best_auc = -1.0
+        best_state: dict[str, torch.Tensor] | None = None
+        patience = 0
+        for epoch in range(self.cfg.epochs):
+            self.model.train()
+            train_metrics = self._train_epoch()
+            val_metrics = self._evaluate()
+
+            if writer is not None:
+                for k, v in train_metrics.items():
+                    writer.add_scalar(f"{k}/train", v, epoch)
+                for k, v in val_metrics.items():
+                    writer.add_scalar(f"{k}/val", v, epoch)
+
+            val_auc = val_metrics.get("auc", 0.0)
+            marker = ""
+            if val_auc > best_auc:
+                best_auc = val_auc
+                best_state = {
+                    k: v.detach().cpu().clone() for k, v in self.model.state_dict().items()
+                }
+                patience = 0
+                marker = " *"
+            else:
+                patience += 1
+            train_loss = train_metrics.get("loss", float("nan"))
+            print(
+                f"    [{self.name}] epoch {epoch + 1:02d}/{self.cfg.epochs}: "
+                f"train_loss={train_loss:.4f} val_auc={val_auc:.4f} "
+                f"best={best_auc:.4f} patience={patience}/{self.cfg.early_stop_patience}{marker}"
+            )
+            if patience >= self.cfg.early_stop_patience:
+                print(f"    [{self.name}] early stop at epoch {epoch + 1}")
+                break
+
+        if best_state is not None:
+            self.model.load_state_dict(best_state)
+
+    @torch.no_grad()
+    def predict_proba(self, split: Split) -> np.ndarray:
         self.model.eval()
         data = self.bundle.data.to(self.device)
-        idx = torch.as_tensor(fold_predict.val_idx, dtype=torch.long, device=self.device)
+        idx = self._node_idx(split.ids)
         return torch.sigmoid(self.model(data, idx)).cpu().numpy()
+
+    def save(self, path: Path) -> None:
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        torch.save(
+            {"model_state": self.model.state_dict(), "cfg": self.cfg.model_dump(mode="json")},
+            Path(path),
+        )
+
+    @classmethod
+    def load(cls, ckpt: Path, data: Data) -> Self:
+        payload = torch.load(Path(ckpt), weights_only=False, map_location="cpu")
+        cfg = GNNConfig.model_validate(payload["cfg"])
+        bundle = cls._build_bundle(data)
+        inst = cls(cfg, bundle)  # __init__ materialises lazy params
+        inst.model.load_state_dict(payload["model_state"])
+        return inst

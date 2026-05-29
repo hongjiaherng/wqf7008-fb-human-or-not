@@ -1,7 +1,7 @@
-"""Per-bidder bid-sequence dataset for the Hybrid model and SSL pretraining.
+"""Per-bidder bid-sequence dataset for the Hybrid model.
 
 Implementation detail: the full bids table (~7.6M rows) is processed end-to-end in
-polars for speed. Only the final per-bidder numpy arrays are materialised — at
+polars for speed. Only the final per-bidder numpy arrays are materialised; at
 that point sizes are small and numpy is what the DataLoader collate path needs.
 
 Column order in the per-bidder arrays:
@@ -18,7 +18,7 @@ import polars as pl
 import torch
 from torch.utils.data import Dataset
 
-from wqf7008_fb_human_or_bot.configs import UNIT_PER_SEC
+from wqf7008_fb_human_or_bot.datasets import UNIT_PER_SEC
 
 NUM_COLS = ("log1p_dt_self", "log1p_dt_others", "hour_of_day", "day_of_campaign")
 CAT_COLS = ("country", "merchandise", "auction", "device", "ip", "url")

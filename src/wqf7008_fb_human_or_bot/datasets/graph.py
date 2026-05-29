@@ -13,7 +13,7 @@ import polars as pl
 import torch
 from torch_geometric.data import HeteroData
 
-from wqf7008_fb_human_or_bot.datasets.bidder_sequence import VOCAB_HASH, _hash_bucket_pl
+from wqf7008_fb_human_or_bot.datasets.sequence import VOCAB_HASH, _hash_bucket_pl
 
 AUCTION_BUCKETS = VOCAB_HASH["auction"]
 DEVICE_BUCKETS = VOCAB_HASH["device"]
