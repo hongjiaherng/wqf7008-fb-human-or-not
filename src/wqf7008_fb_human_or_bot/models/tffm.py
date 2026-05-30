@@ -119,6 +119,11 @@ class FTTransformerBidderClassifier(BidderClassifier[TFFMConfig]):
         )
         self._setup(train, val)
 
+        print(train.X.shape, train.y.shape, train.ids.shape)
+        print(val.X.shape, val.y.shape, val.ids.shape)
+
+        print(self._N, self._B)
+
         best_auc = -1.0
         best_state: dict[str, torch.Tensor] | None = None
         patience = 0

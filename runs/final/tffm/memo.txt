@@ -1,0 +1,4 @@
+bidbot train tffm --model.device cuda --model.batch-size 256 --model.channels 256 --model.epochs 20 --val-fraction 0 --save-model --out "$dir"
+
+Public Score: 0.87853
+Private score: 0.88647
