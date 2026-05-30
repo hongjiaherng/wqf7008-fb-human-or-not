@@ -1,0 +1,9 @@
+--model.device cuda --model.batch-size 64 --model.channels 256 --model.num-layers 1 --model.epochs 100 --model.weight-decay 1e-5 --model.early-stop-patience 100
+
+
+best channels = 32
+condition: slightly overfit
+
+second best channels = 16
+condition: optimal
+

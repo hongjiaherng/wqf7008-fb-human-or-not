@@ -1,0 +1,4 @@
+--model.device cuda --model.batch-size 64 --model.channels 32 --model.num-layers 3 --model.epochs 100 --model.weight-decay 1e-5 --model.early-stop-patience 100
+
+best num_layers = 2
+condition: slightly overfit

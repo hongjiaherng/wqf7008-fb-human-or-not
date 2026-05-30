@@ -1,0 +1,5 @@
+--model.device cuda --model.channels 16 --model.num-layers 1 --model.epochs 100 --model.weight-decay 1e-5 --model.early-stop-patience 100
+
+condition: underfitting
+
+best batch-size = 64

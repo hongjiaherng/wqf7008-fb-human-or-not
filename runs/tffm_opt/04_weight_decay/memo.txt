@@ -1,0 +1,5 @@
+bidbot train tffm --model.device cuda --model.batch-size 64 --model.channels 32 --model.num-layers 2 --model.epochs 100 --model.weight-decay 5e-1 --model.early-stop-patience 100 --out .\runs\tffm_opt\04_weight_decay\5e-1
+
+best weight_decay = 5e-1
+
+apply an early stopping patience of 20, will be our final model
