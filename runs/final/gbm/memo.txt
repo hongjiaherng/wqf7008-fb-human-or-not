@@ -1,0 +1,4 @@
+bidbot train gbm --model.learning-rate 0.03 --model.max-depth 4 --val-fraction 0 --out .\runs\final\gbm --save-model
+
+Public Score: 0.88685
+Private score: 0.89377
